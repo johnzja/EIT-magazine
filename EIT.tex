@@ -68,19 +68,22 @@ This work was supported in part by the National Key Research and Development Pro
 \maketitle
 
 \begin{abstract}
-   Massive amount of multiplexing techniques have been proposed to realize the ultra-high-speed wireless communications. These techniques are actually the division of the whole physical resources on a specific perspective. To build a unified theory that can explore the fundamental physical limit of system performance, we should restore to the physical nature of the system. Therefore, electromagnetic information theory (EIT) which analyzes the information conveyed by the continuous electromagnetic field becomes essential. In this article, we systematically investigate the basics and results of EIT. First, we summarize the fundamental analyzing tools of EIT from classical information theory and electromagnetic theory. Then, we show the main research content in the literature and the corresponding results of EIT, including the continuous modeling, DoF, mutual information and capacity analysis. Finally, we point out several open problems in EIT, based on which further works can be done to improve EIT towards a unified interdisciplinary theory.
+   In order to realize ultra-high-speed wireless communication, numerous multiplexing techniques have been proposed in the literature. However, actually all these techniques are different divisions of the same electromagnetic resources. To build a unified theory that can reveal the fundamental electromagnetic limit of the system performance, we should restore to the physical nature of the system. Therefore, it is essential to analyze the information-carrying capability of continuous electromagnetic fields, which motivates the research on electromagnetic information theory (EIT). In this article, we systematically investigate the basics and results of EIT. First, we summarize the fundamental analysis tools of classical information theory and electromagnetic theory. Then, we introduce the main research contents in the literature and the corresponding results of EIT, including the continuous modeling, DoF, mutual information and capacity analyses. Finally, we point out several open problems in EIT, based on which further works can be done to improve EIT towards a unified interdisciplinary theory.
 \end{abstract}
 
 \begin{IEEEkeywords}
-    Electromagnetic information theory (EIT), prolate spheroidal wave functions. 
+    Electromagnetic information theory (EIT), channel capacity, Maxwell's equations, prolate spheroidal wave functions. 
 \end{IEEEkeywords}
 
 \section{Introduction}
 %% leading paragraph. 
-Ultra-high-speed wireless communication are expected to play a cornerstone role in future applications including immersive virtual reality, digital twins, and holographic videos \cite{saad2019vision}. 
-In order to fulfill these visions, massive amount of multiplexing technologies have been proposed to exploit various communication resources in the space (SDMA), frequency (FDMA), time (TDMA), polarization, code (CDMA), and even power domains (NOMA) for increasing overall transmission rate. 
-Thus, a natural question arises: {\it what is the fundamental physical limit of such multiplexing in a wireless system?}
-To answer this question, an intuitive observation is that most of these communication resources correspond to some physical quantities that can be independently manipulated. To be concrete, these quantities are the space, frequency, time, and polarization of an electromagnetic impulse that can be generated and transmitted \cite{shah2022survey}. Though some of these multiplexing technologies are based on mathematical divisions of the channel (CDMA and NOMA), all these multiplexing capability is essentially provided by the electromagnetic fields that finally carry the information \cite{gruber2008new}. Therefore, it is necessary to construct a theory that can model and analyze the wireless information systems built on continuous electromagnetic fields, which leads to the research on electromagnetic information theory (EIT).
+Ultra-high-speed wireless communications are expected to play a cornerstone role in future multimedia applications, including immersive virtual reality, digital twins, and holographic videos \cite{saad2019vision}. 
+In order to fulfill these visions, numerous multiplexing technologies have been proposed in the literature to exploit various communication resources in different domains, such as the space (SDMA), frequency (FDMA), time (TDMA), frequency-time (OFDM), polarization, code (CDMA), and even power (NOMA) domains, for increasing overall transmission rate. 
+Thus, a natural question arises: {\it What is the fundamental physical limit of such multiplexing in a wireless system?}
+% Before we set about answering this question, we first need to understand why this question is difficult to answer within the existing theoretical framework. Existing theoretical framework adopts a hierarchical two-step structure, in which electromagnetic propagation, together with the antennas at the transceivers, are first abstracted into symbol channels by performing sampling on the space and time domain. Then, information-theoretic analyses are performed on these symbol channels to provide the overall capacity of such a wireless system.   
+
+% (the prev. comments) You cannot introduce EIT as above, because the two-step procedure is, in fact, complete and rigorous. 
+To answer this question, an intuitive observation is that most of these communication resources correspond to some physical quantities that can be independently manipulated. To be concrete, these quantities are the position, frequency, time, and polarization of an electromagnetic impulse that can be generated and transmitted \cite{shah2022survey}. Though a few of these multiplexing technologies are based on mathematical divisions of the channel (CDMA and NOMA), all these multiplexing capability is essentially provided by the electromagnetic fields that finally carry the information \cite{gruber2008new}. Therefore, it is necessary to construct a theory that can model and analyze the wireless information systems built on continuous electromagnetic fields, which motivates the research on electromagnetic information theory (EIT).
 
 %% The definition of EIT. 
 EIT is an interdisciplinary subject that combines deterministic physical theory and probabilistic mathematical theory to study the transmission mechanism of information via spatially continuous electromagnetic field. 
@@ -88,7 +91,7 @@ Specifically, it utilizes the basic laws and conclusions in classical electromag
 
 %% Difference between EIT and traditional MIMO theory. 
 Since EIT is based on analysis of the continuous electromagnetic field, it is intrinsically different from the traditional communication models with spatially discrete transceivers. 
-Traditional analysis of single-input single-output (SISO) systems considers a pair of points as the transceivers, and analysis of MIMO systems regards discrete point sets in certain spatial region as the transceivers. 
+Traditional analysis of single-input single-output (SISO) system considers a pair of points as the transceivers, and analysis of MIMO systems regards discrete point sets in certain spatial region as the transceivers. 
 These traditional models are discrete approximations of the real communication systems which convey information by continuous field. 
 Therefore, existing analysis methods and tools in traditional spatially discrete system models need to be transferred to their continuous counterpart in EIT. 
 
@@ -164,9 +167,9 @@ Similarly, in order to capture the randomness of the transmitted and received si
 \begin{figure}
 	\centering 
 	\includegraphics[%height=4cm,
-	width=6.8cm]{figures/discrete_to_continuous.pdf} 
-	\caption{Linear time invariant and linear space invariant systems.} 
-	\label{fig:Shabbon_Marzetta}
+	width=6.8cm]{figures/Shannon_Marzetta.png} 
+	\caption{Linear time invariant in classical information theory, compared with  linear space invariant systems in EIT.} 
+	\label{fig:Shannon_Marzetta}
 \end{figure}
 
 % Motivated by the possibility of exploiting the three spatial dimensions, the multi-input multi-output (MIMO) architecture have been ubiquitous in contemporary wireless communication systems. To fully exploit the potential of MIMO, numerous spatial multiplexing technologies have been proposed, including SDMA, TRDMA, PDMA, and LDMA. However, there must be a unified underlying theory that governs all the multiplexing technologies, since they are all based on the same physical media of electromagnetic waves. To construct this unified theory, two different approaches have been proposed in the literature to characterize the electromagnetic channel. 
@@ -194,7 +197,7 @@ This channel model is, in essence, spatially discrete.
 However, in EIT, it is reasonably assumed that one is able to detect the field at an arbitrary point inside the receiver region, where the precision of such measurement is subject to some physical noise limits. This naturally leads to the assumption of EIT that the transceivers operate in a continuum of space.  
 
 This idea of continuous modeling, though seems impossible to have its hardware correspondence in reality, is of both theoretical convenience and practical reasons. 
-The theoretical convenience originates from the fact that the fundamental physical laws that rule the electromagnetic phenomena are, intrinsically, continuous and linear. 
+The theoretical convenience originates from the fact that the fundamental physical laws that rule the electromagnetic phenomena are intrinsically continuous. 
 As a result, extensive mathematical tools, including functional analysis, linear operator theory, and complex analysis have already been developed to attack these continuous linear problems. 
 The practical reasons are that the real-world antenna-based point-to-point transmission models can be viewed as a special case of the continuous model. 
 Mathematically, an antenna acts as a continuous integral operator that weights the incident signal by its electromagnetic eigenmode, which corresponds with the continuous modeling in EIT. 
@@ -261,7 +264,7 @@ In this section, we will introduce several applications of the EIT, which utiliz
 \subsection{Location Division Multiple Access}
 \begin{figure*}
 	\centering 
-	\includegraphics[width=0.9\textwidth]{figures/LDMA.pdf} 
+	\includegraphics[width=0.8\textwidth]{figures/LDMA.pdf} 
 	\caption{Comparison between the SDMA scheme which can not utilize the radial DoF and the LDMA scheme which exploits the radial DoF~\cite{wu2022multiple} }. 
 	\label{fig:LDMA}
 \end{figure*}
@@ -294,7 +297,7 @@ Traditional wireless communication systems deploy finite antennas in a limited a
 In engineering practice, it is often required to reconstruct the values of an electromagnetic field from a finite number of available observations, which is called the field reconstruction problem. 
 To solve this problem, prior information about the electromagnetic field is often exploited, including the spatially band-limited property and the spatial correlation that the electromagnetic field exhibits. 
 The spatially bandlimited property justifies the cardinal series as asymptotically optimal linear interpolators~\cite{pizzo2022nyquist} of the electromagnetic field, while the field correlation function leads to Gaussian process regression (GPR)-based field interpolators. 
-These field interpolators have wide applications in field measurement tasks and channel prediction problems. 
+These field interpolators have wide applications in microwave field measurement tasks and channel prediction problems. 
 
 \section{Open Problems}
 In this section, we will enumerate some open problems related to EIT. 
@@ -329,7 +332,7 @@ In the current research of EIT, most works assume that the electromagnetic field
 In this paper, to reveal the fundamental physical limit of wireless information transmission imposed by the underlying electromagnetic mechanisms, we thoroughly investigate the basic concepts, mathematical tools, channel modeling, and information-theoretic performance indicators that constitute the EIT. 
 Furthermore, we briefly review the novel applications of EIT to the design of wireless communication systems for capacity enhancement and accessibility improvement. 
 
-Though recent progress on EIT demonstrates its possibility to become a unified widely-applicable theory, there are still some unresolved issues that may cause confusions, including the compatibility of EIT with existing MIMO theory, the possible existence of hidden physical constraints that influence the sampling density, and the immature proofs of information-theoretic achievability and converse bounds in EIT. 
+Though recent progress on EIT demonstrates its possibility to become a unified and widely-applicable theory, there are still some unresolved issues that may cause confusions, including the compatibility of EIT with existing MIMO theory, the possible existence of hidden physical constraints that influence the sampling density, and the immature proofs of information-theoretic achievability and converse bounds in EIT. 
 
 
 \footnotesize
