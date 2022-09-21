@@ -95,7 +95,7 @@ In this article, we systematically investigate the analysis techniques and the c
 \item{The fundamental mathematical tools in classical information theory and EM theory are briefly reviewed. Specifically, the degrees of freedom (DoF), prolate spheroidal wave functions (PSWFs), channel capacity, and Maxwell's equations are firstly introduced. To integrate the probabilistic nature of information theory and the continuous property of EM fields, random fields are then introduced as a core EIT concept, which enables the EIT performance analysis. }
 \item{The basic EIT modeling methodologies are introduced for both the EM channels and the EM noise. For EIT channel modeling, both the deterministic and stochastic modeling approaches are discussed. For EIT noise modeling, the noise fields are first categorized according to their different physical origins, and then the spatial correlation characteristics of different kinds of noise fields are discussed separately. }
 \item{The theoretical EIT peformance analysis methods are introduced. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can all be derived by the previously introduced mathematical tools including the PSWFs and random field theories. } 
-\item{Moreover, several EIT-related applications are introduced, in which they are guided by the EIT performance analysis. To approach the EIT capacity, the continuous aperture MIMO has been proposed to fully harvest mutual information in a limited aperture area. To fully exploit the distance-domain DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to utilize extra spatial resources to serve users. To take advantage of the extra channel DoF in the near-field region, a distance-aware precoding scheme has been proposed. Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. }
+\item{Moreover, several EIT-related applications are introduced, in which they are guided by the EIT performance analysis. To approach the EIT capacity, the continuous aperture MIMO (CAP-MIMO) has been proposed to fully harvest mutual information in a limited aperture area. To fully exploit the distance-domain DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to utilize extra spatial resources to serve users. To take advantage of the extra channel DoF in the near-field region, a distance-aware precoding scheme has been proposed. Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. }
 \item{Finally, several open problems in EIT are pointed out, involving the compatible noise modeling, the physically appropriate power constraint, the achievability of the EM capacity, and the physical guanuarity limit of current manipulation.}
 \end{itemize}
 
@@ -267,11 +267,29 @@ The DoF of the channel in this stochastic model should be the expected value ave
 \subsection{Mutual Information and Capacity Analysis}
 Besides the DoF which reveals the number of sub-channels available, the channel capacity is another important performance indicator, which shows the limit of the information transmission rate of the wireless system. Compared to traditional MIMO information theory which uses random vectors as transmitted and received signals, EIT models the EM field as random fields. The random field modeling follows the statistical approach of mutual information and capacity analysis by Shannon. Each realization of the random field represents a pattern of the radiating field. The ensemble of the realizations, to which a probability measure is assigned, depicts the statistical characteristics of the system. 
 
-The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. The main difference between them is that the former approach is in the continuous domain and the latter approach is in the discrete domain. For EIT, operator theory can be used to represent the characteristics of the random field. 
-Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the random field can be decomposed into uncorrelated random variables on an orthogonal basis. Then, the continuous channel can be viewed as the combination of all the parallel sub-channels. The information that can be obtained from the received random field is then derived by summing the information over all the sub-channels. Utilizing Fredholm determinant which defines the determinant of operator rather than matrix and is widely used in physics, the mutual information between the transmitted field and the received field can be represented by a closed-form formula. By maximizing the mutual information over all the random field distributions, the channel capacity of the continuous wireless system can be obtained. 
+The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. The main difference between them is that the former approach is in the continuous domain and the latter approach is in the discrete domain. For EIT, the operator theory can be used to represent the autocorrelation properties of the random field. 
+Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the random field can be decomposed into uncorrelated random variables on an orthogonal basis. Then, the continuous channel can be decomposed into parallel sub-channels. Thus, the information obtained from the received random field is evaluated by summing the information over all the sub-channels. 
+Different from the matrix determinant form of MIMO information, the EIT information takes a Fredholm determinant form, which is the determinant of an autocorrelation operator. Based on this closed-form Fredholm determinant mutual information formula, the channel capacity of the continuous wireless system can be obtained by maximizing the mutual information over all the possible random field distributions. 
 
 \section{Applications of EIT}
-In this section, we will introduce several applications of the EIT, which utilize the tools and results of EIT to achieve better performance compared with the state-of-art technologies.
+In this section, we introduce several EIT-related applications. 
+These technological applications either mimic the analysis methodologies in EIT to fully achieve the existing DoF, or try to explore new communication resources predicted by EIT. 
+
+\subsection{Continuous Aperture MIMO}
+Traditional wireless communication systems deploy finite antennas in a limited aperture as the transceivers. To break the performance limit in limited aperture, CAP-MIMO, which is also called holographic MIMO, is proposed. CAP-MIMO adopts a structure that contains infinitely dense antennas in a limited spatial region. 
+Such structure is equivalent to continuous apertures that can generate arbitrary current on the transmitter side and detect any electric field on the receiver side. 
+The current distributions on the transmitter are called patterns of the CAP-MIMO. 
+Different signals are modulated on different patterns before radiated to the space. 
+Designing the patterns are actually designing the channel decomposition scheme, which greatly influences the performance of the CAP-MIMO system~\cite{zhang2022pdma}.
+\begin{figure*}[t]
+	\centering 
+	\includegraphics[width=0.85\linewidth]{figures/CAPMIMO.pdf} 
+	\caption{Illustration of CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
+	\label{fig:CAPMIMO}
+\end{figure*}
+
+% Several works have already explored the pattern design scheme for CAP-MIMO system. The simplest and the easiest way to implement is utilizing the Fourier basis as the patterns, which transfer the approach of OFDM scheme in the time-frequency domain to spatial-wavenumber domain. Other special functions are also utilized to design the patterns in the corresponding assumptions like line-of sight communication or single receiver. For general scenarios, the continuous current patterns can be projected to orthogonal basis and optimization schemes can be utilized to obtain the near-optimal solution of the pattern design scheme.
+
 \subsection{Location Division Multiple Access}
 \begin{figure*}
 	\centering 
@@ -280,35 +298,24 @@ In this section, we will introduce several applications of the EIT, which utiliz
 	\label{fig:LDMA}
 \end{figure*}
 For multiple access schemes, the beams emitted from the base station form a functional space. The DoF of the functional space represents the resolution of the base station to users at different locations, which corresponds to the analysis of functional DoF in EIT. 
-Traditional space-division multiple access based on the far-field model can only distinguish the users by the angles and does not utilize the functional DoF in the radial dimension. 
-For the massive MIMO system which adopts a large-scale antenna array, the spherical wave model is used instead of the plane wave assumption. 
+Traditional space-division multiple access based on the far-field model can only distinguish the users by the angles and does not utilize the functional DoF in the radial (distance) dimension. 
+For massive MIMO systems with large-scale antenna arrays, the spherical wave model is used instead of the planar wave assumption. 
 With the spherical wave model, in addition to the angular dimension, the users can also be distinguished along the radial dimension. 
 Therefore, a new division scheme called the location division multiple access (LDMA)~\cite{wu2022multiple} is proposed to fully exploit the functional DoF of the beams and serve users at different angles and distances. 
 In the LDMA scheme, near-field codebook, beam training, and channel estimation are designed correspondingly, aiming at fully utilizing the spatial resources. 
 
-\subsection{Near Field DoF}
+\subsection{Distance-Aware Precoding}
 As discussed in Subsection~\ref{Sec_4_Subsec_1}, the channel DoF of a LoS channel model in EIT is approximately proportional to the length of the transceivers and inversely proportional to the distance between the transceivers. Therefore, unlike the traditional far-field scenario which can only support one data stream in the LoS channel model, in the near-field region, the wireless communication system has high channel DoF and can support more than one data stream. To fully utilize the near-field channel DoF, a distance-aware precoding scheme is proposed, which adaptively adjusts the number of radio frequency chains to match the channel DoF with different distances.   
 
 % \subsection{Pilot overhead reduction}
 % The pilot overhead without channel state information will increase linearly with the number of the antennas. For massive MIMO systems, the pilot overhead will be intolerable. Therefore, to reduce the pilot overhead, the prior information of the channel need to be obtained, which projects the high-dimensional channel matrix on a low-dimensional subspace. Such schemes are actually the expansion of the well-known compressed sensing method, which utilizes the sparsity of the channel. The prior information of the channel can be obtained by building the channel model as a random field and analyzing its statistical characteristics. According to the random channel model, the sparsity of it can be explored to derive the required number of dimensions for channel estimation. 
-
-\subsection{Continuous Aperture MIMO}
-Traditional wireless communication systems deploy finite antennas in a limited aperture as the transceivers. To break the performance limit in limited aperture, continuous aperture MIMO (CAP-MIMO), which is also called holographic MIMO, is proposed. CAP-MIMO adopts a structure that contains infinite dense antennas in a limited spatial region. Such structure is equivalent to continuous apertures that can generate arbitrary current on the transmitter side and detect any electric field on the receiver side. The current distributions on the transmitter are called patterns of the CAP-MIMO. Different signals are modulated on different patterns before  radiated to the space. Designing the patterns are actually designing the channel decomposition scheme, thus is key to the performance of the CAP-MIMO system~\cite{zhang2022pdma}.
-
-\begin{figure*}
-	\centering 
-	\includegraphics[width=0.9\linewidth]{figures/CAPMIMO.pdf} 
-	\caption{Illustration of CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
-	\label{fig:CAPMIMO}
-\end{figure*}
-
-% Several works have already explored the pattern design scheme for CAP-MIMO system. The simplest and the easiest way to implement is utilizing the Fourier basis as the patterns, which transfer the approach of OFDM scheme in the time-frequency domain to spatial-wavenumber domain. Other special functions are also utilized to design the patterns in the corresponding assumptions like line-of sight communication or single receiver. For general scenarios, the continuous current patterns can be projected to orthogonal basis and optimization schemes can be utilized to obtain the near-optimal solution of the pattern design scheme.
 
 \subsection{Field Reconstruction}
 In engineering practice, it is often required to reconstruct the values of an EM field from a finite number of available observations, which is called the field reconstruction problem. 
 To solve this problem, prior information about the EM field is often exploited, including the spatially band-limited property and the spatial correlation that the EM field exhibits. 
 The spatially bandlimited property justifies the cardinal series as asymptotically optimal linear interpolators~\cite{pizzo2022nyquist} of the EM field, while the field correlation function leads to Gaussian process regression (GPR)-based field interpolators. 
 These field interpolators have wide applications in microwave field measurement tasks and channel prediction problems. 
+
 
 \section{Open Problems}
 In this section, we will enumerate some open problems related to EIT. 
