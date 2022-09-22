@@ -68,7 +68,7 @@ This work was supported by the National Key Research and Development Program of 
 \maketitle
 
 \begin{abstract}
-	Traditional MIMO information theory adopts a spatially discrete modeling, which mismatches the continuous nature of the underlying electromagnetic (EM) fields.
+	Traditional multiple-input multiple-output (MIMO) information theory adopts a spatially discrete modeling, which mismatches the continuous nature of the underlying electromagnetic (EM) fields.
 	Thus, discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
  	Therefore, it is essential to analyze the information-carrying capability of continuous EM fields, which motivates the research on EM information theory (EIT). In this article, we systematically investigate the basics and the results of EIT. First, we review the fundamental analysis tools of classical information theory and EM theory. Then, we introduce the main research contents in the literature and the corresponding results of EIT, including the continuous field modeling, degree of freedom (DoF), mutual information (MI), and capacity analyses. After summarizing the theoretical analyses, we introduce several applications of EIT to show its guidance to practical systems. Finally, we point out several open problems in EIT, where further efforts are needed to improve EIT towards a unified interdisciplinary theory.
 \end{abstract}
@@ -79,7 +79,7 @@ This work was supported by the National Key Research and Development Program of 
 
 \section{Introduction}
 %% leading paragraph. 
-Existing wireless theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) theory considers single points as the transceivers, and MIMO theory~\cite{goldsmith2003capacity} utilize discrete point sets in the spatial region to represent the transceivers. 
+Existing wireless theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) theory considers single points as the transceivers, and multiple-input multiple-output (MIMO) theory~\cite{goldsmith2003capacity} utilize discrete point sets in the spatial region to represent the transceivers. 
 There have been abundant works on spatially discrete theories and the corresponding MIMO systems. 
 However, this discreteness mismatches the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
 This mismatch may cause a performance gap between the discrete system and the ideal continuous system which suits the EM field. 
@@ -194,7 +194,7 @@ Similarly, in order to capture the randomness of the transmitted and received si
 In this section, we first discuss the continuous modeling scheme in EIT, which contains both the channel modeling and the noise field modeling. 
 Based on the continuous modeling of the system, we further utilize tools in information theory like PSWF to derive the DoF, MI, and capacity.
 
-\subsection{Continuous channel modeling}
+\subsection{Continuous Channel Modeling}
 In this part, we will discuss the channel models in EIT, which describes the EM channel by a linear transformation from the radiated field to the noiseless received field.  
 % Since spatial multiplexing can only be realized with MIMO technology, we will always assume a MIMO transceiver in the sequel. 
 Note that to model a traditional narrowband MIMO channel, a matrix with complex-valued entries is usually utilized, each representing the complex channel gain between a pair of transceiver antennas. 
@@ -220,7 +220,7 @@ Another modeling approach is the stochastic channel modeling, where some statist
 For stochastic channel modeling, a novel method is named Fourier plane-wave expansion (see Fig.~\ref{fig:marzetta}), where the channel is modeled by a GRF which is provably compatible with the EM Helmholtz equation~\cite{marzetta2022fourier}. 
 Based on such EM-compatible GRF modeling, the spectrum and the autocorrelation function of the stochastic channel can be derived to facilitate further MI and capacity analysis.
 
-\subsection{Noise field modeling}
+\subsection{Noise Field Modeling}
 After the discussion of the continuous random channel models, we will introduce the noise modeling scheme. 
 Noise is vital in information theory, because it determines the capacity together with the signal. 
 In classical information theory, the noise is usually modeled by a time-domain AWGN, since the AWGN has a flat power spectral density (PSD) and its projection coefficients onto any orthonormal basis are independent and of equal power, which is beneficial to theoretical analysis. 
