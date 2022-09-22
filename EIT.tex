@@ -62,7 +62,7 @@ breaklinks=true}
 \author{{Jieao~Zhu, Zhongzhichao~Wan, and Linglong~Dai, {\textit{Fellow, IEEE}}}
 \thanks{J. Zhu, Z. Wan, and L. Dai are with the Beijing National Research Center for Information Science and Technology (BNRist) as well as the Department of Electronic Engineering, Tsinghua University, Beijing 100084, China (e-mails: \{zja21, wzzc20\}@mails.tsinghua.edu.cn, daill@tsinghua.edu.cn).
 
-This work was supported in part by the National Key Research and Development Program of China (Grant No.2020YFB1807201), in part by the National Natural Science Foundation of China (Grant No. 62031019), and in part by the European Commission through the H2020-MSCA-ITN META WIRELESS Research Project (Grant No. 956256).}
+This work was supported by the National Key Research and Development Program of China (Grant No.2020YFB1807201). }
 }
 
 \maketitle
@@ -94,9 +94,9 @@ In this article, we systematically investigate the analysis techniques and the c
 \begin{itemize}
 \item{The fundamental mathematical tools in classical information theory and EM theory are briefly reviewed. Specifically, the degrees of freedom (DoF), prolate spheroidal wave functions (PSWFs), channel capacity, and Maxwell's equations are firstly introduced. To integrate the probabilistic nature of information theory and the continuous property of EM fields, random fields are then introduced as a core EIT concept, which enables the EIT performance analysis. }
 \item{The basic EIT modeling methodologies are introduced for both the EM channels and the EM noise. For EIT channel modeling, both the deterministic and stochastic modeling approaches are discussed. For EIT noise modeling, the noise fields are first categorized according to their different physical origins, and then the spatial correlation characteristics of different kinds of noise fields are discussed separately. }
-\item{The theoretical EIT peformance analysis methods are introduced. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can all be derived by the previously introduced mathematical tools including the PSWFs and random field theories. } 
-\item{Moreover, several EIT-related applications are introduced, in which they are guided by the EIT performance analysis. To approach the EIT capacity, the continuous aperture MIMO (CAP-MIMO) has been proposed to fully harvest mutual information in a limited aperture area. To fully exploit the distance-domain DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to utilize extra spatial resources to serve users. To take advantage of the extra channel DoF in the near-field region, a distance-aware precoding scheme has been proposed. Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. }
-\item{Finally, several open problems in EIT are pointed out, involving the compatible noise modeling, the physically appropriate power constraint, the achievability of the EM capacity, and the physical guanuarity limit of current manipulation.}
+\item{The theoretical EIT peformance analysis methods are introduced. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can all be derived by mathematical tools including the PSWFs, Karhunen-Lo\`{e}ve expansion, and random field theories. } 
+\item Moreover, several EIT-related applications are introduced, in which they are guided by the EIT performance analysis. To approach the EIT capacity, the continuous aperture MIMO (CAP-MIMO) has been proposed to fully harvest mutual information in a limited aperture area. To fully exploit the distance-domain DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to utilize extra spatial resources to serve users. In addition, a distance-aware precoding (DAP) scheme has been proposed to take advantage of the extra channel DoF in the near-field region.  % Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. 
+\item{Finally, several open problems in EIT are pointed out, involving the compatible noise modeling, the physically appropriate power constraint, the achievability of the EM capacity, and the physical granuarity limit of current manipulation.}
 \end{itemize}
 
 \section{Fundamentals}
@@ -263,6 +263,12 @@ For non-line-of-sight (NLoS) channel models where the deterministic scatterers a
 If the channel is modeled as a stochastic channel with random scatterer positions, uniform distributions or von Mises-Fisher distributions can be used to model the statistical characteristics of the channel. 
 The DoF of the channel in this stochastic model should be the expected value averaged by probability.
 
+\begin{figure*}[ht]
+	\centering 
+	\includegraphics[width=0.85\linewidth]{figures/CAPMIMO.pdf} 
+	\caption{Illustration of CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
+	\label{fig:CAPMIMO}
+\end{figure*}
 
 \subsection{Mutual Information and Capacity Analysis}
 Besides the DoF which reveals the number of sub-channels available, the channel capacity is another important performance indicator, which shows the limit of the information transmission rate of the wireless system. Compared to traditional MIMO information theory which uses random vectors as transmitted and received signals, EIT models the EM field as random fields. The random field modeling follows the statistical approach of mutual information and capacity analysis by Shannon. Each realization of the random field represents a pattern of the radiating field. The ensemble of the realizations, to which a probability measure is assigned, depicts the statistical characteristics of the system. 
@@ -271,33 +277,33 @@ The mutual information and capacity analysis based on random fields is a continu
 Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the random field can be decomposed into uncorrelated random variables on an orthogonal basis. Then, the continuous channel can be decomposed into parallel sub-channels. Thus, the information obtained from the received random field is evaluated by summing the information over all the sub-channels. 
 Different from the matrix determinant form of MIMO information, the EIT information takes a Fredholm determinant form, which is the determinant of an autocorrelation operator. Based on this closed-form Fredholm determinant mutual information formula, the channel capacity of the continuous wireless system can be obtained by maximizing the mutual information over all the possible random field distributions. 
 
+
+
 \section{Applications of EIT}
 In this section, we introduce several EIT-related applications. 
 These technological applications either mimic the analysis methodologies in EIT to fully achieve the existing DoF, or try to explore new communication resources predicted by EIT. 
 
 \subsection{Continuous Aperture MIMO}
-Traditional wireless communication systems deploy finite antennas in a limited aperture as the transceivers. To break the performance limit in limited aperture, CAP-MIMO, which is also called holographic MIMO, is proposed. CAP-MIMO adopts a structure that contains infinitely dense antennas in a limited spatial region. 
-Such structure is equivalent to continuous apertures that can generate arbitrary current on the transmitter side and detect any electric field on the receiver side. 
-The current distributions on the transmitter are called patterns of the CAP-MIMO. 
-Different signals are modulated on different patterns before radiated to the space. 
-Designing the patterns are actually designing the channel decomposition scheme, which greatly influences the performance of the CAP-MIMO system~\cite{zhang2022pdma}.
-\begin{figure*}[t]
-	\centering 
-	\includegraphics[width=0.85\linewidth]{figures/CAPMIMO.pdf} 
-	\caption{Illustration of CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
-	\label{fig:CAPMIMO}
-\end{figure*}
+Traditional wireless communication systems deploy finite antennas in a limited aperture as the transceivers. 
+However, the EIT mutual information analysis is built on spatially continuous theoretical frameworks. 
+To bridge the possible gap between the performance limits in MIMO theory and in EIT, CAP-MIMO, which is also called holographic MIMO, is proposed. 
+CAP-MIMO adopts a hypothetical structure that contains infinitely dense antennas in a limited spatial region, which is able to continuously generate any current distribution and detect any electric field at the transmitter and the receiver, respectively.  
+The current distribution on the transmitter are called patterns of the CAP-MIMO. 
+Different signals are modulated onto different patterns before radiated to the space. 
+These continuous patterns need to be optimized by specially-designed algorithms in order to achieve a higher multi-user data rate~\cite{zhang2022pdma}. 
+
 
 % Several works have already explored the pattern design scheme for CAP-MIMO system. The simplest and the easiest way to implement is utilizing the Fourier basis as the patterns, which transfer the approach of OFDM scheme in the time-frequency domain to spatial-wavenumber domain. Other special functions are also utilized to design the patterns in the corresponding assumptions like line-of sight communication or single receiver. For general scenarios, the continuous current patterns can be projected to orthogonal basis and optimization schemes can be utilized to obtain the near-optimal solution of the pattern design scheme.
 
 \subsection{Location Division Multiple Access}
-\begin{figure*}
+\begin{figure*}[t]
 	\centering 
 	\includegraphics[width=0.9\textwidth]{figures/LDMA.pdf} 
 	\caption{Comparison between the SDMA scheme which can not utilize the radial DoF and the LDMA scheme which exploits the radial DoF~\cite{wu2022multiple}. }
 	\label{fig:LDMA}
 \end{figure*}
-For multiple access schemes, the beams emitted from the base station form a functional space. The DoF of the functional space represents the resolution of the base station to users at different locations, which corresponds to the analysis of functional DoF in EIT. 
+For multiple access schemes, the beams emitted from the base station form a functional space. 
+The DoF of the functional space represents the resolution of the base station to users at different locations, which corresponds to the analysis of functional DoF in EIT. 	% Relation to the analysis methodologies in EIT. 
 Traditional space-division multiple access based on the far-field model can only distinguish the users by the angles and does not utilize the functional DoF in the radial (distance) dimension. 
 For massive MIMO systems with large-scale antenna arrays, the spherical wave model is used instead of the planar wave assumption. 
 With the spherical wave model, in addition to the angular dimension, the users can also be distinguished along the radial dimension. 
@@ -305,51 +311,61 @@ Therefore, a new division scheme called the location division multiple access (L
 In the LDMA scheme, near-field codebook, beam training, and channel estimation are designed correspondingly, aiming at fully utilizing the spatial resources. 
 
 \subsection{Distance-Aware Precoding}
-As discussed in Subsection~\ref{Sec_4_Subsec_1}, the channel DoF of a LoS channel model in EIT is approximately proportional to the length of the transceivers and inversely proportional to the distance between the transceivers. Therefore, unlike the traditional far-field scenario which can only support one data stream in the LoS channel model, in the near-field region, the wireless communication system has high channel DoF and can support more than one data stream. To fully utilize the near-field channel DoF, a distance-aware precoding scheme is proposed, which adaptively adjusts the number of radio frequency chains to match the channel DoF with different distances.   
+As discussed in Subsection~\ref{Sec_4_Subsec_1}, the channel DoF of a LoS channel model in EIT is approximately proportional to the length of the transceivers and inversely proportional to the distance between the transceivers. 
+Therefore, unlike the traditional far-field scenario which can only support one data stream in the LoS channel model, in the near-field region, the wireless communication system has high channel DoF and can support more than one data stream.
+To fully utilize the near-field channel DoF while maintaining low power consumption in the far-field region, a distance-aware precoding scheme is proposed, which adaptively adjusts the number of radio frequency chains to match the channel DoF with different distances.   
 
 % \subsection{Pilot overhead reduction}
 % The pilot overhead without channel state information will increase linearly with the number of the antennas. For massive MIMO systems, the pilot overhead will be intolerable. Therefore, to reduce the pilot overhead, the prior information of the channel need to be obtained, which projects the high-dimensional channel matrix on a low-dimensional subspace. Such schemes are actually the expansion of the well-known compressed sensing method, which utilizes the sparsity of the channel. The prior information of the channel can be obtained by building the channel model as a random field and analyzing its statistical characteristics. According to the random channel model, the sparsity of it can be explored to derive the required number of dimensions for channel estimation. 
 
-\subsection{Field Reconstruction}
-In engineering practice, it is often required to reconstruct the values of an EM field from a finite number of available observations, which is called the field reconstruction problem. 
-To solve this problem, prior information about the EM field is often exploited, including the spatially band-limited property and the spatial correlation that the EM field exhibits. 
-The spatially bandlimited property justifies the cardinal series as asymptotically optimal linear interpolators~\cite{pizzo2022nyquist} of the EM field, while the field correlation function leads to Gaussian process regression (GPR)-based field interpolators. 
-These field interpolators have wide applications in microwave field measurement tasks and channel prediction problems. 
+% \subsection{Field Reconstruction}
+% In engineering practice, it is often required to reconstruct the values of an EM field from a finite number of available observations, which is called the field reconstruction problem. 
+% To solve this problem, prior information about the EM field is often exploited, including the spatially bandlimited property and the spatial correlation that the EM field possesses. 
+% These prior information can be provided by an EIT analysis on the field region. 
+% For example, the spatial bandwidth property justifies the cardinal series as asymptotically optimal linear interpolators~\cite{pizzo2022nyquist} of the EM field, while the field correlation methodology leads to Gaussian process regression (GPR)-based field interpolators. 
+% These field interpolators are widely applicable to microwave field measurement tasks and channel prediction problems. 
 
 
 \section{Open Problems}
-In this section, we will enumerate some open problems related to EIT. 
-%including how to construct a physically compatible noise model, how to specify the power constraint of a continuous-aperture transmitter, how to prove the achievability of the EIT capacity, and what is the fundamental physical limit of manipulating a current density on a continuous transmitting aperture. 
+In this section, we will enumerate some open problems related to EIT, including how to construct a physically compatible noise model, how to specify the power constraint of a continuous-aperture transmitter, how to prove the achievability of the EIT capacity, and what is the fundamental physical limit of manipulating a current density on a continuous transmitting aperture. 
 
 \subsection{Compatible Noise Modeling in Discrete and Continuous Communication Systems}
 It can be proved that a purely i.i.d. thermal noise distribution will cause the divergence of the end-to-end capacity of a MIMO transceiver within a constrained aperture size in EIT, when the number of receiving antennas increases indefinitely. 
 This is because, as the number of receiving antennas increases, the signals can be aggregated coherently within any small spatial region, while the noises add up out-of-phase because they are uncorrelated. 
-Thus, in this small region, the signal energy scales quadratically, while the noise energy scales linearly, leading to a linear improvement of SNR. Thus, the capacity will diverge to infinity, which is obviously impossible.  
+Thus, in this small region, the signal energy scales quadratically, while the noise energy scales linearly, leading to an unbounded linear improvement of SNR. Thus, the capacity will diverge to infinity, which is obviously impossible.  
 
-This absurdity is, in fact, caused by the improper assumption that the noise is spatially uncorrelated. If we assume a correlated noise, which is possibly the actual correct model, then this capacity divergence naturally disappears. 
-As a result, a correlated noise model is needed for the capacity analysis of EIT. This model may be tuned to exhibit a small enough spatial ``coherence length'' to be compatible with the independent  MIMO noise model with half a wavelength-spaced antennas, while it does possess some spatial correlation on a small scale to ensure a finite-valued EIT capacity. 
+This absurdity is, in fact, caused by the improper assumption that the noise is spatially uncorrelated. 
+If we assume a correlated noise, which is possibly the actual correct model, then this capacity divergence naturally disappears. 
+As a result, a correlated noise model is needed for the capacity analysis of EIT. This model may be tuned to exhibit a small enough spatial ``coherence length'' to be compatible with the independent MIMO noise model with half a wavelength-spaced antennas, while it does possess some spatial correlation on a small scale to ensure a finite-valued EIT capacity. 
 The construction of such a kind of noise model that bridges the macro-scale and micro-scale noises is, up to date, an open problem. 
 
 \subsection{Power Constraint of the Continuous Communication System}
-For both classical information theory and EIT, the power constraint is a key factor that affects the mutual information and capacity. Therefore, imposing appropriate power constraints on the system is of much significance. In classical information theory, the power constraint is given by the expectation of the squared norm of the signal vector.  Similarly, in EIT, the squared norm of the source current is restricted. Equivalent expressions of the power constraint in the wavenumber domain can be derived by performing Fourier transform on the autocorrelation function of the source current to obtain the constraint on the wavenumber PSD. 
+For both classical information theory and EIT, the power constraint is a key factor that affects the mutual information and capacity. 
+Therefore, imposing appropriate power constraints on the system is of both theoretical and practical significance. 
+In classical information theory, the power constraint is imposed on the expectation of the squared norm of the signal vector.  
+Similarly, in EIT, usually the functional L2-norm of the source current is restricted to some pre-determined power value. 
+Equivalent expressions of the power constraint in the wavenumber domain can be derived due to the energy-preserving property of the Fourier transform. 
 
-However, some problems are hidden behind the given power constraint for EIT. First of all, the relationship between the power constraint of classical information theory and EIT is unclear. In classical information theory, the signal vector is actually an abstraction of the actual physical process, and its dimension is different from the current density in EIT. This difference makes the performance comparison between traditional capacity derived in discrete MIMO systems and the capacity in EIT very difficult. Moreover, the radiated power, which denotes the energy radiated by the source, is a widely used notion in physics to represent the power of the EM field. Whether we should use the radiated power as the power constraint or not is a problem that has not been answered.
+However, some problems are hidden behind such L2 constraint for EIT, among which the most significant one is the incompatibility between the L2 power constraints of MIMO information theory and EM theory.  
+In MIMO theory, the signal vectors are complex baseband abstractions of the actual physical process without the guarantee that the squared norm of such vectors represents the actual radiated power. 
+However, in EM theory, a more reasonable power constraint is given by calculating the total radiated power from an EM theoretical perspective, rather than calculating the L2-norm of the source current. 
+Unfortunately, these two definitions of the power constraint are incompatible and often yield different power values, which is an open problem. 
 
 
 \subsection{Achievability of the EM Capacity}
-In the information theory convention, to establish a ``capacity'' value, one needs to prove an achievability theorem and a converse bound. Only when these two values coincide can one declare that such a value can be called ``capacity''. And usually, the achievability theorem is relatively more difficult, which requires ingenious mathematical constructions \cite{shannon1948mathematical}. 
+In the information theory convention, to establish a ``capacity'' value, one needs to prove an achievability theorem and a converse bound. Only when these two values coincide can one declare that such a value can be called ``capacity''. And usually, the achievability theorem is relatively more difficult, which requires ingenious mathematical constructions~\cite{shannon1948mathematical}. 
 
-The EIT capacity, though carefully defined in \cite{wan2022mutual,zhang2022pdma}, is far from perfection, since they all lack an achievability proof. 
-To prove the achievability of such EM capacity, following Shannon's stochastic proof techniques, a spatio-temporal waveform-based channel codebook may be constructed, which deserves further research and mathematical construction.  
+The EIT capacity, though carefully defined in~\cite{wan2022mutual,zhang2022pdma}, is far from perfection, since they all lack an achievability proof. 
+To prove the achievability of such EM capacity, following Shannon's stochastic proof techniques, a spatio-temporal waveform-based channel codebook may be constructed, which deserves further research and rigorous mathematical construction.  
 
-\subsection{Physical Limit of the Current Manipulation and Electric Field Detection}
-In the current research on EIT, most works assume that the EM field is arbitrarily adjustable and detectable. From another perspective, this assumption can be viewed as placing an infinite number of antennas in the source and destination regions that can work without interference. However, practical communication systems cannot fulfill such requirements. In fact, antenna mutual coupling, which means the energy received by one antenna would leak into another antenna, always exists because the antennas cannot be perfectly isolated. Considering the mutual coupling of the antennas, we cannot obtain an infinitely dense antenna array, which means that the current manipulation and electric field detection of the practical system are all subject to limited accuracy. To guide the design of practical systems, the physical limit of the current manipulation and electric field detection remains to be explored. 
+\subsection{Physical Granuarity Limit of the Current Manipulation and Electric Field Detection}
+In the current research on EIT, most works assume that the EM field is arbitrarily adjustable and detectable. From another perspective, this assumption can be viewed as placing an infinite number of antennas in the source and destination regions that can work without interference. However, practical communication systems cannot fulfill such infinite granuarity requirements. In fact, antenna mutual coupling effects always exists because of imperfect antenna isolation. Considering the mutual coupling of the antennas, we cannot fabricate an infinitely dense antenna array, which means that the current manipulation and electric field detection of practical systems are all subject to a limited accuracy. To guide the design of practical systems, the physical limit of the current manipulation and electric field detection remains to be explored. 
 
-\section{Conclusion}
-In this paper, to reveal the fundamental physical limit of wireless information transmission imposed by the underlying EM mechanisms, we have thoroughly investigated the basic concepts, mathematical tools, channel modeling, and information-theoretic performance indicators that constitute the EIT. 
-Furthermore, we have briefly reviewed the novel applications of EIT to the design of wireless communication systems for capacity enhancement and accessibility improvement. 
+\section{Conclusions}
+In this paper, to reveal the fundamental physical limit of wireless information transmission imposed by the underlying EM mechanisms, we have thoroughly investigated the basic concepts, mathematical tools, modeling methodologies, and information-theoretic analyses that constitute the EIT. 
+Furthermore, we have briefly reviewed the novel applications related to EIT, aiming at designing new wireless communication systems for capacity enhancement and accessibility improvement. Though recent progress on EIT demonstrates its possibility to become a unified and widely-applicable theory, there are still some unresolved issues that may cause confusion, including the incompatibility of EIT with existing MIMO theory, the unknown hidden physical constraints that influence the sampling density, and the immature proofs of information-theoretic achievability and converse bounds in EIT. % insights added here. 
+To address these problems, a special relativity-based electromagnetic theory that exhibits more symmetries may be introduced into the study of EIT to facilitate theoretic analysis.  
 
-Though recent progress on EIT demonstrates its possibility to become a unified and widely-applicable theory, there are still some unresolved issues that may cause confusion, including the compatibility of EIT with existing MIMO theory, the possible existence of hidden physical constraints that influence the sampling density, and the immature proofs of information-theoretic achievability and converse bounds in EIT. 
 
 \footnotesize
 
