@@ -69,7 +69,7 @@ This work was supported by the National Key Research and Development Program of 
 
 \begin{abstract}
 	Traditional multiple-input multiple-output (MIMO) information theory adopts a spatially discrete modeling, which mismatches the continuous nature of the underlying electromagnetic (EM) fields. % Discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
- 	Therefore, it is essential to analyze the information-carrying capability of continuous EM fields, which motivates the research on EM information theory (EIT). In this article, we systematically investigate the basics and results of EIT. First, we review the fundamental analysis tools of classical information theory and EM theory. Then, we introduce the modeling and analysis methodologies of EIT, including the continuous field modeling, degrees of freedom (DoF), mutual information, and capacity analyses. To illustrate how EIT guide the design of EIT to practical wireless systems, several EIT-inspired applications are discussed. Finally, we point out several open problems of EIT, where further research efforts are required for EIT to construct a unified interdisciplinary theory.
+ 	Therefore, it is essential to analyze the information-carrying capability of continuous EM fields, which motivates the research on EM information theory (EIT). In this article, we systematically investigate the basics and results of EIT. First, we review the fundamental analysis tools of classical information theory and EM theory. Then, we introduce the modeling and analysis methodologies of EIT, including the continuous field modeling, degree of freedom (DoF), mutual information, and capacity analyses. To illustrate how EIT guide the design of EIT to practical wireless systems, several EIT-inspired applications are discussed. Finally, we point out several open problems of EIT, where further research efforts are required for EIT to construct a unified interdisciplinary theory.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -90,7 +90,7 @@ As a result, EIT is capable of building the system modeling and performance anal
 %% Our contributions.
 In this article, we systematically investigate the basics and results of EIT. The key features of this article can be summarized as follows:
 \begin{itemize}
-\item{The fundamental mathematical tools for the classical information theory and EM theory are briefly reviewed at first. Specifically, the degrees of freedom (DoF), prolate spheroidal wave functions (PSWFs), channel capacity, and Maxwell's equations are introduced. To integrate the probabilistic nature of information theory and the continuous property of EM fields, random fields are then introduced into EIT, which enables the EIT performance analysis. }
+\item{The fundamental mathematical tools for the classical information theory and EM theory are briefly reviewed at first. Specifically, the degree of freedom (DoF), prolate spheroidal wave functions (PSWFs), channel capacity, and Maxwell's equations are introduced. To integrate the probabilistic nature of information theory and the continuous property of EM fields, random fields are then introduced into EIT, which enables the EIT performance analysis. }
 \item{The basic EIT modeling methodologies are introduced for EM channels and EM noise. For EIT channel modeling, both the deterministic and stochastic modeling approaches are discussed. For EIT noise modeling, the noise fields are first categorized according to their different physical origins, and then the spatial correlation characteristics of different kinds of noise fields are discussed separately. }
 \item{The theoretical EIT peformance analysis methods are discussed. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can be derived by mathematical tools including the PSWFs, Karhunen-Lo\`{e}ve expansion, and random field theories. } 
 \item Moreover, several EIT-inspired applications guided by the EIT performance analysis are provided. For example, to approach the EIT capacity, the continuous aperture MIMO (CAP-MIMO) has been proposed to fully harvest the mutual information in a limited aperture area. To fully exploit the distance-domain DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to utilize extra spatial resources to serve more users. In addition, a distance-aware precoding (DAP) scheme has been proposed to take advantage of the extra channel DoF in the near-field region.  % Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. 
@@ -125,12 +125,7 @@ More interestingly, it is proved that to approximately represent any $W$-bandlim
 Since this kind of DoF numerically characterizes the possibility to approximate a generally {\emph{ infinite-dimensional}} functional space by a {\emph{finite-dimensional}} subspace, we refer to it as the {{\emph{functional DoF}}}. 
 It is worth noting that the functional DoF can be alternatively interpreted as the number of minimal required samples to approximately reconstruct an unknown signal. 
 
-\begin{figure}
-	\centering 
-	\includegraphics[width=0.9\linewidth]{figures/LTI_LSI.pdf} 
-	\caption{Linear time invariant systems described by an impulse response in classical information theory, compared with linear space invariant systems described by the Green's function in EIT.} 
-	\label{fig:Shannon_Marzetta}
-\end{figure}
+
 
 % introduce PSWF and its connection to the evaluation of functional DoF. 
 % The explicit evaluation of the functional DoF of arbitrary given functional space is hard in general. However, in some special but important cases this task can be fulfilled by leveraging the constraints that define the functional space.
@@ -157,20 +152,28 @@ The ``converse'' theorem means that for an arbitrary data rate higher than capac
 \label{Sec_2_Subsec_3}
 % Basics about electromagnetics.
 EM theory is a branch of physics that studies the EM interaction in four-dimensional spacetime from a field-theoretic point of view. The EM forces are carried by EM vector fields, which are usually described by Maxwell's equations. Maxwell's equations are four linear partial differential equations that characterize how the electric fields and magnetic fields are altered by each other and by charges and currents. Combining these four equations, a vector wave equation can be obtained that manifests the existence of EM waves. 
+\begin{figure}
+	\centering 
+	\includegraphics[width=0.9\linewidth]{figures/LTI_LSI.pdf} 
+	\caption{Linear time invariant systems described by an impulse response in classical information theory, compared with linear space invariant systems described by the Green's function in EIT.} 
+	\label{fig:Shannon_Marzetta}
+\end{figure}
 
-In wireless communications, in order to describe the EM response at the receiver induced by the transmitted wave at the transmitter, Green's function is often introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:Shannon_Marzetta}. Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, Green's function is a dyad-valued function of spacetime. 
-Note that EM theory is a deterministic theory built on partial differential equations and the knowledge of all the surroundings, and thus Green's function is uniquely determined by the boundary conditions of EM problems.
-As a result, pure EM theory cannot capture the random nature that arises in communications. 
+In wireless communications, in order to describe the EM response at the receiver induced by the transmitted wave at the transmitter, Green's function is often introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:Shannon_Marzetta}. Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, to describe the mapping between two vectors, Green's function must take the form of a dyad-valued function. 
+Note that EM theory is a deterministic theory built on partial differential equations and the knowledge of all surroundings, so Green's function is uniquely determined by the boundary conditions of EM problems.
+As a result, pure EM theory cannot capture the random nature that arises in wireless communications. 
 
 \subsection{Random Fields for EIT}
 \label{Sec_2_Subsec_4}
-In order to apply information-theoretic analysis to EM fields, probabilistic measures should be assigned to the functional space containing all the possible EM fields that satisfy Maxwell's equations, which leads to the random field modeling for EIT. 
+In order to apply information-theoretic analysis to EM fields, probabilistic measures should be assigned to the functional space containing all possible EM fields that satisfy Maxwell's equations, which leads to the random field modeling for EIT. 
 Random fields are well-studied mathematical objects, among which the Gaussian random fields (GRFs) are the most widely applied instances. 
 
-GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in communications can be modeled by GRFs.  
-Inheriting favorable mathematical properties from Gaussian distributions, such GRF modeling exhibits good analytical properties that can facilitate both theoretical deduction and numerical inference. 
+GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in wireless communications can be modeled by GRFs.  
+Inheriting favorable mathematical properties from Gaussian distributions, GRF models exhibit good analytical properties that can facilitate both theoretical deduction and numerical inference. 
 
-In EIT, the GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. Since in real-world communication scenarios the EM channel responses vary randomly as a function of spacetime, it is reasonable to model such spatio-temporal variations by a channel GRF, thus allowing Bayesian inference of the channel entries that are not directly measured. 
+In EIT, GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. 
+In real-world communication scenarios, the EM channel responses vary randomly as a function of spacetime, so it is reasonable to model such spatio-temporal variations by a channel GRF. 
+This allows the Bayesian inference of channel entries that are not directly measured. 
 Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. 
 
 % Motivated by the possibility of exploiting the three spatial dimensions, the multi-input multi-output (MIMO) architecture have been ubiquitous in contemporary wireless communication systems. To fully exploit the potential of MIMO, numerous spatial multiplexing technologies have been proposed, including SDMA, TRDMA, PDMA, and LDMA. However, there must be a unified underlying theory that governs all the multiplexing technologies, since they are all based on the same physical media of electromagnetic waves. To construct this unified theory, two different approaches have been proposed in the literature to characterize the electromagnetic channel. 
@@ -191,7 +194,7 @@ In this section, we discuss the continuous modeling schemes for EIT, which conta
 \subsection{Continuous Channel Modeling}
 In this part, we will discuss the channel models in EIT, which describes the EM channel by a linear transformation from the radiated field to the noiseless received field.  
 % Since spatial multiplexing can only be realized with MIMO technology, we will always assume a MIMO transceiver in the sequel. 
-Note that to model a traditional narrowband MIMO channel, a matrix with complex-valued entries is usually utilized, each representing the complex channel gain between a pair of transceiver antennas. 
+Note that to model a traditional narrowband MIMO channel, a matrix with complex-valued entries is usually utilized, where each entry represents the complex channel between a pair of transceiver antennas. 
 This channel model is, in essence, spatially discrete. 
 However, in EIT, it is reasonably assumed that one can measure the field at an arbitrary point inside the receiver region, where the precision of such measurement is subject to some physical noise limits. This leads to the assumption of EIT that the transceivers operate in a continuum of space.  
 
@@ -200,7 +203,7 @@ The theoretical convenience originates from the fact that the fundamental physic
 As a result, extensive mathematical tools, including functional analysis, linear operator theory, and complex analysis, have already been developed to tackle these continuous linear problems. 
 The practical reasons are that the real-world antenna-based point-to-point transmission models can be viewed as a special case of the continuous model. 
 Mathematically, an antenna acts as a continuous integral operator that weights the incident signal by its EM eigenmode, which corresponds with the continuous modeling in EIT. 
-Thus, the EIT channel model is expected to be written in a continuous linear operator language, where the operator can be deterministic or stochastic.
+Thus, the EIT channel is expected to be modelled by a continuous linear operator, where the operator can be either deterministic or stochastic.
 
 For the deterministic channel modeling approach, the simplest channel model is the line-of-sight (LoS) model, which assumes no scatterers between the transceivers. In this scenario, the channel operator is the free-space Green's function. More complex modeling schemes consider the scatterers and group them into clusters. The channel operator is thus dependent on the locations of the clusters.
 
@@ -211,14 +214,14 @@ For the deterministic channel modeling approach, the simplest channel model is t
 	\label{fig:marzetta}
 \end{figure}
 Another modeling approach is the stochastic channel modeling, where some statistical characteristics of the channel are available. As introduced in Subsection~\ref{Sec_2_Subsec_4}, GRFs are suitable to model the randomness of the channel and can provide useful tools such as Bayesian inference for channel estimation. 
-For stochastic channel modeling, a novel method is named Fourier plane-wave expansion (see Fig.~\ref{fig:marzetta}), where the channel is modeled by a GRF which is provably compatible with the EM Helmholtz equation~\cite{marzetta2022fourier}. 
+For stochastic channel modeling, a recent novel method is named Fourier plane-wave expansion (see Fig.~\ref{fig:marzetta}), where the channel is modeled by a GRF, which is provably compatible with the EM Helmholtz equation~\cite{marzetta2022fourier}. 
 Based on such EM-compatible GRF modeling, the spectrum and the autocorrelation function of the stochastic channel can be derived to facilitate further mutual information and capacity analysis.
 
 \subsection{Noise Field Modeling}
 After the discussion of the continuous random channel models, we will introduce the noise modeling scheme. 
 Noise is vital in information theory, because it determines the capacity together with the signal. 
 In classical information theory, the noise is usually modeled by a time-domain AWGN, since the AWGN has a flat power spectral density (PSD) and its projection coefficients onto any orthonormal basis are independent and of equal power, which is beneficial to theoretical analysis. 
-Similarly, in EIT, the noise is usually modeled as a spatial AWGN with flat wavenumber PSD. This spatial AWGN implies that the additive noises at any small spatial regions are independent and identically distributed (i.i.d.) proper complex Gaussian random variables whose variances are proportional to the volume of the small region. This is the simplest noise model in EIT, which is convenient for analysis, but there are still gaps towards reality. 
+Similarly, in EIT, the noise is usually modeled as a spatial AWGN with flat wavenumber PSD. This spatial AWGN implies that the additive noises at any small spatial regions are independent and identically distributed (i.i.d.) proper complex Gaussian random variables whose variances are proportional to the volume of the small region. This is the simplest noise model of EIT, which is convenient for analysis, but there are still gaps towards reality. 
 
 In general, the noise values that emerge on different points of space cannot be assumed independent, i.e., they do exhibit some spatial correlation. 
 This is because the noise is not completely composed of spatially uncorrelated thermal noise. 
@@ -227,7 +230,7 @@ To characterize this EM interference, the one-ring model~\cite{byers2004spatiall
 This non-white spatially correlated noise model is of theoretical importance, since it is provably compatible with Maxwell's equations, while other noise models including the sinc-shaped or jinc-shaped correlation functions fail to satisfy Maxwell's constraints because they ignore the polarization of the EM waves. 
 
 \section{Information-Theoretic Analysis for EIT}
-In this section, based on the EIT modeling methodologies above, we discuss the basic performance indicators and the corresponding analysis techniques in EIT, including the functional DoF, the channel DoF, the mutual information, and the capacity. 
+In this section, based on the EIT modeling methodologies above, we discuss the basic performance indicators and the corresponding analysis techniques of EIT, including the functional DoF, the channel DoF, the mutual information, and the capacity. 
 % For a wireless system, the DoF shows the maximum number of independent channels that can be utilized to transmit information. For example, the DoF of a traditional MIMO system is usually approximated by the minimum value of the number of transmitting antennas and the number of receiving antennas. However, such approximation fails when we consider massive antennas in a spatially-constraint region, because the approximated DoF will tend to infinity with the growth of the number of antennas. Therefore, the true DoF value of a spatially constrained continuous wireless system is worth analyzing. In this subsection, we will discuss the functional DoF and channel DoF in EIT separately, and summarize the related works.
 
 
@@ -258,7 +261,6 @@ Through this approach, the DoF of LoS channel model approximately derived to be 
 For non-line-of-sight (NLoS) channel models where the deterministic scatterers are packed into some known solid angular regions, since the angular domain and the antenna domain are Fourier transform pairs, the channel DoF can be similarly derived by performing Slepian's analysis in the angular domain. It is proved that the NLoS channel DoF is proportional to both the solid angle of the scatterer cluster and the geometric lengths of the transceivers~\cite{poon2005degrees}.  
 If the channel is modeled as a stochastic channel with random scatterer positions, uniform distributions or von Mises-Fisher distributions can be used to model the statistical characteristics of the channel. 
 The DoF of the channel in this stochastic model should be the expected value averaged by probability.
-
 \begin{figure*}[ht]
 	\centering 
 	\includegraphics[width=0.85\linewidth]{figures/CAPMIMO.pdf} 
@@ -276,7 +278,7 @@ Different from the matrix determinant form of MIMO mutual information, the EIT i
 
 \section{Applications of EIT}
 In this section, we present several EIT-inspired applications. 
-These technological applications either mimic the analysis methodologies in EIT to fully achieve the existing DoF, or try to explore new communication resources predicted by EIT. 
+These technological applications either mimic the analysis methodologies of EIT to fully achieve the existing DoF, or try to explore new communication resources predicted by EIT. 
 
 \subsection{Continuous Aperture MIMO (CAP-MIMO)}
 Traditional wireless communication systems deploy finite antennas in a limited aperture as the transceivers. 
@@ -297,6 +299,7 @@ These continuous patterns need to be optimized by specially-designed algorithms 
 	\caption{Comparison between the SDMA scheme which cannot utilize the radial DoF and the LDMA scheme which exploits the radial DoF~\cite{wu2022multiple}. }
 	\label{fig:LDMA}
 \end{figure*}
+
 For multiple access schemes, the beams emitted from the base station form a functional space. 
 The DoF of the functional space represents the resolution of the base station to users at different locations, which corresponds to the analysis of functional DoF in EIT. 	% Relation to the analysis methodologies in EIT. 
 Traditional space-division multiple access based on the far-field model can only distinguish the users by the angles and does not utilize the functional DoF in the radial (distance) dimension. 
