@@ -59,8 +59,13 @@ breaklinks=true}
 
 % \author{{Jieao~Zhu, Zhongzhichao~Wan, and Linglong~Dai, {\textit{Fellow, IEEE}}
 % }
-\author{{Jieao~Zhu, {\textit{Student Member, IEEE}}, Zhongzhichao~Wan, {\textit{Student Member, IEEE}}, and Linglong~Dai, {\textit{Fellow, IEEE}}}
-\thanks{All authors are with the Beijing National Research Center for Information Science and Technology (BNRist) as well as the Department of Electronic Engineering, Tsinghua University, Beijing 100084, China (e-mails: \{zja21, wzzc20\}@mails.tsinghua.edu.cn, daill@tsinghua.edu.cn).
+\author{{Jieao~Zhu, {\textit{Student Member, IEEE}}, Zhongzhichao~Wan, {\textit{Student Member, IEEE}}, Linglong~Dai, {\textit{Fellow, IEEE}},\\
+M\'{e}rouane Debbah, {\textit{Fellow, IEEE}}, and H. Vincent Poor, {\textit{Life Fellow, IEEE}} }
+\thanks{J. Zhu, Z. Wan, and L. Dai are with the Department of Electronic Engineering, Tsinghua University, Beijing 100084, China, as well as the Beijing National Research Center for Information Science and Technology (BNRist) (e-mails: \{zja21, wzzc20\}@mails.tsinghua.edu.cn, daill@tsinghua.edu.cn).
+
+M. Debbah is with the Technology Innovation Institute, 9639 Masdar City, Abu Dhabi, United Arab Emirates (email:merouane.debbah@tii.ae) and also with CentraleSupelec, University Paris-Saclay, 91192 Gif-sur-Yvette, France. 
+
+H. Vincent Poor is with the Department of Electrical and Computer Engineering, Princeton University, USA (e-mail: poor@princeton.edu).
 }
 }
 
@@ -75,6 +80,7 @@ breaklinks=true}
     Electromagnetic information theory (EIT), electromagnetic channel modeling, random field, degree of freedom (DoF), capacity.  
 \end{IEEEkeywords}
 
+\vspace{-1em}
 \section{Introduction}
 %% leading paragraph. 
 Existing wireless information theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) information theory considers a single point as either a transmitter or a receiver, and multiple-input multiple-output (MIMO) information theory~\cite{goldsmith2003capacity} utilizes discrete points in the space to represent the transceivers. 
@@ -96,6 +102,7 @@ In this article, we systematically investigate the basics and results of EIT. Th
 \item{Finally, several open problems of EIT are pointed out, such as the compatible EM noise modeling, the physically appropriate power constraint, the achievability of the EM capacity, and the physical granularity limit of current manipulation. We explain the meanings of these open problems, and why they are important for the future research of EIT. }
 \end{itemize}
 
+\vspace{-1em}
 \section{Fundamentals of EIT}
 In this section, we first distinguish two different definitions of DoF in information theory, i.e., channel DoF and functional DoF.  
 Then, we discuss the concept of channel capacity and its relation to DoF. 
@@ -111,6 +118,7 @@ Finally, we employ random fields as the EIT foundation for unifying the probabil
 % In this section, we will first brief on the fundamental building blocks of classical one-dimensional time-domain information theory in Subsection~\ref{Sec_2_Subsec_1}. 
 % Then, the four-dimensional electromagnetic basics for wireless communications are introduced in Subsection~\ref{Sec_2_Subsec_2}. Finally, two different approaches of combining the information theory with the electromagnetic theory are discussed. 
 
+\vspace{-1em}
 \subsection{Degree of Freedom}
 \label{Sec_2_Subsec_1}
 % introduce the channel DoF. 
@@ -133,6 +141,7 @@ It is worth noting that the functional DoF can be alternatively interpreted as t
 
 % Similar to the singular decomposition method for evaluating the channel DoF, the functional DoF of a given signal space is evaluated by approximating the signal space by a finite-dimensional subspace. In the case of band-limited functional space, this decomposition where the basis functions of the subspace are obtained by solving a the Slepian's concentration problem, and the solutions are proved to be the prolate spheroidal wave functions (PSWFs). 
 
+\vspace{-1em}
 \subsection{Channel Capacity}
 \label{Sec_2_Subsec_2}
 Different from the notion of channel DoF, which characterizes the number of orthogonal subchannels available, the channel capacity measures the error-free information transmission capability of the channel. 
@@ -153,6 +162,7 @@ The {\it converse} theorem means that, for an arbitrary data rate higher than ca
 	\label{fig:Shannon_Marzetta}
 \end{figure}
 
+\vspace{-1em}
 \subsection{Electromagnetic Theory}
 \label{Sec_2_Subsec_3}
 % Basics about electromagnetics.
@@ -190,6 +200,7 @@ Similarly, in order to capture the randomness of the transmitted and received si
 \section{Modeling Methodologies for EIT}
 In this section, we discuss the continuous modeling schemes for EIT, which include both channel modeling and noise field modeling. 
 
+\vspace{-1em}
 \subsection{Continuous Channel Modeling}
 In this part, we will discuss the channel models in EIT, which describe the EM channel by a linear transformation from the radiated field to the noiseless received field.  
 % Since spatial multiplexing can only be realized with MIMO technology, we will always assume a MIMO transceiver in the sequel. 
@@ -234,7 +245,7 @@ By contrast, other noise models including the sinc-shaped or jinc-shaped correla
 In this section, based on the EIT modeling methodologies above, we discuss the basic performance indicators and the corresponding analysis techniques of EIT, including the functional DoF, the channel DoF, the mutual information, and the capacity. 
 % For a wireless system, the DoF shows the maximum number of independent channels that can be utilized to transmit information. For example, the DoF of a traditional MIMO system is usually approximated by the minimum value of the number of transmitting antennas and the number of receiving antennas. However, such approximation fails when we consider massive antennas in a spatially-constraint region, because the approximated DoF will tend to infinity with the growth of the number of antennas. Therefore, the true DoF value of a spatially constrained continuous wireless system is worth analyzing. In this subsection, we will discuss the functional DoF and channel DoF in EIT separately, and summarize the related works.
 
-
+\vspace{-1em}
 \subsection{Functional DoF}\label{Sec_4_Subsec_1}
 As we have clarified in Section~\ref{Sec_2_Subsec_2}, the functional DoF in classical information theory represents the minimum number of required samples to reconstruct the signal. Similarly, in EIT, the functional DoF refers to the minimum number of required samples to reconstruct a given EM field. 
 Such a functional DoF is closely related to the transmission capability of the EM system, because the minimum number of required samples to reconstruct an EM field is equivalent to the maximum number of complex values that can be transmitted within a single EM channel use. 
@@ -248,7 +259,14 @@ A more refined analysis of the wavenumber-limitedness of the EM fields shows tha
 To describe such phase change, the authors of~\cite{bucci1987spatial} coined the word ``spatial bandwidth'' to characterize the degree of wavenumber-limitedness, where they adopted Laplace's steepest descent method to show the accuracy of such field reconstruction and prove the correctness of the derived functional DoF. 
 
 % In the analysis approach of spatial functional DoF, a notion named spatial bandwidth is introduced, which extends the bandwidth in classical information theory to spatial domain~\cite{bucci1987spatial}. The bandwidth in classical information theory depicts the band-limited characteristics of the signal in the frequency domain, and can be used to derive the DoF of the signal according to the Nyquist sampling theorem. Similarly, the spatial bandwidth depicts the band-limited characteristics of the EM field in the wavenumber domain, and can be used to derive the DoF of the EM field in the space-wavenumber domain. For a given channel model, the spatial bandwidth can be approximated using the method of steepest descent. More general results considering the four-dimensional spacetime are based on Landau's eigenvalue problem.
+\begin{figure*}[ht]
+	\centering 
+	\includegraphics[width=0.81\linewidth]{figures/CAPMIMO.pdf} 
+	\caption{CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
+	\label{fig:CAPMIMO}
+\end{figure*}
 
+\vspace{-2em}
 \subsection{Channel DoF}
 The functional DoF introduced in the previous subsection emphasizes the intrinsic DoF of the received field. 
 However, due to the restrictions of the EM channel, it is possible that some of these functional DoFs at the receiver cannot be excited. For example, an EM propagation environment with rich  scatterers can excite almost all angular eigenmodes at the receiver, while an EM channel only composed of LoS paths may not enable all functional DoFs. Thus, evaluating the channel DoF is of practical importance.  
@@ -263,12 +281,7 @@ For non-line-of-sight (NLoS) deterministic channel models, the channel DoF can b
 Following Slepian's analysis, it is proved that the NLoS channel DoF is proportional to both the solid angle of the scatterer cluster and the geometric lengths of the transceivers~\cite{poon2005degrees}.   
 If the channel is modeled as a stochastic channel with random scatterer positions, von Mises-Fisher distributions~\cite{byers2004spatially} can be used to model the statistical characteristics of the channel. 
 The channel DoF in this stochastic model should be the expected value averaged by probability.
-\begin{figure*}[ht]
-	\centering 
-	\includegraphics[width=0.85\linewidth]{figures/CAPMIMO.pdf} 
-	\caption{CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
-	\label{fig:CAPMIMO}
-\end{figure*}
+
 
 \subsection{Mutual Information and Capacity Analysis}
 Besides the DoF which reveals the number of sub-channels available, the channel capacity is another important performance indicator showing the maximum information transmission rate of a wireless system. 
@@ -285,11 +298,12 @@ Thus, the information obtained from the received random field is evaluated by su
 Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form~\cite{wan2022mutual}, which is the determinant of an autocorrelation operator. 
 Based on this closed-form Fredholm determinant mutual information formula, the channel capacity of the continuous wireless system can be obtained by maximizing the mutual information over all possible random field distributions. 
 
-
+\vspace{-1em}
 \section{Applications of EIT}
 In this section, we present several EIT-inspired applications. 
 These applications either mimic the analysis methodologies of EIT to fully achieve the existing DoF, or try to explore new communication resources predicted by EIT. 
 
+\vspace{-1em}
 \subsection{Continuous Aperture MIMO (CAP-MIMO)}
 Traditional wireless communication systems deploy finite antennas in a limited aperture at the transceivers. 
 However, the EIT mutual information analysis is built on spatially continuous theoretical frameworks. 
@@ -347,6 +361,7 @@ If we assume a correlated noise, which is possibly the actual correct model, the
 As a result, a correlated noise model is required for the capacity analysis for EIT. On one hand, the noise model may be tuned to exhibit a small enough spatial ``coherence length'' to be compatible with the independent MIMO noise model with the half wavelength-spaced antennas. On the other hand, the noise model should possess some spatial correlation on a small scale to ensure a finite-valued EIT capacity. 
 The construction of such a kind of noise model that bridges the macro-scale and micro-scale noises is, up to date, an open problem. 
 
+\vspace{-1em}
 \subsection{Power Constraint of Continuous Communication System}
 For both the classical information theory and EIT, the power constraint is a key factor that affects mutual information and capacity. 
 Therefore, imposing appropriate power constraints on the system is of both theoretical and practical significance. 
@@ -366,6 +381,7 @@ In classical information theory, to establish a ``capacity'' value, one needs to
 The EIT capacity defined in~\cite{wan2022mutual,zhang2022pdma} still lacks an achievability proof. 
 To prove the achievability of such an EM capacity, Shannon's stochastic proving techniques should be generalized to continuous spatio-temporal waveform channels, which deserve further research and rigorous mathematical construction.  
 
+\vspace{-1em}
 \subsection{Physical Granularity Limit of the Current Manipulation and Electric Field Detection}
 In the current research of EIT, most works assume that the physical EM field is arbitrarily adjustable and detectable. 
 From the engineering perspective, this assumption is equivalent to placing an infinite number of antennas in the source and destination regions that can work without interferences. 
@@ -389,6 +405,7 @@ The recent progress on EIT has demonstrated its possibility to become a unified 
 \bibliography{EIT, IEEEabrv}
 
 \normalsize
+\vspace{-1em}
 \section*{Biographies}
 
 {\bf Jieao Zhu} is a Ph.D. student from the Department of Electronic Engineering at Tsinghua University, Beijing, China. His research interests include electromagnetic information theory (EIT), coding theory, and quantum computing. 
@@ -399,7 +416,13 @@ The recent progress on EIT has demonstrated its possibility to become a unified 
 
 
 {\bf Linglong Dai} is an Associate Professor from Tsinghua University. His current research interests include massive MIMO, RIS, Wireless AI, and EIT. He has received the IEEE ComSoc Leonard G. Abraham Prize in 2020, the IEEE ComSoc Stephen O. Rice Prize in 2022, and the IEEE ICC 2022 Outstanding Demo Award. He was listed as a Highly Cited Researcher by Clarivate in 2020 and 2021. He was elevated as an IEEE Fellow in 2022.
+\\
 
+{\bf M\'{e}rouane Debbah} is chief research officer at the Technology Innovation Institute in Abu Dhabi. From 2014 to 2021, he was vice-president of the Huawei France Research Center, where he was jointly the director of the Mathematical and Algorithmic Sciences Lab as well as the director of the Lagrange Mathematical and Computing Research Center
+\\
+
+{\bf H. Vincent Poor} is the Michael Henry Strater University Professor of Electrical Engineering. His research interests are in the areas of information theory and signal processing, and their applications in wireless networks, energy systems and related fields. Dr. Poor is a member of the National Academy of Engineering and the National Academy of Sciences, and is a foreign member of the Chinese Academy of Sciences, the Royal Society and other national and international academies. 
+\\
 
 \end{document}
 
