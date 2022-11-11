@@ -72,7 +72,7 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 \maketitle
 
 \begin{abstract}
-	Traditional single-input single-output (SISO) and multiple-input multiple-output (MIMO) information theory adopts spatially discrete modeling, which mismatches the continuous nature of the underlying electromagnetic (EM) fields. % Discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
+	Traditional single-input single-output (SISO) and multiple-input multiple-output (MIMO) information theory adopt spatially discrete modeling, which mismatches the continuous nature of the underlying electromagnetic (EM) fields. % Discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
  	Therefore, it is essential to analyze the information-carrying capability of continuous EM fields, which motivates the research of EM information theory (EIT). In this article, we systematically investigate the basics and results of EIT. First, we review the fundamental analysis tools of classical information theory and EM theory. Then, we introduce the modeling and analysis methodologies of EIT, including continuous field modeling, degree of freedom (DoF), mutual information, and capacity analyses. After that, several EIT-inspired applications are discussed to illustrate how EIT guides the design of practical wireless systems.  Finally, we point out several open problems of EIT, where further research efforts are required for EIT to construct a unified interdisciplinary theory.
 \end{abstract}
 
@@ -115,8 +115,6 @@ Finally, we employ random fields as the EIT foundation for unifying the probabil
 	\caption{Illustration of functional spaces (right) and their analogy with finite-dimensional vector spaces (left). The basis of the bandlimited functional space is given by prolate spheroidal wave functions (PSWFs). }
 	\label{fig:PSWF}
 \end{figure}
-% In this section, we will first brief on the fundamental building blocks of classical one-dimensional time-domain information theory in Subsection~\ref{Sec_2_Subsec_1}. 
-% Then, the four-dimensional electromagnetic basics for wireless communications are introduced in Subsection~\ref{Sec_2_Subsec_2}. Finally, two different approaches of combining the information theory with the electromagnetic theory are discussed. 
 
 \vspace{-1em}
 \subsection{Degree of Freedom}
@@ -148,8 +146,8 @@ Different from the notion of channel DoF, which characterizes the number of orth
 Since the transmission errors are caused by random channel noise, the channel is information-theoretically defined to be a conditional transition probability that randomly maps the input to the output of the channel. 
 Then, the mutual information between the input and output can be defined, and the channel capacity is derived by taking the supremum of the mutual information over all possible input distributions of the channel. 
 
-The operational meaning of the channel capacity is established by Shannon in his seminal paper~\cite{shannon1948mathematical} in 1948. To establish the operational meaning, he proved the {\it achievability} and {\it converse} theorem of the channel capacity. The {\it achievability} means that, for any given error probability and data rate lower than the capacity, there exists a pair of encoder-decoder of sufficient code length to operate below such an error probability. 
-The {\it converse} theorem means that, for an arbitrary data rate higher than capacity, no matter what kind of code is employed, the error probability is bounded away from zero. This very important result indicates that, it is impossible to realize error-free transmission at a rate higher than the capacity. Thus, the value of channel capacity is established to be the fundamental transmission limit of a given channel. 
+The operational meaning of the channel capacity is established by Shannon in his seminal paper~\cite{shannon1948mathematical} in 1948. To establish the operational meaning, he proved the {\it achievability} and {\it converse} theorem of the channel capacity. The {\it achievability} states that, for any given error probability and data rate lower than the capacity, there exists a pair of encoder-decoder of sufficient code length to operate below such an error probability. 
+The {\it converse} theorem states that, for an arbitrary data rate higher than capacity, no matter what kind of code is employed, the error probability is bounded away from zero. This very important result indicates that, it is impossible to realize error-free transmission at a rate higher than the capacity. Thus, the value of channel capacity is established to be the fundamental transmission limit of a given channel. 
 %% (TODO) Add the relationship between the DoF and the channel capacity. 
 
 % The second step is to discretize the continuous time-domain waveform channel into a series of independent symbol channels, and sum over the capacities of each symbol channel to obtain the overall waveform channel capacity. Without loss of generality, a $W$-bandlimited waveform channel is first considered, which is equivalent to setting $h(t)=W{\rm sinc}(Wt)$. Not rigorously, this discretization step is done by the Shannon-Nyquist sampling theorem, stating that a number of $2WT$ independent samples can be obtained from a waveform channel bandlimited to $W$ and time-limited to $T$. From a more rigorous functional point of view, the $W$-bandlimited waveform channel is viewed as a projection operator $\mathcal{B}$ that maps a signal $x\in{\mathcal{L}^2(\mathbb{R})}$ into the bandlimited received signal $y={\mathcal{B}x}$, and the information-transmission capability of such operator $\mathcal{B}$ is characterized by its eigenvalues over a finite time interval $[-T/2, T/2]$. This eigenproblem is referred as the Slepian's concentration problem. Solving this eigenproblem directly leads to the eigenfunctions called prolate spheroidal wave functions (PSWF), and the number of significant eigenvalues above a certain threshold is exactly $2WT+\mathcal{O}(\log(WT))$. The number of these dominating eigenvalues are often referred to as the degrees of freedom (DoF) of this channel, which means that this $W$-bandlimited $T$-timelimited waveform channel can be asymptotically viewed as $2WT$ parallel Gaussian symbol channels, as $T\to\infty$. The capacity of a $W$-bandlimited channel, in bits per second, can then be derived accordingly. 
@@ -232,14 +230,14 @@ Based on such EM-compatible GRF modeling, the spectrum and the autocorrelation f
 After the discussion of the continuous random channel models, we will introduce the noise modeling scheme. 
 Noise is vital in information theory, because it is a key factor to determine the capacity. 
 In classical information theory, the noise is usually modeled by a time-domain additive white Gaussian noise (AWGN), since the AWGN has a flat power spectral density (PSD) and its projection coefficients onto any orthonormal basis are independent and of equal power, which is beneficial to theoretical analysis. 
-Similarly, in EIT, the noise is usually modeled as a spatial AWGN with flat wavenumber PSD. This spatial AWGN implies that the additive noises at any small spatial region are independent and identically distributed (i.i.d.) complex Gaussian random variables, whose variances are proportional to the volume of the small region. The AWGN model is the simplest noise model of EIT, which is convenient for analysis. However, the white spectral assumption is unrealistic, since it causes an unbounded noise power. 
+Similarly, in EIT, the noise is usually modeled as a spatial AWGN with flat wavenumber PSD. This spatial AWGN implies that the additive noises at any small spatial region are independent and identically distributed (i.i.d.) complex Gaussian random variables, whose variances are proportional to the volume of the small region. The AWGN model is the simplest noise model of EIT, which is convenient for analysis. However, the white spectral assumption is problematic, since it causes an unbounded noise power. 
 
-The white noise PSD is caused by the uncorrelated assumption in the spatial domain. In general, the noises at different points of space cannot be assumed independent, i.e., they do exhibit some spatial correlation. 
-The reason is that, the noise is not completely composed of spatially uncorrelated thermal noise. 
-Instead, the unwanted interference waves wandering in the space also enter the receiver, leading to an equivalent noise which is spatially correlated in general. 
-To characterize this EM interference, the one-ring model~\cite{byers2004spatially} is borrowed from prior works on channel modeling and is extended to a more general one-sphere scenario with polarized EM waves~\cite{wan2022mutual}, where the analytical expressions of the spatial correlation function can be obtained. 
-This non-white spatially correlated noise model is of theoretical importance, since it is provably compatible with Maxwell's equations. 
-By contrast, other noise models including the sinc-shaped or jinc-shaped correlation functions~\cite{marzetta2022fourier} fail to satisfy Maxwell's constraints because they ignore the polarization of the EM waves. 
+% The white noise PSD is caused by the uncorrelated assumption in the spatial domain. In general, the noises at different points of space cannot be assumed independent, i.e., they do exhibit some spatial correlation. 
+% The reason is that, the noise is not completely composed of spatially uncorrelated thermal noise. 
+% Instead, the unwanted interference waves wandering in the space also enter the receiver, leading to an equivalent noise which is spatially correlated in general. 
+% To characterize this EM interference, the one-ring model~\cite{byers2004spatially} is borrowed from prior works on channel modeling and is extended to a more general one-sphere scenario with polarized EM waves~\cite{wan2022mutual}, where the analytical expressions of the spatial correlation function can be obtained. 
+% This non-white spatially correlated noise model is of theoretical importance, since it is provably compatible with Maxwell's equations. 
+% By contrast, other noise models including the sinc-shaped or jinc-shaped correlation functions~\cite{marzetta2022fourier} fail to satisfy Maxwell's constraints because they ignore the polarization of the EM waves. 
 
 \section{Information-Theoretic Analysis for EIT}
 In this section, based on the EIT modeling methodologies above, we discuss the basic performance indicators and the corresponding analysis techniques of EIT, including the functional DoF, the channel DoF, the mutual information, and the capacity. 
@@ -290,8 +288,7 @@ The random field modeling follows the statistical approach of mutual information
 Each realization of the random field represents a pattern of the radiating field. The ensemble of the realizations, to which a probability measure is assigned, depicts the statistical characteristics of the system. 
 
 The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. 
-The main difference between them is that, the former approach is in the continuous domain, while the latter approach is in the discrete domain. 
-For EIT, the operator theory can be used to represent the autocorrelation properties of the random field. 
+In parallel with MIMO theory based on matrices, operator theory can be used to represent the autocorrelation properties of the random field. 
 Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the random fields can be decomposed into uncorrelated random variables on an orthogonal basis. 
 Then, the continuous channel can be decomposed into parallel sub-channels. 
 Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
@@ -366,11 +363,10 @@ The construction of such a kind of noise model that bridges the macro-scale and 
 For both the classical information theory and EIT, the power constraint is a key factor that affects mutual information and capacity. 
 Therefore, imposing appropriate power constraints on the system is of both theoretical and practical significance. 
 In the classical information theory, the power constraint is imposed on the expectation of the squared norm of the signal vector.  
-Similarly, for EIT, usually the functional $\mathcal{L}_2$-norm of the source current is restricted to some pre-determined power values. 
-Equivalent expressions of the power constraint in the wavenumber domain can be derived due to the energy-preserving property of the Fourier transform. 
+Similarly, for EIT, usually the functional $\mathcal{L}_2$-norm of the source current is restricted to some pre-determined power values.  
 
-However, some problems are hidden behind such $\mathcal{L}_2$ constraint for EIT, among which the most significant one is the incompatibility between the $\mathcal{L}_2$ power constraints of MIMO information theory and EM theory.  
-In MIMO theory, the signal vectors are complex-valued mathematical abstractions of the actual physical process, so there is no guarantee that the squared norm of such vectors represents the actually radiated power. 
+However, this form of power constraint causes incompatibility between MIMO information theory and EM theory.  
+In MIMO information theory, the signal vectors are complex-valued mathematical abstractions of the actual physical process, so there is no guarantee that the squared norm of such vectors represents the actually radiated power. 
 However, in EM theory, a more reasonable power constraint is given by calculating the total radiated power from an EM theoretical perspective, rather than calculating the $\mathcal{L}_2$-norm of the source current. 
 Unfortunately, these two definitions of power constraints are incompatible and often yield different power values, which is an open problem for EIT. 
 
@@ -418,7 +414,7 @@ The recent progress on EIT has demonstrated its possibility to become a unified 
 {\bf Linglong Dai} is an Associate Professor from Tsinghua University. His current research interests include massive MIMO, RIS, Wireless AI, and EIT. He has received the IEEE ComSoc Leonard G. Abraham Prize in 2020, the IEEE ComSoc Stephen O. Rice Prize in 2022, and the IEEE ICC 2022 Outstanding Demo Award. He was listed as a Highly Cited Researcher by Clarivate in 2020 and 2021. He was elevated as an IEEE Fellow in 2022.
 \\
 
-{\bf M\'{e}rouane Debbah} is chief research officer at the Technology Innovation Institute in Abu Dhabi. From 2014 to 2021, he was vice-president of the Huawei France Research Center, where he was jointly the director of the Mathematical and Algorithmic Sciences Lab as well as the director of the Lagrange Mathematical and Computing Research Center
+{\bf M\'{e}rouane Debbah} is chief research officer at the Technology Innovation Institute in Abu Dhabi. From 2014 to 2021, he was vice-president of the Huawei France Research Center, where he was jointly the director of the Mathematical and Algorithmic Sciences Lab as well as the director of the Lagrange Mathematical and Computing Research Center. 
 \\
 
 {\bf H. Vincent Poor} is the Michael Henry Strater University Professor of Electrical Engineering. His research interests are in the areas of information theory and signal processing, and their applications in wireless networks, energy systems and related fields. Dr. Poor is a member of the National Academy of Engineering and the National Academy of Sciences, and is a foreign member of the Chinese Academy of Sciences, the Royal Society and other national and international academies. 
