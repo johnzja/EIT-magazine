@@ -99,7 +99,7 @@ In this article, we systematically investigate the basics and results of EIT. Th
 \item{The basic EIT modeling methodologies are introduced for EM channels and EM noise. For EM channel modeling, both the deterministic and stochastic modeling approaches are discussed. For EM noise modeling, the noise fields are first categorized according to their different physical origins, and then the spatial correlation characteristics of different kinds of noise fields are discussed separately. }
 \item{The theoretical EIT performance analysis methods are discussed. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can be derived by mathematical tools including the PSWFs, Karhunen-Lo\`{e}ve expansion, and random field theories. } 
 \item Moreover, several EIT-inspired applications are provided. For example, to approach the EIT capacity, the continuous aperture MIMO (CAP-MIMO) has been proposed by fully harvesting the mutual information in a limited aperture area. Benefiting from the extra spatial DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to provide a new possibility for capacity improvement. In addition, a distance-aware precoding (DAP) scheme has been proposed to take advantage of the extra channel DoF in the near-field region.  % Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. 
-\item{Finally, several open problems of EIT are pointed out, such as the compatible EM noise modeling, the physically appropriate power constraint, the achievability of the EM capacity, and the physical granularity limit of current manipulation. We explain the meanings of these open problems, and why they are important for the future research of EIT. }
+\item{Finally, several open problems of EIT are pointed out, such as the analog and digital challenges brought by EIT, the compatible EM noise modeling, the physically appropriate power constraint, and the achievability of the EM capacity. We explain the meanings of these open problems, and why they are important for the future research of EIT. }
 \end{itemize}
 
 \vspace{-1em}
@@ -289,13 +289,11 @@ Each realization of the random field represents a pattern of the radiating field
 
 The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. 
 In parallel with MIMO theory based on matrices, operator theory can be used to represent the autocorrelation properties of the random field. 
-Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the random fields can be decomposed into uncorrelated random variables on an orthogonal basis. 
-Then, the continuous channel can be decomposed into parallel sub-channels. 
+Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the continuous channel can be decomposed into parallel sub-channels. 
 Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
 Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form~\cite{wan2022mutual}, which is the determinant of an autocorrelation operator. 
-Based on this closed-form Fredholm determinant mutual information formula, the channel capacity of the continuous wireless system can be obtained by maximizing the mutual information over all possible random field distributions. 
+This Fredholm determinant form provides a closed-form formula for the EIT mutual information. 
 
-\vspace{-1em}
 \section{Applications of EIT}
 In this section, we present several EIT-inspired applications. 
 These applications either mimic the analysis methodologies of EIT to fully achieve the existing DoF, or try to explore new communication resources predicted by EIT. 
@@ -304,8 +302,8 @@ These applications either mimic the analysis methodologies of EIT to fully achie
 \subsection{Continuous Aperture MIMO (CAP-MIMO)}
 Traditional wireless communication systems deploy finite antennas in a limited aperture at the transceivers. 
 However, the EIT mutual information analysis is built on spatially continuous theoretical frameworks. 
-To bridge the possible gap between the performance limit in MIMO theory and that in EIT, CAP-MIMO, which is also called holographic MIMO, has attracted increasing research interests recently~\cite{zhang2022pdma}. 
-CAP-MIMO adopts a hypothetical structure that contains infinitely dense antennas in a limited spatial region, which is capable of continuously generating any current distribution at the transmitter and detecting any electric field at the receiver.  
+To bridge the gap between the performance limit in MIMO theory and that in EIT, CAP-MIMO, which is also called holographic MIMO, has attracted increasing research interests recently~\cite{zhang2022pdma}. 
+CAP-MIMO adopts a hypothetical structure that contains infinitely dense antennas in a limited spatial region, which is capable of continuously generating arbitrary current distribution at the transmitter and detecting arbitrary electric field at the receiver.  
 The current distributions on the transmitter are called patterns of the CAP-MIMO. 
 Different signals are modulated onto different patterns before radiating into the space. 
 These continuous patterns need to be optimized by specially-designed algorithms in order to achieve a higher multi-user data rate~\cite{zhang2022pdma}. 
@@ -321,7 +319,7 @@ These continuous patterns need to be optimized by specially-designed algorithms 
 	\label{fig:LDMA}
 \end{figure*}
 
-For the classical multiple access scheme called space division multiple access (SDMA) enabled by MIMO, the beams emitted from the base station form a functional space. 
+For the classical MIMO-enabled multiple access scheme called space division multiple access (SDMA), the beams emitted from the base station form a functional space. 
 The DoF of the functional space represents the resolution of distinguishing users at different locations, which corresponds to the functional DoF analysis in EIT. 	% Relation to the analysis methodologies in EIT. 
 However, the classical SDMA based on far-field models can only distinguish the users in the angular dimension, but it fails to utilize the functional DoF in the distance dimension. 
 For future wireless communications with extremely large-scale antenna arrays (ELAAs), the more accurate spherical wave model should be used instead of the simple planar wave assumption. 
@@ -331,6 +329,7 @@ In this way, unlike the almost only dominant way of spectrum efficiency enhancem
 
 % In the LDMA scheme, the near-field codebook, beam training, and channel estimation are designed by considering the extra DoF in the distance domain. 
 
+\vspace{-1mm}
 \subsection{Distance-Aware Precoding}
 As discussed in Subsection~\ref{Sec_4_Subsec_1}, the channel DoF of an LoS channel model in EIT is approximately proportional to the length of the transceivers and inversely proportional to the distance between the transceivers. 
 Accordingly, only one data stream can be supported in the far-field LoS channel, since the channel DoF is only one in this case. 
@@ -347,6 +346,14 @@ To fully utilize the near-field channel DoF, a distance-aware precoding scheme h
 
 \section{Open Problems for EIT}
 In this section, we will discuss some open problems for EIT. We will also explain the meanings of these open problems, and why they are important for the future research of EIT. 
+
+\subsection{Digital and Analog Challenges}
+The theory of EIT possibly predicts a substantial capacity improvement as long as the transceivers are equipped with fully-continuous antenna surfaces. However, the implementation of such spatially continuous antenna surfaces will inevitably require the processing of an enormous volume of baseband data as well as a vast amount of electrically small antenna patches. Thus, the exploding number of antennas will bring fundamentally new challenges to both the digital and analog signal processing. 
+
+In the digital domain, the optimal current distribution patterns should be frequently updated within a typical timescale of 1\,ms to accommodate the fast-varying EIT channel. In addition, the DFT bases have to be further improved since the EIT eigenmodes are generally not sinusoidal~\cite{marzetta2022fourier}. Thus, numerous nearly-continuous bases have to be digitally designed in a frequent manner, which is a great challenge even to the state-of-the-art baseband processors.  
+
+In the analog domain, there exists a physical tradeoff between the performance and the size of the antenna~\cite{stratton2007electromagnetic}. Thus, it is practically difficult to design near-continuous antennas without sacrificing the radiation efficiency and working bandwidth. Apart from the physical tradeoff, the mutual coupling between adjacent antennas need to be carefully suppressed when the antenna array becomes denser, in order not to churn the designed radiation patterns and degrade the communication performance. 
+
 
 \subsection{Compatible Noise Modeling in Discrete and Continuous Communication Systems}
 It can be proved that, the purely i.i.d. thermal noise distribution will cause the divergence of the end-to-end capacity of a MIMO transceiver, when the number of receiving antennas increases indefinitely within a constrained aperture size. 
@@ -377,14 +384,14 @@ In classical information theory, to establish a ``capacity'' value, one needs to
 The EIT capacity defined in~\cite{wan2022mutual,zhang2022pdma} still lacks an achievability proof. 
 To prove the achievability of such an EM capacity, Shannon's stochastic proving techniques should be generalized to continuous spatio-temporal waveform channels, which deserve further research and rigorous mathematical construction.  
 
-\vspace{-1em}
-\subsection{Physical Granularity Limit of the Current Manipulation and Electric Field Detection}
-In the current research of EIT, most works assume that the physical EM field is arbitrarily adjustable and detectable. 
-From the engineering perspective, this assumption is equivalent to placing an infinite number of antennas in the source and destination regions that can work without interferences. 
-However, practical communication systems cannot fulfill such an infinite granularity assumption. 
-In fact, the antenna mutual coupling effect always exist because of the imperfect antenna isolation. 
-Considering the mutual coupling of the antennas, we cannot fabricate an infinitely dense antenna array, which means that the current manipulation and electric field detection of practical systems are all subject to limited accuracy. 
-To guide the design of practical systems, the physical limit of the current manipulation and electric field detection has to be investigated in the future. 
+
+% \subsection{Physical Granularity Limit of the Current Manipulation and Electric Field Detection}
+% In the current research of EIT, most works assume that the physical EM field is arbitrarily adjustable and detectable. 
+% From the engineering perspective, this assumption is equivalent to placing an infinite number of antennas in the source and destination regions that can work without interferences. 
+% However, practical communication systems cannot fulfill such an infinite granularity assumption. 
+% In fact, the antenna mutual coupling effect always exist because of the imperfect antenna isolation. 
+% Considering the mutual coupling of the antennas, we cannot fabricate an infinitely dense antenna array, which means that the current manipulation and electric field detection of practical systems are all subject to limited accuracy. 
+% To guide the design of practical systems, the physical limit of the current manipulation and electric field detection has to be investigated in the future. 
 
 
 \section{Conclusions}
