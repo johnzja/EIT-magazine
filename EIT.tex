@@ -72,34 +72,34 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 \maketitle
 
 \begin{abstract}
-	Traditional single-input single-output (SISO) and multiple-input multiple-output (MIMO) information theory adopt spatially discrete modeling, which mismatches the continuous nature of the underlying electromagnetic (EM) fields. % Discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
- 	Therefore, it is essential to analyze the information-carrying capability of continuous EM fields, which motivates the research of EM information theory (EIT). In this article, we systematically investigate the basics and results of EIT. First, we review the fundamental analysis tools of classical information theory and EM theory. Then, we introduce the modeling and analysis methodologies of EIT, including continuous field modeling, degree of freedom (DoF), mutual information, and capacity analyses. After that, several EIT-inspired applications are discussed to illustrate how EIT guides the design of practical wireless systems.  Finally, we point out several open problems of EIT, where further research efforts are required for EIT to construct a unified interdisciplinary theory.
+	Traditional single-input single-output and multiple-input multiple-output information theory adopt spatially discrete modeling, which does not fully capture the continuous nature of the underlying electromagnetic (EM) fields supporting the physical layer of wireless communication systems. % Discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
+ 	Thus, it is of interest to examine the information-carrying capability of continuous EM fields, which motivates research on EM information theory (EIT). In this article, we systematically investigate the basic ideas and main results of EIT. First, we review the fundamental analytical tools of classical information theory and EM theory. Then, we introduce the modeling and analysis methodologies of EIT, including continuous field modeling, degree of freedom, mutual information, and capacity analyses. After that, several EIT-inspired applications are discussed to illustrate how EIT guides the design of practical wireless systems.  Finally, we point out several open problems of EIT, where further research efforts are required for EIT to construct a unified interdisciplinary theory.
 \end{abstract}
 
 \begin{IEEEkeywords}
-    Electromagnetic information theory (EIT), electromagnetic channel modeling, random field, degree of freedom (DoF), capacity.  
+    Electromagnetic information theory (EIT), electromagnetic channel modeling, random field, degrees of freedom (DoF), capacity.  
 \end{IEEEkeywords}
 
 \vspace{-1em}
 \section{Introduction}
 %% leading paragraph. 
-Existing wireless information theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) information theory considers a single point as either a transmitter or a receiver, and multiple-input multiple-output (MIMO) information theory~\cite{goldsmith2003capacity} utilizes discrete points in the space to represent the transceivers. 
-However, this discretization mismatches the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
-This mismatch may cause a performance gap between the discrete systems and the continuous systems modeled by continuous EM fields. 
-Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is necessary, which motivates the research of EM information theory (EIT).
+Existing wireless information theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) information theory considers a single point as either a transmitter or a receiver, and multiple-input multiple-output (MIMO) information theory~\cite{goldsmith2003capacity} utilizes discrete points in space to represent transceivers. 
+However, this discretization does not fully capture the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
+This mismatch may cause a performance gap between systems designed using discrete models and those designed using continuous EM fields. 
+Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is of interest, which motivates the research of EM information theory (EIT).
 
-EIT is an interdisciplinary subject that integrates deterministic physical theory and statistical mathematical theory to study the information transmission mechanism in the spatially continuous EM field. 
+EIT is an interdisciplinary subject that integrates deterministic physical theory and statistical mathematical theory to study information transmission mechanism in spatially continuous EM fields. 
 Specifically, EIT unifies the basic laws and methodologies in both classical EM theory and information theory. 
-As a result, EIT is capable of building the framework of system modeling and performance analysis that fits the EM propagation theory for wireless information systems. 
+As a result, EIT is capable of building a framework for system modeling and performance analysis that incorporates EM propagation in the analysis of wireless information systems. 
 
 %% Our contributions.
-In this article, we systematically investigate the basics and results of EIT. The key features of this article can be summarized as follows:
+In this article, we systematically investigate the basics and results of EIT. The basic ideas and main results of this article can be summarized as follows:
 \begin{itemize}
-\item{The fundamental mathematical tools for classical information theory and EM theory are briefly reviewed at first. Specifically, the degree of freedom (DoF), prolate spheroidal wave functions (PSWFs), channel capacity, and Maxwell's equations are introduced. To integrate the probabilistic nature of information theory and the continuous property of EM fields, random fields are then introduced into EIT, which enables the EIT performance analysis. }
+\item{The fundamental mathematical tools for classical information theory and EM theory are briefly reviewed at first. Specifically, degrees of freedom (DoF), prolate spheroidal wave functions (PSWFs), channel capacity, and Maxwell's equations are introduced. To integrate the probabilistic nature of information theory and the continuous property of EM fields, random fields are then introduced into EIT, which enables performance analysis based on EIT. }
 \item{The basic EIT modeling methodologies are introduced for EM channels and EM noise. For EM channel modeling, both the deterministic and stochastic modeling approaches are discussed. For EM noise modeling, the noise fields are first categorized according to their different physical origins, and then the spatial correlation characteristics of different kinds of noise fields are discussed separately. }
-\item{The theoretical EIT performance analysis methods are discussed. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can be derived by mathematical tools including the PSWFs, Karhunen-Lo\`{e}ve expansion, and random field theories. } 
+\item{EIT performance analysis methods are discussed. By applying the EIT modeling methodologies, the DoF, mutual information, and capacity can be derived using mathematical tools including the PSWFs, Karhunen-Lo\`{e}ve expansion, and random field theories. } 
 \item Moreover, several EIT-inspired applications are provided. For example, to approach the EIT capacity, the continuous aperture MIMO (CAP-MIMO) has been proposed by fully harvesting the mutual information in a limited aperture area. Benefiting from the extra spatial DoF predicted by EIT, the location division multiple access (LDMA) technology has been proposed to provide a new possibility for capacity improvement. In addition, a distance-aware precoding (DAP) scheme has been proposed to take advantage of the extra channel DoF in the near-field region.  % Other applications include precise field extrapolation and reconstruction based on the statistical characteristics provided by EIT modeling. 
-\item{Finally, several open problems of EIT are pointed out, such as the analog and digital challenges brought by EIT, the compatible EM noise modeling, the physically appropriate power constraint, and the achievability of the EM capacity. We explain the meanings of these open problems, and why they are important for the future research of EIT. }
+\item{Finally, several open problems of EIT are discussed, including the analog and digital challenges brought by EIT, compatible EM noise modeling, the physically appropriate power constraints, and the achievability of the EM capacity. We explain the meanings of these open problems, and why they are important for future research in EIT. }
 \end{itemize}
 
 \vspace{-1em}
@@ -289,7 +289,7 @@ Each realization of the random field represents a pattern of the radiating field
 
 The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. 
 In parallel with MIMO theory based on matrices, operator theory can be used to represent the autocorrelation properties of the random field. 
-Utilizing the Karhunen-Lo\`{e}ve (KL) expansion theorem, the continuous channel can be decomposed into parallel sub-channels. 
+Utilizing the Karhunen-Lo\`{e}ve (KL) expansion, the continuous channel can be decomposed into parallel sub-channels. 
 Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
 Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form~\cite{wan2022mutual}, which is the determinant of an autocorrelation operator. 
 This Fredholm determinant form provides a closed-form formula for the EIT mutual information. 
@@ -348,11 +348,11 @@ To fully utilize the near-field channel DoF, a distance-aware precoding scheme h
 In this section, we will discuss some open problems for EIT. We will also explain the meanings of these open problems, and why they are important for the future research of EIT. 
 
 \subsection{Digital and Analog Challenges}
-The theory of EIT possibly predicts a substantial capacity improvement as long as the transceivers are equipped with fully-continuous antenna surfaces. However, the implementation of such spatially continuous antenna surfaces will inevitably require the processing of an enormous volume of baseband data as well as a vast amount of electrically small antenna patches. Thus, the exploding number of antennas will bring fundamentally new challenges to both the digital and analog signal processing. 
+To achieve the capacity improvement predicted by EIT, transceivers are expected to employ fully-continuous antenna surfaces. However, the implementation of such spatially continuous antenna surfaces will inevitably require the processing of an enormous volume of baseband data and the deployment of a vast amount of electrically small antenna patches. Thus, the exploding number of antennas will bring fundamentally new challenges to both the digital and analog signal processing. 
 
-In the digital domain, the optimal current distribution patterns should be frequently updated within a typical timescale of 1\,ms to accommodate the fast-varying EIT channel. In addition, the DFT bases have to be further improved since the EIT eigenmodes are generally not sinusoidal~\cite{marzetta2022fourier}. Thus, numerous nearly-continuous bases have to be digitally designed in a frequent manner, which is a great challenge even to the state-of-the-art baseband processors.  
+In the digital domain, the optimal current distribution patterns should be frequently updated within a typical timescale of 1\,ms to accommodate the fast-varying EIT channel. In addition, the DFT bases have to be further improved since the EIT eigenmodes are generally not sinusoidal~\cite{marzetta2022fourier}. Thus, numerous nearly-continuous bases have to be frequently designed in the digital domain, which is a great challenge even to the state-of-the-art baseband processors.  
 
-In the analog domain, there exists a physical tradeoff between the performance and the size of the antenna~\cite{stratton2007electromagnetic}. Thus, it is practically difficult to design near-continuous antennas without sacrificing the radiation efficiency and working bandwidth. Apart from the physical tradeoff, the mutual coupling between adjacent antennas need to be carefully suppressed when the antenna array becomes denser, in order not to churn the designed radiation patterns and degrade the communication performance. 
+In the analog domain, there exists a physical tradeoff between the performance and the size of antennas~\cite{stratton2007electromagnetic}. Thus, it is practically difficult to design near-continuous antennas without sacrificing the radiation efficiency and working bandwidth. Apart from the physical tradeoff, the mutual coupling between adjacent antennas need to be carefully suppressed when the antenna array becomes denser, in order not to churn the designed radiation patterns and degrade the communication performance. 
 
 
 \subsection{Compatible Noise Modeling in Discrete and Continuous Communication Systems}
@@ -395,9 +395,9 @@ To prove the achievability of such an EM capacity, Shannon's stochastic proving 
 
 
 \section{Conclusions}
-In this paper, we have thoroughly investigated the fundamental mathematical tools, basic modeling methodologies, and theoretical performance analyses that constitute the EIT. 
+In this paper, we have investigated the fundamental mathematical tools, basic modeling methodologies, and theoretical performance analyses that constitute EIT. 
 Furthermore, we have discussed some recent novel applications related to EIT, aiming at designing new wireless communication systems for single-user and multi-user capacity enhancement. 
-The recent progress on EIT has demonstrated its possibility to become a unified and widely applicable theory. However, there are still some unresolved open problems that require further study in the future. 
+The recent progress on EIT has demonstrated its potential to become a unified and widely applicable theory. However, there are still some unresolved open problems that require further study in the future. 
 %including the unknown compatible EIT noise modeling, contradictive power constraints, the immature proofs of information-theoretic achievability and converse bounds in EIT, and the undiscovered granularity limit of EIT current manipulation. % insights added here. 
 % To address these problems, borrowing from the common knowledge in theoretical physics, a special relativity-based EM theory that exhibits more symmetries may be introduced into the study of EIT to facilitate theoretic analysis.  
 
