@@ -67,16 +67,16 @@
 \begin{document}
 
 \begin{center}
- {\Large\bf Sensing RISs: Enabling Dimension-Independent CSI Acquisition for Beamforming}
+ {\Large\bf Electromagnetic Information Theory: Fundamentals, Modeling, Applications, and Open Problems}
 \end{center}
 \begin{center}
- {\Large\bf (Original paper ID: IT-22-0267)}
+ {\Large\bf (Original paper ID: WCM-22-00602)}
 \end{center}
 \begin{center}
  {\Large\bf Response Letter}
 \end{center}
 \begin{center}
-Jieao Zhu, {\it Student Member,~IEEE}, Kunzan Liu, {\it Student Member,~IEEE}, \\ Zhongzhichao Wan, {\it Student Member,~IEEE}, Linglong Dai, {\it Fellow,~IEEE}, \\  Tie Jun Cui, {\it Fellow,~IEEE}, and H. Vincent Poor, {\it Life Fellow,~IEEE} 
+Jieao Zhu, {\it Student Member,~IEEE}, Zhongzhichao Wan, {\it Student Member,~IEEE}, \\Linglong Dai, {\it Fellow,~IEEE},  M\'{e}rouane Debbah, {\it Fellow,~IEEE}, \\and H. Vincent Poor, {\it Life Fellow,~IEEE} 
 
 \end{center}
 \begin{center}
@@ -126,7 +126,16 @@ We appreciate the reviewer's concise summary of the key points of this paper and
 In the open problem section VI.D, it says that the achievability of capacity is not proved. Then typically in information theory, this means that the capacity is not found at all. Capacity has an operational meaning, which is the highest rate. It may or may not be the maximum mutual information, depending on the channel assumption (which appears core for this new area of electromagnetic IT). So it appears to me that [9] [11] at most provide an upper bound (converse) for the capacity and the capacity is an open problem. Additionally, the claims on the hardness of achievability or converse proofs are purely subjective. When a problem is open, everything could be hard. When the answer is known, it is not easy to reach a consensus on which part is harder (in IT, it could be more widely believed that converse is harder).
 
 \blue{\textbf{Authors: } 
-Many thanks for pointing out these limitations in {\bf Section VI-D} of this paper. As mentioned by the reviewer, the ``capacity'' has an operational meaning, and the maximum mutual information does not necessarily equal the ``capacity''. In the revised paper, we have rewritten this subsection as 
+Many thanks for pointing out these limitations in {\bf Section VI-D} of this paper. As mentioned by the reviewer, the ``capacity'' has an operational meaning, and the maximum mutual information does not necessarily equal the ``capacity''. Thus, the EM capacity has not been found in the strict sense. We agree with the reviewer that the existing works about the EM capacity is still in its infancy. However, substantial progresses have been made in the literature about the EM capacity, which will be summarized into two parts as follows. 
+
+1.1) {\bf Achievable Rates.} By assuming a linear time-invariant propagation environment, the EM channel is modeled by a spatio-temporal (4-dimensional) linear Green's function. This Green's function is viewed as a linear operator that maps the current distribution on the transmitter (source) to the receiver (destination). Since any (bounded) linear operator admits to the singular value decomposition, the Green's function is then decomposed into a series of eigenmodes [R1-2] before performing water-filling on the decomposed parallel sub-channels. 
+By further assuming an additive white Gaussian noise, the achievable rates are obtained by summing the maximum mutual information over the (possibly infinite) Gaussian sub-channel index. This summation of mutual information is achievable, since the maximum mutual information of each of the sub-channels can be achieved by the random ensemble of Gaussian distributed codes.      
+
+1.2) {\bf Converse Bounds.} As is mentioned by the reviewer, converse bounds can be obtained by evaluating the maximum ``continuous'' mutual information between the source and destination regions. Since the source current distributions and destination electric field distributions are considered as random fields ${\bm J}({\bm s})$ and ${\bm E}({\bm r})$, a new mutual information quantity between two random fields are defined [R3]. 
+
+We have carefully checked the existing works in the literature, and have found that there 
+
+In the revised paper, we have rewritten this subsection as 
 
 
 Many thanks for pointing out these three limitations of our proposed sensing RIS-based channel estimation scheme. Our efforts to mitigate these disadvantages are listed as follows: 
@@ -139,6 +148,13 @@ Many thanks for pointing out these three limitations of our proposed sensing RIS
     Thus, in the strict sense, the EM capacity is still an open problem. } 
 \end{framed}
 
+[R1] F. K. Gruber, and E. A. Marengo, ``New aspects of electromagnetic information theory for wireless and antenna systems,'' {\it IEEE Trans. Antenna Propag.}, vol. 56, no. 11, pp. 3470-3484, Nov. 2008. 
+
+[R2] M. A. Jensen, and J. W. Wallace, ``Capacity of the continuous-space electromagnetic channel,'' {\it IEEE Trans. Antenna Propag.}, vol. 56, no. 2, pp. 524-531, Feb. 2008. 
+
+[R3] Z. Wan, J. Zhu, Z. Zhamg, L. Dai, and C.-B. Chae, ``Mutual information for electromagnetic information theory based on random fields,'' {\it ArXiv preprint arXiv:2111.00496}, Aug. 2022. 
+
+%---------------------------------------------------------------------
 \blue{
 1.2) The assumption that the direct BS-user link is blocked. Thanks again for pointing out this problem, and we have conceived a possible solution to integrate the direct BS-RIS link ${\bm h}_{\rm d}\in\mathbb{C}^{M\times 1}$ into our proposed scheme. Since the direct link does not affect the creation of the IRF, the RIS phase-shift matrix $\bm \Theta$ can be obtained as if there were no such direct link, up to an undetermined global phase $e^{\ri \phi}$. Note that this IRF-based procedure for obtaining ${\bf\Theta}$ consumes 3 time slots. After this procedure, two uplink training symbols can be transmitted from the user. The uplink channel model is 
 \begin{equation}
