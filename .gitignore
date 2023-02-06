@@ -19,5 +19,6 @@
 
 # Data storage.
 data/
+resp_letter/*.pdf
 
 
