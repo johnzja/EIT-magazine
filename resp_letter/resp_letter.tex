@@ -61,6 +61,7 @@
 \def \H {^{\mathsf{H}}}
 \def \ri {{\rm i}}
 \def \d {{\rm d}}
+\def \tr {{\mathsf{tr}}\,}
 
 \def\onecol{}
 
@@ -168,7 +169,8 @@ However, these achievable rates are neither theoretically inspiring nor easy-to-
 (3) The meaning of many pictures is not clear. For example, why Fig.~5 shows a new possibility for capacity improvement? The light blue part means a wider coverage? Why and how to use?
 
 {\color{blue}{\textbf{Authors: } 
-Thanks for the reviewer's insightful suggestions.
+Thanks for the reviewer's suggestions. 
+
 
 \quad All the above contents are added to the revised paper. 
 
@@ -213,15 +215,20 @@ Overall, the topic is fundamental and important to wireless communications. Neve
 
 
 \blue{\textbf{Authors: } 
-Many thanks for the reviewer's positive attitude on the novelty and correctness of this paper. Also, as is stressed by the reviewer, the previous version of this paper lacks a series of sound information-theoretic analyses. We agree with the reviewer that the analytical results are necessary for the high-quality journals like IEEE T-IT. To this end, we have tried our best to provide achievable bounds for our proposed interference random field (IRF)-based CSI acquisition schemes. These newly-added theorems and lemmas are mainly related to detection and estimation theory, which may match the broader scope of this journal. For you to check, we have provided the theoretical contents in the box below with some slight modifications, e.g., the number of equations and lemmata may be different from those in the revised paper. 
+Many thanks for the reviewer's overall positive attitude on this magazine paper, and we are thankful to the reviewer for pointing out the limitations in the introduction part. We will commence by explaining why direct discretization, which is the foundation of the MIMO model, will inevitably lead to problematic results in evaluating the information-theoretic capacity of an electromagnetic (EM) communication system, especially when considering a superdense antenna array.
 
-\quad We would like to briefly summarize the newly-added theorems and lemmas before going into details as below. These theoretical results are mainly focused on the analysis of the proposed vM-EM phase estimation algorithm. By assuming convergence of the algorithm, we first obtain a fixed-point equation that describes how the estimator $\hat{\varphi}$ varies as a function of the sensor noise ${\bm v}$. In order to quantify how large the deviation of the estimator from the true value can be, we take the derivative of the estimator $\hat{\varphi}$ with respect to ${\bm v}$, and try to upper-bound such a derivative in order to upper-bound the estimation error. After some calculations, we find that the derivative of $\hat{\varphi}$ is jointly determined by ${\bm v}$ and the estimator $\hat{\varphi}$ itself, so we try to model this relation by an ordinary differential equation to capture the increasing rate of the estimation error. Finally, we reach the desired conclusion that the mean squared estimation error (MSE) is of order $\mathcal{O}(\bar{\gamma}^{-1})$, which is the best error decay rate expectable in most of the estimation problems where the signals are corrupted by some Gaussian noise.  
+\quad The widely accepted MIMO channel model takes the form ${\bm y}={\bm H}{\bm x}+{\bm n}$, where ${\bm x}\in\mathbb{C}^{M}$ is the signals transmitted by the $M$-antenna transmitter, and ${\bm y}\in\mathbb{C}^{N}$ is the signals received by the $N$-antenna receiver. The MIMO channel is represented by ${\bm H}\in\mathbb{C}^{N\times M}$, and the noise vector ${\bm n}\sim \mathcal{CN}({\bm 0}_{N}, \sigma^2 {\bm I}_{N})$. The information-theoretic capacity is then expressed as 
+\begin{equation}
+    C = \log\det({\bm I}+\frac{1}{\sigma^2}{\bm H}{\bm C}_{\bm x}{\bm H}\H),
+\end{equation}
+where ${\bm C}_{\bm x}=\mathbb{E}\left[{\bm x}{\bm x}\H\right]$ is the covariance matrix of the transmitted signal ${\bm x}$, satisfying the transmit power constraint $\tr{\bm C}_{\bm x}\leq P_T$. The correctness of this classical MIMO model heavily relies on the following two assumptions:
+\begin{itemize}
+    \item The noise is uncorrelated between any pair of receive antennas.
+    \item The average noise power $\sigma^2$ is a constant, which is independent of the number of transceiver antennas and the antenna spacing. 
+\end{itemize}
+
+
 }
-
-
-
-\blue{
-\quad The newly-added proofs of the above lemmas and theorems are provided in the revised paper. }
 
 
 
