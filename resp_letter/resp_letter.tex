@@ -144,9 +144,9 @@ However, these achievable rates are neither theoretically inspiring nor easy-to-
 \blue{
 [R1] M. A. Jensen, and J. W. Wallace, ``Capacity of the continuous-space electromagnetic channel,'' {\it IEEE Trans. Antenna Propag.}, vol. 56, no. 2, pp. 524-531, Feb. 2008. 
 
-[R2] I. M. Gelfand and A. IAglom, ``Calculation of the amount of information about a random function contained in another such function,'' {\it American Mathematical Society Providence}, 1959. 
+[R2] I. M. Gelfand and A. IAglom, ``Calculation of the amount of information about a random function contained in another such function,'' {\it American Math. Soc. Prov.}, 1959. 
 
-[R3] Z. Wan, J. Zhu, Z. Zhamg, L. Dai, and C.-B. Chae, ``Mutual information for electromagnetic information theory based on random fields,'' {\it ArXiv preprint arXiv:2111.00496}, Aug. 2022. 
+[R3] Z. Wan, J. Zhu, Z. Zhamg, L. Dai, and C.-B. Chae, ``Mutual information for electromagnetic information theory based on random fields,'' {\it IEEE Trans. Comm. (Early Access)}, Feb. 2023. 
 
 [R4] F. K. Gruber, and E. A. Marengo, ``New aspects of electromagnetic information theory for wireless and antenna systems,'' {\it IEEE Trans. Antenna Propag.}, vol. 56, no. 11, pp. 3470-3484, Nov. 2008. 
 
@@ -166,15 +166,44 @@ However, these achievable rates are neither theoretically inspiring nor easy-to-
 %---------------------------------------------------------------------
 
 \textbf{Reviewer 1:}
-(3) The meaning of many pictures is not clear. For example, why Fig.~5 shows a new possibility for capacity improvement? The light blue part means a wider coverage? Why and how to use?
+(3) The meaning of many pictures is not clear. For example, why Fig.~5 shows a new possibility for capacity improvement? The light blue part means a wider coverage? Why and how to use? 
 
 {\color{blue}{\textbf{Authors: } 
-Thanks for the reviewer's suggestions. 
+Thanks for the reviewer's suggestions. Fig.~5 shows a recently proposed multiple access scheme for hybrid precoding systems, called the location division multiple access (LDMA). 
+Traditional spatial division multiple access (SDMA) for hybrid precoding structure  usually assumes that the users are located in the far-field region of the BS antenna array. Thanks to the far-field planar wave assumption, the users can be distinguished in the angular domain by their different angles relative to the BS antenna array. Thus, different users can be served by beams pointed at different directions, and inter-user interference can be suppressed thereof. The capability of multiple access is ensured by the orthogonal property between different angular directions. 
+
+\quad To satisfy the ever-increasing requirements of the user-experienced data rate,  extremely large antenna arrays (ELAAs) have been proposed to make the most of the spatial multiplexing potential, and mmWave or even terahertz (THz) bands are being considered by the future 6G conceptions for further improvements in communication rate. 
+However, both the enlarged array aperture and the blue-shifted communication frequency have brought about a fundamentally new challenge to the communication systems: the {\it near-field} effect. 
+Different from the traditional far-field propagation that admits a planar wavefront, the near-field effect is caused by the spherical propagation characteristic of the near-field electromagnetic waves. The spherical curvature is more significant when the wavelength is smaller and the aperture is relatively larger, and thus the {\it near-field} effect will dominate in the future high-frequency ELAA communications. 
+
+\quad Although the near-field effect seems to corrupt the planar wave assumptions and make the traditional angular domain-based techniques no longer applicable, it also brings new potentials for data transmission and multiplexing. This is because the more complicated near-field propagation channel exhibits an additional orthogonality apart from the already well-known angular orthogonality in SDMA-based systems. The additional orthogonality comes from the distance domain, i.e., the channels of users located at different distances are proved to be orthogonal in the near-field region [R], even if they share the same angle with respect to the BS. Thus, multiple access can be performed by focusing the beams at different distances, thus enhancing the overall multiple access capability of the communication system. This is the rationale behind the LDMA scheme. 
+
+\quad In Fig.~5, the beam patterns of far-field SDMA scheme (left) is compared with those of the near-field LDMA scheme (right). In the far-field SDMA scheme, the analog beamformer is chosen from a DFT codebook, and thus a pencil-shaped beam is generated towards the users. Unfortunately, if two users are at different distance but the same angular position, the same DFT codeword will be employed to serve two different users, which results in severe inter-user interference. 
+On the contrary, in the near-field LDMA scheme, since near-field beams are capable of distance focusing, these two users can be distinguished by specially designed near-field beams that are focused to different distances. In summary, the LDMA scheme enhances the multiple access capability of the communication system by re-designing the codebook to match the near-field propagation characteristics of the EM waves. 
 
 
-\quad All the above contents are added to the revised paper. 
+% In order to demonstrate the  of the LDMA scheme, a multi-user MIMO 
+% Different from the traditional spatial division multiple access (SDMA) schemes, by exploiting the near-field propagation characteristics, the LDMA scheme can fully exploit the 
+
+% Traditional multi-user multiple-input multiple-output (MIMO) hybrid precoding systems iterate between the analog precoder and the digital precoder in order to maximize the receiving power of each user while minimizing the inter-user interference. 
+% However, such an iterative algorithm suffers from high computational complexity due to sophisticated unit-modulus constraint. 
+% In order to relieve the computational cost mainly brought by analog precoding, the DFT codebook has been widely employed in the literature. 
+% The DFT codebook is composed of angular steering vectors that are capable of guiding the electromagnetic waves towards pre-designed spatial directions. 
+
+
+\quad In the revised paper, we have addressed this issue as 
+
 
 }}
+
+\begin{framed}
+    {\bf Section V-B} 
+
+	\red{Traditional far-field spatial division multiple access (SDMA) scheme exploits the angular orthogonality of the far-field planar-wave propagation channel to serve users from different angles simultaneously. However, in order to further improve the communication rate, extremely large antenna arryas (ELAAs) are introduced for improving the spectral efficiency. Different from the traditional far-field propagation environment, this enlarged array aperture will inevitably introduce the {\it near-field} spherical wave propagation characteristics.  
+
+	Although the near-field effect seems to corrupt the planar wave assumptions and make the traditional DFT codebook-based angular domain beamforming techniques no longer applicable, it also brings new potentials for data transmission and multiplexing. This is because the more complicated near-field propagation channel exhibits an additional orthogonality apart from the already well-known angular orthogonality in SDMA-based systems. 
+	The additional orthogonality comes from the distance domain, i.e., the channels of users located at different distances are proved to be orthogonal in the near-field region~[7], thus providing extra DoFs in the distance domain. Thus, by re-designing the near-field codebook to match the near-field propagation characteristics of the EM waves, a new multiple access scheme called the location division multiple access (LDMA) is proposed to enhance the overall multiple access capability of the communication systems. }
+\end{framed}
 
 
 
@@ -249,6 +278,17 @@ where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th 
 \textbf{Reviewer 2:}
 2) All the figures are confusing to readers.
 2.1) There are many notations in Figs. 1, 2, 3, 4. However, they have not been clearly defined. 
+
+\blue{
+    {\bf Authors:} 
+}
+
+\textbf{Reviewer 2:}
+3) In Section 3 and Section 4, all discussions about modeling are difficult for readers. To this end, the main assumptions must be clearly illustrated at the beginning and a few equations may be necessary to understand the discussions in Section 3 and Section 4.
+
+\blue{
+    {\bf Authors:} 
+}
 
 {\color{blue}{\textbf{Authors: } 
 Many thanks again for your valuable time and efforts to review this paper. 
