@@ -279,9 +279,53 @@ where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th 
 2) All the figures are confusing to readers.
 2.1) There are many notations in Figs. 1, 2, 3, 4. However, they have not been clearly defined. 
 
+2.2) In Fig.~1, there are four subfigures but it is unclear how they are related. For example, the two subfigures to the left are about a two-dimensional sub-space but it is not clear how they are relevant to the subfigures to the right.
+
+
+
+
+\blue{
+    {\bf Authors:} Thank you for pointing out these unclear parts in this paper. We have tried our best to fix these problems. The newly drawn figures are listed as follows, together with succinct descriptions of their contents. 
+
+    \begin{figure}[!t]
+        \centering 
+        \includegraphics[width=0.8\linewidth]{../figures/PSWFs.pdf} 
+        \caption{\blue{Example of the functional DoF: The bandlimited AWGN channel and its eigenmodes. The transmitted signal $x(t)$ is time-limited by the temporal truncation operator $\mathcal{T}_T$ before undergoing the $W$-bandlimited channel and a second truncation $\mathcal{T}_T$. The output of this channel $y(t)$ is then obtained by imposing an AWGN process $n(t)$. The eigenmodes of this linear system is given by the prolate spheroidal wave functions (PSWFs) $\{\psi_n\}_{n=0}^{\infty}$, with eigenvalues $\{\lambda_n\}_{n=0}^{\infty}$. In this figure, $T=2\,{\rm s}$, $W=2\,{\rm Hz}$, and thus the functional DoF of the recieved signal $y(t)$ is $2WT=8$. }}
+        \label{fig:PSWF}
+    \end{figure}
+    
+    \quad The contents of {\bf Fig.~1} are explained in the following. In Fig.~1, we describe how the functional DoF is evaluated by the classical example of the AWGN $W$-bandlimited channel. To evaluate the functional DoF of this channel, essentially we want to know how many ``different'' waveforms can be possibly observed at the output of this bandlimited channel within a given finite time interval $t\in[-T/2, T/2]$. 
+    This degree of ``massiveness'' of such waveforms is translated into the Kolmogorov $N$-width $N_\epsilon$ of the bandlimited functional space ${\mathcal{B}_W}$, i.e., the minimum number of required basis functions to reconstruct any $f\in\mathcal{B}_W$ up to an error $\epsilon$.  
+    The evaluation of $N_\epsilon$ can be fulfilled by finding a set of well-defined orthonormal basis functions $\psi_n(t)$ that spans the whole output set of this bandlimited $\mathcal{B}_W$, and translate the functional approximation problem in $L^2(-T/2, T/2)$ onto the equivalent coefficient approximation problem in the square-summable sequence space $\ell^2$ (Note that this translation map is an isometry from $L^2(-T/2, T/2)$ to $\ell^2$ due to the orthogonality of the chosen basis functions). A refined analysis on these orthonormal basis functions has proved that they are in fact prolate spheroidal wave functions (PSWFs), which are shown in the newly drawn {\bf Fig.~1}. Further mathematical analysis also shows that, the Kolmogorov $N$-width $N_\epsilon$ is intrinsically equal to the number of channel gains $\lambda_n$ that exceeds a predetermined threshold $\epsilon$, where the channel gains $\lambda_n$ are defined to be the gain of this $W$-bandlimited AWGN channel when the $n$-th PSWF is input into the channel. 
+
+
+    In the revised version of this paper, we have addressed these issue as:
+
+}
+
+\begin{framed}
+    {\bf Section II-A}
+
+    \red{
+        By contrast, in the information theory community, the DoF has a mathematically rigorous definition that is firmly rooted in the spectral theory in functional analysis. 
+        Generally, if a normed functional space $\mathcal{X}$ contains an $N$-dimensional subspace $\mathcal{X}_N$ such that any function $f\in\mathcal{X}$ can be ``well-approximated'' by some $\hat{f}\in\mathcal{X}_N$, then it is reasonable to claim that the space $\mathcal{X}$ has an essential DoF of $N$.  
+        An inspiring and important example would be evaluating the DoF of a waveform channel bandlimited to $[-W, W]\, {\rm Hz}$, as is shown in Fig.~1. Equivalently, we want to know how many real numbers can be communicated per unit time through this $W$-bandlimited channel. 
+        Slepian solved this problem by collecting all the $W$-bandlimited signals together into a functional space $\mathcal{B}_W$, and asking at least how many coefficients $\{x_n\}_{n=1}^{N_\epsilon}$ are needed to approximate an arbitrary $f(t)\in \mathcal{B}_W$ up to a precision of $\epsilon$, i.e., $\|f(t)-\sum_{n=1}^{N_\epsilon}x_n\phi_n(t)\|/\|f\|\leq \epsilon$.
+        This minimum number of coefficients $N_\epsilon$ is called the Kolmogorov $N$-width $N_\epsilon(\mathcal{B}_W)$ of the functional space $\mathcal{B}_W$ under given norm $\|\cdot\|$. Since data transmission usually takes place within a finite time interval $[-T/2, T/2]$, the norm is chosen to be $L^2(-T/2, T/2)$. Then, the conclusion is that $N_\epsilon=2WT+\mathcal{O}(\log (WT))$ holds for any given $\epsilon>0$. 
+        This means that the $W$-bandlimited channel can essentially transmit $2WT$ real numbers within time $T$. 
+        In this case, the optimal basis waveforms $\psi_n(t)$ are prolate spheroidal wave functions (PSWFs), which are shown in Fig.~1. Note that the functional DoF of the received signal $y(t)$ is determined by evaluating the largest $n$ before the the eigenvalues $\lambda_n$ exhibit a cut-off transition behavior. 
+    }
+
+\end{framed}
+
+
+\textbf{Reviewer 2:}
+2.3) In Fig.~2, the input, output, and channel must be specific and related. For instance, for the LTI system, the authors must specify whether the n is in the time or frequency domain. Then, the output $Y(n)$ shall be the product of $X(n)$ and $H(n)$ if they are in the frequency domain.
+
 \blue{
     {\bf Authors:} 
 }
+
 
 \textbf{Reviewer 2:}
 3) In Section 3 and Section 4, all discussions about modeling are difficult for readers. To this end, the main assumptions must be clearly illustrated at the beginning and a few equations may be necessary to understand the discussions in Section 3 and Section 4.
@@ -289,6 +333,8 @@ where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th 
 \blue{
     {\bf Authors:} 
 }
+
+
 
 {\color{blue}{\textbf{Authors: } 
 Many thanks again for your valuable time and efforts to review this paper. 

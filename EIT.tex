@@ -111,8 +111,8 @@ Finally, we employ random fields as the EIT foundation for unifying the probabil
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=\linewidth]{figures/PSWF.pdf} 
-	\caption{Illustration of functional spaces (right) and their analogy with finite-dimensional vector spaces (left). The basis of the bandlimited functional space is given by prolate spheroidal wave functions (PSWFs). }
+	\includegraphics[width=\linewidth]{figures/PSWFs.pdf} 
+	\caption{\blue{Example of the functional DoF: The bandlimited AWGN channel and its eigenmodes. The transmitted signal $x(t)$ is time-limited by the temporal truncation operator $\mathcal{T}_T$ before undergoing the $W$-bandlimited channel and a second truncation $\mathcal{T}_T$. The output of this channel $y(t)$ is then obtained by imposing an AWGN process $n(t)$. The eigenmodes of this linear system is given by the prolate spheroidal wave functions (PSWFs) $\{\psi_n\}_{n=0}^{\infty}$, with eigenvalues $\{\lambda_n\}_{n=0}^{\infty}$. In this figure, $T=2\,{\rm s}$, $W=2\,{\rm Hz}$, and thus the functional DoF of the recieved signal $y(t)$ is $2WT=8$. }}
 	\label{fig:PSWF}
 \end{figure}
 
@@ -127,9 +127,13 @@ Thus, we use the term {{\emph{channel DoF}}} to describe such a number associate
 % introduce the functional DoF. The formulas 2WT+o(2WT) is indispensable here. 
 \blue{By contrast, in the information theory community, the DoF has a mathematically rigorous definition that is firmly rooted in the spectral theory in functional analysis. 
 Generally, if a normed functional space $\mathcal{X}$ contains an $N$-dimensional subspace $\mathcal{X}_N$ such that any function $f\in\mathcal{X}$ can be ``well-approximated'' by some $\hat{f}\in\mathcal{X}_N$, then it is reasonable to claim that the space $\mathcal{X}$ has an essential DoF of $N$.  
-An inspiring and important example would be evaluating the DoF of a waveform channel bandlimited to $[-W, W]\, {\rm Hz}$. Equivalently, we want to know how many real numbers can be communicated per unit time through this $W$-bandlimited channel. 
+An inspiring and important example would be evaluating the DoF of a waveform channel bandlimited to $[-W, W]\, {\rm Hz}$, as is shown in Fig.~\ref{fig:PSWF}. Equivalently, we want to know how many real numbers can be communicated per unit time through this $W$-bandlimited channel. 
 Slepian solved this problem by collecting all the $W$-bandlimited signals together into a functional space $\mathcal{B}_W$, and asking at least how many coefficients $\{x_n\}_{n=1}^{N_\epsilon}$ are needed to approximate an arbitrary $f(t)\in \mathcal{B}_W$ up to a precision of $\epsilon$, i.e., $\|f(t)-\sum_{n=1}^{N_\epsilon}x_n\phi_n(t)\|/\|f\|\leq \epsilon$.
-This minimum number of coefficients $N_\epsilon$ is called the Kolmogorov $N$-width $N_\epsilon(\mathcal{B}_W)$ of the functional space $\mathcal{B}_W$ under given norm $\|\cdot\|$. If the norm is $L^2(\mathbb{R})$, then $N_0=+\infty$, since a bandlimited signal observed on the infinite time axis $t\in \mathbb{R}$ can carry an infinite number of real samples. More importantly, if the signal $f(t)$ is only observed for a finite time interval $[-T/2, T/2]$, i.e., the norm is chosen to be $L^2(-T/2, T/2)$, then $N_\epsilon=2WT+\mathcal{O}(\log (WT))$ holds for any given $\epsilon>0$. This means that the $W$-bandlimited channel can essentially transmit $2WT$ real numbers within time $T$. In this case, the optimal basis waveforms $\varphi_n(t)$ are prolate spheroidal wave functions (PSWFs), which are shown in Fig.~\ref{fig:PSWF}. 
+This minimum number of coefficients $N_\epsilon$ is called the Kolmogorov $N$-width $N_\epsilon(\mathcal{B}_W)$ of the functional space $\mathcal{B}_W$ under given norm $\|\cdot\|$. Since data transmission usually takes place within a finite time interval $[-T/2, T/2]$, the norm is chosen to be $L^2(-T/2, T/2)$. Then, the conclusion is that $N_\epsilon=2WT+\mathcal{O}(\log (WT))$ holds for any given $\epsilon>0$. 
+This means that the $W$-bandlimited channel can essentially transmit $2WT$ real numbers within time $T$. 
+In this case, the optimal basis waveforms $\psi_n(t)$ are prolate spheroidal wave functions (PSWFs), which are shown in Fig.~\ref{fig:PSWF}. Note that the functional DoF of the received signal $y(t)$ is determined by evaluating the largest $n$ before the the eigenvalues $\lambda_n$ exhibit a cut-off transition behavior. 
+
+
 }
 
 % From a rigorous point of view, the (asymptotic) DoF is defined as the minimum dimension of a finite-dimensional functional subspace that can approximate any function in a larger space with an arbitrarily small error~\cite{poon2005degrees}. For example, the DoF of $W$-bandlimited signals with observation duration $T$ can be derived by finding the finite-dimensional subspace, which contains all the $W$-bandlimited functions that are most concentrated in the time domain. The problem of finding these most concentrated functions is named Slepian's concentration problem~\cite{slepian1976bandwidth}, and it has explicit solutions called prolate spheroidal wave functions, as shown in Fig.~\ref{fig:PSWF}.
@@ -163,7 +167,7 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 \begin{figure}
 	\centering 
 	\includegraphics[width=0.9\linewidth]{figures/LTI-LSI-new.pdf} 
-	\caption{Linear time-invariant systems described by an impulse response in classical information theory, compared with linear space-invariant systems described by the Green's function in EIT.} 
+	\caption{Linear time-invariant systems described by an impulse response in classical information theory, compared with linear space-invariant systems described by the Green's function in EIT. } 
 	\label{fig:Shannon_Marzetta}
 \end{figure}
 % Original figure: figures/LTI_LSI.pdf 
@@ -174,7 +178,8 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 % Basics about electromagnetics.
 EM theory is a branch of physics that studies the EM interaction in four-dimensional spacetime from a field-theoretic point of view. The EM forces are carried by EM vector fields, which are usually described by Maxwell's equations. Maxwell's equations are four linear partial differential equations that characterize how the electric fields and magnetic fields are altered by each other and by charges and currents. Combining these four equations, a vector wave equation can be obtained that manifests the existence of EM waves. 
 
-In wireless communications, to describe the EM response at the receiver induced by the transmitted wave at the transmitter, Green's function is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:Shannon_Marzetta}. Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, to describe the mapping between two vectors, Green's function must take the form of a dyadic-valued function. 
+\blue{In wireless communications, to describe the EM response at the receiver induced by the transmitted wave at the transmitter, Green's function ${\bm G}({\bm r}, {\bm s})$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:Shannon_Marzetta}.}
+Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, to describe the mapping between two vectors, Green's function must take the form of a dyadic-valued function. 
 Note that EM theory is a deterministic theory built on partial differential equations and the knowledge of all surroundings, so Green's function is uniquely determined by the boundary conditions of EM problems.
 As a result, pure EM theory cannot capture the random nature that arises in wireless communications. 
 
