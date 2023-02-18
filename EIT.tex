@@ -262,7 +262,9 @@ Thus, it can be easily proved that a half-wavelength sampling suffices to asympt
 % If we observe the EM field in a spatially limited region, of which the size is far larger than the wavelength of the EM field, then we can perform half-wavelength sampling on the region. The DoF obtained from the region is asymptotically proportional to its length or area. 
 
 A more refined analysis of the wavenumber-limitedness of the EM fields shows that the EM functional DoF depends on how rapidly the phase of a radiated field changes over space. 
-To describe such phase change, the authors of~\cite{bucci1987spatial} coined the word ``spatial bandwidth'' to characterize the degree of wavenumber-limitedness, where they adopted Laplace's steepest descent method to show the accuracy of such field reconstruction and prove the correctness of the derived functional DoF. 
+\blue{To describe such a phase change, the authors of~\cite{bucci1987spatial} introduced the spatial bandwidth $W$ to describe the degree of wavenumber-limitedness. 
+It is proved that for electromagnetic sources confined to a sphere of radius $a$, the spatial bandwidth satisfies $W\leq \sqrt{2}\beta a$, where $\beta$ is the propagation constant of the time-harmonic EM fields. 
+The functional DoF of the received field is thus proportional to $W$ and the length of the observation region.  }
 
 % In the analysis approach of spatial functional DoF, a notion named spatial bandwidth is introduced, which extends the bandwidth in classical information theory to spatial domain~\cite{bucci1987spatial}. The bandwidth in classical information theory depicts the band-limited characteristics of the signal in the frequency domain, and can be used to derive the DoF of the signal according to the Nyquist sampling theorem. Similarly, the spatial bandwidth depicts the band-limited characteristics of the EM field in the wavenumber domain, and can be used to derive the DoF of the EM field in the space-wavenumber domain. For a given channel model, the spatial bandwidth can be approximated using the method of steepest descent. More general results considering the four-dimensional spacetime are based on Landau's eigenvalue problem.
 \begin{figure*}[ht]
@@ -290,10 +292,10 @@ The channel DoF in this stochastic model should be the expected value averaged b
 
 
 \subsection{Mutual Information and Capacity Analysis}
-Besides the DoF which reveals the number of sub-channels available, the channel capacity is another important performance indicator showing the maximum information transmission rate of a wireless system. 
+Besides the DoF which reveals the number of sub-channels available, the channel capacity $I({\bm J}; {\bm E})$ is another important performance indicator showing the maximum information transmission rate of a wireless system. 
 Compared to the traditional MIMO information theory using random vectors as transmitted and received signals, EIT models the EM fields as random fields. 
 The random field modeling follows the statistical approach of mutual information and capacity analysis by Shannon. 
-Each realization of the random field represents a pattern of the radiating field. The ensemble of the realizations, to which a probability measure is assigned, depicts the statistical characteristics of the system. 
+Each realization of the random field represents a possible pattern of the radiating field. The ensemble of the realizations, to which a probability measure is assigned, depicts the statistical characteristics of the system. 
 
 The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. 
 In parallel with MIMO theory based on matrices, operator theory can be used to represent the autocorrelation properties of the random field. 
