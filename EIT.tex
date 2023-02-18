@@ -218,7 +218,7 @@ This idea of continuous modeling, though seems impossible to have its hardware c
 The theoretical convenience originates from the fact that the fundamental physical laws that rule the EM phenomena are intrinsically continuous. 
 As a result, extensive mathematical tools, including functional analysis, linear operator theory, and complex analysis, have already been well-developed to tackle these continuous linear problems. 
 The practical reason is that, the real-world antenna-based point-to-point transmission models can be viewed as a special case of the continuous model. 
-\blue{This is because the entries of the channel matrix can be calculated as ${\bm H}_{qp}=\langle\psi_q|T|\phi_p \rangle$, where $\phi_p$ and $\psi_q$ are the $p$-th and $q$-th eigenmodes of the transmit and receive antennas, respectively. Thus, modeling the EM channel by a bounded linear operator $T$ is mathematically consistent with the existing matrix modeling. }
+\blue{This is because the entries of the channel matrix can be calculated as ${\bm H}_{qp}=\langle\psi_q|T|\phi_p \rangle$, where $\phi_p$ and $\psi_q$ are the $p$-th and $q$-th operating modes of the transmit and receive antennas, respectively. Thus, modeling the EM channel by a bounded linear operator $T$ is mathematically consistent with the existing matrix modeling. }
 % Mathematically, an antenna acts as a continuous integral operator that weights the incident signal by its EM eigenmode, which corresponds with the continuous modeling in EIT. 
 % Thus, the EIT channel is expected to be modelled by a continuous linear operator, where the operator can be either deterministic or stochastic.
 
@@ -275,13 +275,12 @@ To describe such phase change, the authors of~\cite{bucci1987spatial} coined the
 \vspace{-1em}
 \subsection{Channel DoF}
 The functional DoF introduced in the previous subsection emphasizes the intrinsic DoF of the received field. 
-However, due to the restrictions of the EM channel, it is possible that some of these functional DoFs at the receiver cannot be excited. For example, an EM propagation environment with rich  scatterers can excite almost all angular eigenmodes at the receiver, while an EM channel only composed of LoS paths may not enable all functional DoFs. Thus, evaluating the channel DoF is of practical importance.  
+However, due to the restrictions of the EM channel, it is possible that some of these functional DoFs at the receiver cannot be excited. For example, an EM propagation environment with rich scatterers can excite almost all angular eigenmodes at the receiver, while an EM channel only composed of LoS paths may not enable all eigenmodes. Thus, evaluating the channel DoF is of practical importance.  
 
-As is defined in Subsection~\ref{Sec_2_Subsec_1}, the channel DoF represents the maximum number of independent parallel channels that can be used to transmit information. 
-For the simplest LoS channel, the DoF is solved by expanding the continuous channel on a series of orthogonal sub-channels and counting the number of channel gains that exceed a certain threshold. 
-This procedure can be transplanted into EIT by solving the eigenvalue problem of the continuous channel operator. 
-Specifically, the LoS channel operator is given by the free-space Green's function, and the corresponding eigenvalue problem can be approximated by Slepian's concentration problem~\cite{miller2000communicating}, where the well-investigated prolate spheroidal wave functions are the approximated eigenfunctions.  
-Through this approach, the DoF of LoS channel model has been approximately derived to be proportional to the product of the area of the transceivers~\cite{pizzo2022nyquist,miller2000communicating}. 
+\blue{As is defined in Subsection~\ref{Sec_2_Subsec_1}, the channel DoF represents the maximum number of independent parallel channels that can be used to transmit information. 
+Similar to the SVD decomposition of matrices, the DoF of a LoS EM channel can be solved by expanding the channel operator $T$ onto a series of orthogonal sub-channels: $T=\sum_n \sigma_n |\psi_n\rangle\langle\phi_n|$, and counting the number of channel gains $\sigma_n$ that exceed a certain threshold $\epsilon$. 
+Specifically, in the scenario where a pair of coaxial square transceivers are employed as transmit and receive antennas, the LoS channel operator $T$ is given by the free-space Green's function ${\bm G}({\bm r}, {\bm s})$, and the corresponding eigenvalue problem can be approximated by the standard Slepian's concentration problem~\cite{miller2000communicating}. In this case, the channel eigenmodes $\psi_n$ and $\phi_n$ are proved to be well-approximated by prolate spheroidal wave functions $\varphi_n(x)$.   
+Through this approach, the DoF of LoS channel model has been approximately derived to be proportional to the product of the area of the transceivers~\cite{pizzo2022nyquist,miller2000communicating}. }
 
 For non-line-of-sight (NLoS) deterministic channel models, the channel DoF can be similarly derived by performing Slepian's analysis in the angular domain, since the scatterers usually appear in limited solid angular regions. 
 Following Slepian's analysis, it is proved that the NLoS channel DoF is proportional to both the solid angle of the scatterer cluster and the geometric lengths of the transceivers~\cite{poon2005degrees}.   
