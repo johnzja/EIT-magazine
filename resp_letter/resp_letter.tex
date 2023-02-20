@@ -255,9 +255,9 @@ where ${\bm C}_{\bm x}=\mathbb{E}\left[{\bm x}{\bm x}\H\right]$ is the covarianc
     \item The discrete\footnote{Here ``discrete'' means the noise values are random variables that are indexed by a discrete antenna index $n$} noise, i.e., the components of the noise vector ${\bm n}$, are uncorrelated for any pair of receive antennas. 
     \item The average discrete noise power $\sigma^2$ is a constant, which is independent of the number of transceiver antennas and the antenna spacing. 
 \end{enumerate}
-Note that the assumption (2) ensures an unchanged receive SNR $\gamma_{\rm R}=\mathbb{E}[{\bm y}\H{\bm y}]/(N\sigma^2)$ as the number of receive antennas $N\to\infty$ (but the receiving antennas are confined in a finite receive volume $V_{\rm R}$ [R]). However, it can be numerically verified that as $N\to\infty$, the MIMO capacity $C$ will diverge to infinity, even if the channel model is given by the line-of-sight (LoS) Green's function model
+Note that the assumption (2) ensures an unchanged receive SNR $\gamma_{\rm R}=\mathbb{E}[{\bm y}\H{\bm y}]/(N\sigma^2)$ as the number of receive antennas $N\to\infty$ (but the receiving antennas are confined in a finite receive volume $V_{\rm R}$ [R]). However, it can be numerically verified that as $N\to\infty$, the MIMO capacity $C$ will diverge to infinity, even if the channel model is given by the line-of-sight (LoS) Friis transmission formula: 
 \begin{equation}
-    [{\bm H}_{mn}] = \frac{1}{4\pi r_{mn}}e^{-\ri 2\pi r_{mn}/\lambda}\quad [{\rm bit/s/Hz}],
+    [{\bm H}_{mn}] = \frac{\lambda}{4\pi r_{mn}}e^{-\ri 2\pi r_{mn}/\lambda},
 \end{equation}
 where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th transmit antenna to the $n$-th receive antenna, and $\lambda$ is the operating wavelength. This divergence of the system capacity contradicts the common belief that only a finite number of bits can be transmitted per unit time and unit bandwidth by the EM channel that connects a pair of given transmitter and receiver with confined volumes $V_{\rm T}$ and $V_{\rm R}$. 
 
@@ -360,25 +360,118 @@ where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th 
 \blue{
     {\bf Authors:}
 
-    \quad As is pointed out by the reviewer, the figure (Fig.~\ref{fig:LTI_LSI_new_deprecated} in this response, which corresponds to Fig.~2 in the magazine paper) is somewhat confusing, since 
-
-    \begin{figure}[h]
-        \centering 
-        \includegraphics[width=0.8\linewidth]{../figures/LTI-LSI-new.pdf} 
-        \caption{Linear time-invariant systems described by an impulse response in classical information theory, compared with linear space-invariant systems described by the Green's function in EIT. } 
-        \label{fig:LTI_LSI_new_deprecated}
-    \end{figure}
+    \quad As is pointed out by the reviewer, the figure (Fig.~\ref{fig:LTI_LSI_new} in this response, which corresponds to Fig.~2 in the magazine paper) is somewhat confusing, since discrete and discretization have already been used in the first section to distinguish between classical IT and EIT. We agree with the reviewer that, in Fig.~2 there is no need to stress the difference of IT and EIT again. So we clarify the motive of Fig.~2 as follows.
     
+    \begin{figure}[htbp]  
+        \centering
+        \begin{minipage}[t]{0.45\linewidth}  
+            \centering  
+            \setlength{\belowcaptionskip}{-0.1cm} 
+            \includegraphics[width=7cm]{../figures/LTI-LSI-new.pdf}  
+            \caption{\small Old version of this figure. }  \label{fig:LTI_LSI_new}
+        \end{minipage}
+        \begin{minipage}[t]{0.45\linewidth}  
+            \centering  
+            \includegraphics[width=7cm]{../figures/LTI-LSI-new-v1.pdf}  
+            \caption{\small Updated version of this figure. }  \label{fig:LTI_LSI_new-v1}
+        \end{minipage}  
+    \end{figure}
+
+
+    \quad In fact, this figure is intended for emphasizing the analogous connection between the discrete-time linear time-invariant (LTI) model in classical IT and the continuous-space linear space-invariant (LSI) model in EIT. The connection lies in the fact that, the free-space isotropic electromagnetic impulse response is both linearly invariant in the time domain and linearly invariant in the space domain. To address the confusion, in the revised version of this figure, we have replaced the discrete time index $n$ with the continuous time index $t$, so as to strengthen the analogy of LTI-LSI systems instead of the discrete-continuous difference. 
+
+    We have also clarified this analogy in the following revised paragraphs of this paper, which are shown in the following box: 
 }
+
+
+\begin{framed}
+    {\bf Fig.~2 Caption}
+
+    \red{In analogy with linear time-invariant systems described by a time-domain impulse response $h(t)$ in classical information theory, the EIT model is based on linear space-invariant systems described by the Green's function ${\bm G}({\bm r}, {\bm s})$.}
+
+    {\bf Section II-C}
+
+    \red{In wireless communications, to describe the EM response at the receiver induced by the transmitted wave at the transmitter, Green's function ${\bm G}({\bm r}, {\bm s})$ is usually introduced as the spatial impulse response of EM systems~[5], with ${\bm J}({\bm s})$ being the transmitted source current, and ${\bm E}({\bm r})$ being the received electric field, as is shown in Fig.~\ref{fig:LTI_LSI_new}. Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, to describe the mapping between two vectors, Green's function must take the form of a dyadic-valued function. 
+    Note that EM theory is a deterministic theory built on partial differential equations and the knowledge of all surroundings, so Green's function is uniquely determined by the boundary conditions of EM problems.
+    As a result, pure EM theory cannot capture the random nature that arises in wireless communications.  }
+\end{framed}
+
 
 
 \textbf{Reviewer 2:}
 3) In Section 3 and Section 4, all discussions about modeling are difficult for readers. To this end, the main assumptions must be clearly illustrated at the beginning and a few equations may be necessary to understand the discussions in Section 3 and Section 4.
 
 \blue{
-    {\bf Authors:} 
+    {\bf Authors:} Many thanks for the reviewer's suggestion. In order to facilitate understanding, we have carefully revised the current version of this magazine paper. For you to check, the modifications are provided in the following boxes in a pointwise manner. 
 }
 
+\blue{
+    \quad In the beginning of {\bf Section III-A}, we have clarified the main assumptions of the EIT system model by comparing the EIT channel operator with the traditional MIMO channel matrix. 
+}
+
+\begin{framed}
+    {\bf Section III-A}
+
+    \red{In this part, we will discuss the channel models in EIT, which describe the EM channel by a bounded linear operator $T$ that maps the source current distribution ${\bm J}({\bm s})\in\mathcal{L}^2(V_{\rm T})$ to the noiseless received field ${\bm E}({\bm r})\in\mathcal{L}^2(V_{\rm R})$.   
+    Note that to model a traditional narrowband MIMO channel, a matrix with complex-valued entries ${\bm H}:\mathbb{C}^M\to\mathbb{C}^N$ is usually utilized, where each entry represents the complex channel between a pair of transceiver antennas. 
+    This channel model is, in essence, spatially discrete. 
+    However, in EIT, it is reasonably assumed that one can measure the field at an arbitrary point inside the receiver region, where the precision of such measurement is subject to some physical noise limits. This leads to the assumption of EIT that the transceivers operate in a continuous functional space $\mathcal{L}^2(V_{\{{\rm T, R}\}})$. }
+
+\end{framed}
+
+\blue{
+    \quad In the middle of {\bf Section III-A}, we have emphasized the connection between the EIT operator channel $T$ and the MIMO matrix channel ${\bm H}$ by mathematical formulas, using the standard and simple symbols in Hilbert spaces. 
+}
+
+\begin{framed}
+    {\bf Section III-A}
+
+    \red{This is because the entries of the channel matrix can be calculated as ${\bm H}_{qp}=\langle\psi_q|T|\phi_p \rangle$, where $\phi_p$ and $\psi_q$ are the $p$-th and $q$-th operating modes of the transmit and receive antennas, respectively. Thus, modeling the EM channel by a bounded linear operator $T$ is mathematically consistent with the existing matrix modeling. }
+\end{framed}
+
+\blue{
+    \quad In {\bf Section III-B} (EIT Noise Field Modeling), we have accurately clarified the difference between the noise assumptions in IT and those in EIT by simple terms and the corresponding mathematical symbols. 
+}
+
+\begin{framed}
+    {\bf Section III-B} 
+
+    \red{
+        In classical information theory, the noise is usually modeled by a time-domain additive white Gaussian noise (AWGN) with a constant power spectral density $n_0/2$. Thus, its projection coefficients onto any orthonormal basis are independent and of equal power $n_0/2$, which simplifies theoretical analysis. 
+        Similarly, in EIT, the noise is usually modeled as a spatial AWGN with flat wavenumber PSD. This spatial AWGN implies that the additive noises at any disjoint small spatial regions $V_1, V_2$ are independent and identically distributed (i.i.d.) complex Gaussian random variables, whose variances are proportional to the volumes $\mu(V_1), \mu(V_2)$ of the small regions. Although the AWGN model facilitates theoretical analysis, the white spectral assumption is problematic, since it causes an unbounded noise power. 
+    }
+\end{framed}
+
+\blue{
+    \quad To explain the theoretical techniques for evaluating the functional DoF in EIT, we have added the transform formulas for electric fields, and the asymptotic spatial bandwidth conclusions in the formula form. 
+}
+
+\begin{framed}
+    {\bf Section IV-A}
+
+    \red{The functional DoF of a scattered EM field ${\bm E}({\bm r})$ can be analyzed in the transform domain ${\bm E}({\bm k}) = \mathcal{F}^3[{\bm E}({\bm r})]({\bm k})$, i.e., the wavenumber domain. Resembling the bandlimited signals in the time-frequency domain, the radiated EM fields also exhibit the wavenumber-limited property in the space-wavenumber domain. 
+    Thus, it can be easily proved that a half-wavelength sampling suffices to asymptotically reconstruct an arbitrary EM field up to any given precision $\epsilon$ as the receiving region $\mu(V_{\rm R})\to\infty$, i.e., the EM DoF is at most proportional to the number of half-wavelength grids in the receiver region. }
+
+    {\bf Section IV-A}
+
+    \red{
+    To describe such a phase change, the authors of~[8] introduced the spatial bandwidth $W$ to describe the degree of wavenumber-limitedness. 
+    It is proved that for electromagnetic sources confined to a sphere of radius $a$, the spatial bandwidth satisfies $W\leq \sqrt{2}\beta a$, where $\beta$ is the propagation constant of the time-harmonic EM fields. 
+    The functional DoF of the received field is thus proportional to $W$ and the length of the observation region. }
+\end{framed}
+
+\blue{
+    \quad We have clarified the eigenmode decomposition techniques (operator SVD) in the evaluation of the electromagnetic channel DoF. 
+}
+
+\begin{framed}
+    {\bf Section IV-B}
+
+    \red{As is defined in Subsection~II-A, the channel DoF represents the maximum number of independent parallel channels that can be used to transmit information. 
+    Similar to the SVD decomposition of matrices, the DoF of a LoS EM channel can be solved by expanding the channel operator $T$ onto a series of orthogonal sub-channels: $T=\sum_n \sigma_n |\psi_n\rangle\langle\phi_n|$, and counting the number of channel gains $\sigma_n$ that exceed a certain threshold $\epsilon$. 
+    Specifically, in the scenario where a pair of coaxial square transceivers are employed as transmit and receive antennas, the LoS channel operator $T$ is given by the free-space Green's function ${\bm G}({\bm r}, {\bm s})$, and the corresponding eigenvalue problem can be approximated by the standard Slepian's concentration problem~[10]. In this case, the channel eigenmodes $\psi_n$ and $\phi_n$ are proved to be well-approximated by prolate spheroidal wave functions $\varphi_n(x)$.   
+    Through this approach, the DoF of LoS channel model has been approximately derived to be proportional to the product of the area of the transceivers~[10], [11]. }
+\end{framed}
 
 
 {\color{blue}{\textbf{Authors: } 
@@ -403,15 +496,99 @@ Sincerely, \\
 \end{center}
 
 \textbf{Reviewer 3:}
-This paper introduces a dimension-independent CSI acquisition method for sensing
-RIS-assisted MISO wireless communication systems. The key issue of the paper is that the achievable schemes look like heuristic with no performance guarantees, and the methodology does not seem novel.
+The paper discussed the electromagnetic information theory (EIT). As a magazine paper, the authors introduced some key concepts related to EIT, such as modeling, applications, and assumptions. The paper is well-organized and well-written. The paper need significant review to address the following comments. 
 
-{\color{blue}{\textbf{Authors: } 
-We appreciate the reviewer's concise summary of the key points of this paper. We have tried our best to address these issues in the revised paper according to the reviewer's valuable comments. Specifically, we have added achievable theorems for our proposed vM-EM phase estimation algorithm, and our responses are provided in a point-to-point manner as below. 
-}}
+\blue{
+    {\bf Authors:} We appreciate the reviewer's positive attitude and concise summary of this magazine paper. We have tried our best to address these issues in the revised paper according to the reviewer's valuable comments. Our responses are provided in a point-to-point manner as below. 
+}
 
 \textbf{Reviewer 3:}
-1) The paper considers a MISO system. Can the approaches work for MIMO system?
+1) The paper is lack technical details even if it is submitted to a magazine journal. Most of the concept is for a general description without depth discussion. For example, for the discussion of mutual information and capacity analysis (Section IV.C), what kind of mathematical representation are used for the capacity in EIT? 
+
+\blue{
+    {\bf Authors: } Thank you for pointing out the limitations of this paper in Section IV-C. In fact, the most important mathematical formula of the EIT mutual information is the Karhunen-Lo\`{e}ve (KL) expansion and the Fredholm determinant. Both of them play an important rule in rigorously defining the EIT mutual information. 
+    
+    \quad We would like to start from the mutual information between a pair of circularly symmetric complex Gaussian random vectors ${\bf x}, {\bf y}\in\mathbb{C}^N$, which is defined as
+    \begin{equation}
+        I({\bf x}; {\bf y}) = \log\det({\bf C}_{\bf y}{\bf C}_{{\bf y}|{\bf x}}^{-1}),
+    \end{equation} 
+    where ${\bf C}_{\bf y}$ is the covariance matrix of ${\bf y}$, and ${\bf C}_{{\bf y}|{\bf x}}$ is the conditional covariance matrix of ${\bf y}$ given ${\bf x}$. By assuming an additive Gaussian noise channel ${\bf y}={\bf x}+{\bf n}$, the mutual information can be expressed as 
+    \begin{equation}
+        I({\bf x};{\bf y}) = \log\det({\bf I}_N+{\bf C}_{\bf x}{\bf C}_{\bf n}^{-1}),
+    \end{equation}
+    where ${\bf C}_{\bf n}$ is the noise covariance matrix. 
+    
+    \quad Before defining the mutual information $I({\bf J}; {\bf Y})$ between the transmitted source current field ${\bf J}$ and the received noisy electric field ${\bf Y}$, we first need to clarify what the mutual information between two random processes is. An intuitive approach is to project the random processes onto some basis functions, and define the process-process mutual information to be the supremum of the mutual information between the projected coefficients [R1]. Following this idea, the continuous-space mutual information is defined as 
+    \begin{equation} 
+        I({\bf J}; {\bf Y}) = \sup_{N, \{\varphi_q\}_{q=1}^{N}, \{\phi_p\}_{p=1}^{N}} I(\{\langle\varphi_q, {\bf Y}\rangle\}_{q=1}^N;\{\langle\phi_p, {\bf E}\rangle\}_{q=1}^{N}),
+    \end{equation} 
+    where $\langle\cdot, \cdot\rangle$ denotes the complex inner product, and $\{\varphi_q\}_{q=1}^{N},\{\phi_p\}_{p=1}^{N}$ denote the basis functions (not necessarily orthogonal) whose domains are the same with ${\bf Y}$ and ${\bf J}$. 
+
+    \quad By further assuming the channel transmission equation ${\bf Y}({\bf r})={\bf E}({\bf r})+{\bf N}({\bf r})$, this mutual information can be expressed in the Fredholm determinant [R2] form:
+    \begin{equation}
+        I({\bf J}; {\bf Y})=\log\det({\bf 1}+T_{\bf E}T_{\bf N}^{-1}),
+    \end{equation}
+    where $T_{\bf E}$ is the autocorrelation operator of the random electric field ${\bf E}$, and $T_{\bf N}$ is the autocorrelation operator of the random noise field ${\bf N}$ [R3]. Note that the Fredholm determinant is a parallel analogy to the matrix determinant, i.e., it is the continuous version of the ordinary matrix determinant. 
+
+    \quad If we further assume a white noise spectrum, i.e., ${\bf R}_{\bf N}=\mathbb{E}[{\bf N}({\bf r}){\bf N}\H({\bf r}')]=n_0\delta^3({\bf r}-{\bf r}')/2$, then the continuous-space mutual information admits an expression that is related to the Karhunen-Lo\`{e}ve expansion: 
+    \begin{equation}
+        I({\bf J}; {\bf Y})=\sum_k \log(1+\frac{\lambda_n}{n_0/2}),
+    \end{equation}
+    where $\lambda_0\geq \lambda_1\geq\cdots \geq 0$ are eigenvalues of the autocorrelation operator $T_{\bf E}$ arranged in the descending order, i.e., 
+    \begin{equation}
+        T_{\bf E}\phi_k = \lambda_k\phi_k.
+    \end{equation} 
+    The eigenvalues $\lambda_k$ and the corresponding eigenfunctions $\phi_k$ can be computed from the KL expansion. 
+    
+    {\bf References:}
+
+    [R1] I. M. Gelfand and A. IAglom, {\it Calculation of the amount of information about a random function contained in another such function}. American Mathematical Society Providence, 1959. 
+
+    [R2] Z. Wan, J. Zhu, Z. Zhang, L. Dai, and C.-B. Chae, ``Mutual information for electromagnetic information theory based on random fields,'' {\it IEEE Trans. Commun.}, Feb. 2023. 
+
+    [R3] A. Pizzo, L. Sanguinetti, and T. L. Marzetta, ``Spatial characterization of electromagnetic random channels,'' {\it IEEE Open J. Comm. Soc.}, vol. 3, pp. 847-866, Apr. 2022. 
+
+}
+
+\blue{
+    \quad In the revised version of this paper, we have addressed this issue as 
+}
+
+\begin{framed}
+    {\bf Section IV-C}
+
+    \red{In parallel with MIMO theory based on matrices, operator theory can be used to describe the autocorrelation ${\bm R}({\bm r}, {\bm r}')=\mathbb{E}[{{\bm E}({\bm r}){\bm E}\H ({\bm r}')}]$ of the random field. 
+    Utilizing the Karhunen-Lo\`{e}ve (KL) expansion, the continuous channel can be decomposed into parallel sub-channels. 
+    Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
+    Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form $\log\det({\bf I}+T_{\bm E}T_{\bm N}^{-1})$~[7], where $T_{\bm E}$ and $T_{\bm N}$ are self-adjoint autocorrelation operators of the random fields ${\bm E}({\bm r})$, and ${\bm N}({\bm r})$, respectively.  
+    This Fredholm determinant form provides a closed-form formula for the EIT mutual information. }
+
+\end{framed}
+
+
+\textbf{Reviewer 3:}
+2) It would be more helpful to have some figures to show the results like capacity, characteristics for the channel, etc.
+
+\blue{
+    {\bf Authors: }
+}
+
+\textbf{Reviewer 3:}
+3) As most of the results are discussed from theoretical analysis, some field results or numerical results are needed to justify the assumption or model. 
+
+\blue{
+    {\bf Authors: }
+    
+}
+
+\textbf{Reviewer 3:}
+4) The EIT is based on the Gaussian random fields. The paper may provide more details in this direction, such as motivation, justification, evaluation, etc.
+
+\blue{
+    {\bf Authors: }
+    
+}
+
 
 {\color{blue}{\textbf{Authors: } 
 Thanks for the insightful comments of the reviewer. Since the definition of MIMO systems usually include two possible explanations: the multi-antenna MIMO and the multi-user MIMO, we will elaborate on both of these two explanations. 
