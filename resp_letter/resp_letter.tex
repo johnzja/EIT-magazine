@@ -570,7 +570,14 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 2) It would be more helpful to have some figures to show the results like capacity, characteristics for the channel, etc.
 
 \blue{
-    {\bf Authors: }
+    {\bf Authors: } Thanks for the reviewer's constructive suggestions. In order to further clarify the characteristics for the EM mutual information and the EM channel, we have developed numerical algorithms for the evaluation of the Fredholm determinant [R1], and then plotted the EM mutual information as a function of the sampling number.   
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../figures/discrete_receiver.pdf}
+        \caption{\small Comparison between the continuous-space MIMO mutual information and the discretized MIMO mutual information. }
+    \end{figure}
+
 }
 
 \textbf{Reviewer 3:}
@@ -585,83 +592,10 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 4) The EIT is based on the Gaussian random fields. The paper may provide more details in this direction, such as motivation, justification, evaluation, etc.
 
 \blue{
-    {\bf Authors: }
+    {\bf Authors: } 
     
 }
 
-
-{\color{blue}{\textbf{Authors: } 
-Thanks for the insightful comments of the reviewer. Since the definition of MIMO systems usually include two possible explanations: the multi-antenna MIMO and the multi-user MIMO, we will elaborate on both of these two explanations. 
-
-1.1) Actually, the extensibility to multi-antenna MIMO case is possible without sacrificing the number of time slots for CSI acquisition. By placing the pilot symbols on different OFDM subcarriers across different antennas, all the antennas at the user can transmit rotational pilots simultaneously at different frequencies. Then, the power sensors attached to each RIS element can split the signal of the interference random field (IRF) into components of different frequencies, and perform phase estimation separately for different antennas. Mathematically, it is possible to retrieve $K$ different phases $\varphi_k\in[0,2\pi], k\in\{1,2,\cdots,K\}$ from the following composite power signal 
-\begin{equation}
-    P(t) = \left|\alpha + \sum_{k=1}^{K} \beta_k e^{\ri \omega_k t}  e^{\ri \varphi_k}\right|^2,
-\end{equation}
-where $\beta_k>0$, and $\omega_k\neq\omega_\ell$ for different antenna indices $k,\ell$. In fact, by assuming a sufficiently small interferential power ratio $r=(\alpha)^{-2}\sum_k \beta_k^2$, the power signal $P(t)$ can be locally linearized into one DC component $\alpha^2$ and $K$ AC components $2\alpha\beta_k \cos(\omega_k t+\varphi_k)$ of different frequencies $\omega_k$, which may further be decomposed by applying the Fourier transform. Clearly, this sensing RIS-aided multi-antenna MIMO CSI acquisition method is sub-optimal. However, designing the optimal method to estimate all the $\varphi_k$ and $\beta_k$ accurately is also interesting, and we will leave it for our future work. 
-
-1.2) The extensibility to multi-user MIMO case. Similar to the above multi-antenna MIMO case, the simultaneous CSI acquisition methodology also works for the multi-user case. By transmitting pilot symbols that rotate at different frequencies, the RIS power sensor can still distinguish between different users. 
-Moreover, since usually different users are separated in the angular domain from the RIS's perspective [R1], in the multi-user case, the RIS can further exploit such angular separation property to distinguish between different users. Thus, by exploiting multi-sensor joint detection and estimation at the RIS, the CSI acquisition precision may be further improved due to the additional angular orthogonality among users. Such an extension to the multi-user MIMO case is also left for our future work, and we have added a brief discussion about this idea in the revised version.  
-
-% It is worth pointing out that the method we proposed to estimate the channel phase difference $\varphi$ is heuristic, which may not be the optimal one. It has been verified in the paper that our method is simple and efficient. However, designing the optimal method to estimate ${{\varphi_{l,c}}}$ is also interesting, and we will leave it for our future work. In the revised paper, we have addressed this issue as:
-
-\quad Specifically, in the revised paper, we have addressed these issues as:
-}}
-
-\begin{framed}
-{\bf Section IV-B}
-
-    \red{In fact, for multi-antenna MIMO systems, rotating pilot symbols at different frequencies $k$ can be simultaneously transmitted by different antennas to enable CSI acquisition.  
-    Then, the multi-antenna CSI acquisition can be fulfilled by performing Fourier analysis on the composite IRF power signal $P(t)$, and extracting the phase angles for each antenna at distinct frequencies. 
-    Similarly, this pseudo-frequency division idea can be extended to multi-user MIMO systems, where different users can also be distinguished by different IRF frequencies. Fortunately, since different users are usually separated in the angular domain from the RIS's perspective, these users can be further identified by performing joint detection and estimation across all the RIS sensors. The joint multi-user CSI acquisition is beyond the scope of this paper, and is left for our future work. }
-\end{framed}
-
-\blue{
-    {\bf References:}
-
-[R1] C. Pan et al., ``An Overview of Signal Processing Techniques for RIS/IRS-Aided Wireless Systems,'' {\it IEEE J. Sel. Topics Signal Process.}, vol. 16, no. 5, pp. 883-917, Aug. 2022. 
-}
-
-
-
-\textbf{Reviewer 3:}
-2) The new contribution from algorithm seems to be phase estimation in Section V. However, all the approaches seem direct and heuristic. There are no performance guarantees of the proposed approaches.
-
-{\color{blue}{\textbf{Authors: } 
-Many thanks for the reviewer's high expectation on this paper. To respond to the reviewer's questions, we would like to clarify our contributions and explain the meanings of the proposed algorithms in a more systematic manner. 
-Specifically, we will show the underlying logic in the proposed algorithms to justify their rationale. 
-Also, as is stressed by the reviewer, it is important to provide performance guarantees for the proposed approaches. We have tried our best to conceive achievability theorems for our proposed algorithms. These theorems and the corresponding performance guarantees will be provided in response to {\bf question 3)}, which will be presented later. 
-
-We would like to commence by elaborating the novelty of the proposed methods. In this paper, we have proposed a new approach for CSI acquisition by exploiting the power detection capability of sensing RIS. This approach is fundamentally different from the existing schemes in that: 
-\begin{enumerate}
-    \item The proposed CSI acquisition scheme is performed at the RIS instead of the baseband processors at the receivers. Since no RF chains are equipped at the RIS, it seems impossible to obtain the phase information of the channels. To attack this problem, we try to exploit the physical phenomenon of interference to convert the hard-to-detect phase information into easy-to-detect intensity information, which finally leads to our idea of creating the interference random field (IRF) for CSI acquisition.  
-    \item The proposed IRF-based methods can realize dimension-independent CSI acquisition task in a cost-efficient manner. We have proved in this paper that it is possible to acquire enough CSI for accurate beamforming in only 3 pilot slots, without requiring too much hardware cost. It is true that dimension-independent CSI acquisition can also be realized by attaching an adequate number of RF chains to the RIS's elements [R1-R2], however, we demonstrate that the same near-optimal performance can be achieved by adding only cost-efficient power sensors, which are usually much cheaper than RF chains [R3] and much easier to be integrated onto the RIS's microwave structure [R4]. 
-\end{enumerate}
-
-\quad After proposing the concept of sensing RIS and explaining the basic principles of how it works, the remaining task is to construct an efficient algorithm to extract the desired CSI from the observed power signals. Specifically, for the RIS beamforming tasks, it suffices to estimate the phase difference $\varphi_n = \arg(f_n^*) - \arg({\bm g}_n\T {\bm w})$ between the BS-RIS and the RIS-user channels. 
-Given the observed sequence $P_\ell = |\alpha + \beta\exp(\ri \psi_\ell)\exp(\ri \varphi) + v_\ell|^2$, our goal is to recover the unknown phase $\varphi$ with the prior knowledge of $\psi_\ell$ in the third pilot slot ($\alpha$ and $\beta$ can be easily estimated from the two preceding pilot slots), leading to the name ``phase estimation''. 
-
-\quad In this paper, we have proposed three methods to solve this phase estimation problem. Due to the nonlinear nature of the squaring operation, traditional signal processing techniques including the Fourier spectrum analysis becomes suboptimal. Thus, the first proposed approach, i.e., the DFT method, serves as a suboptimal baseline for all the following proposed schemes. Furthermore, since the probability distributions of the power signals $P_\ell$ are clearly specified (noncentral chi-squared distribution), the ML method is theoretically applicable to this problem. However, the ML method involves intensive evaluations of modified Bessel functions, which is usually computationally intractable on typical RIS microcontrollers. 
-Thus, to reduce the computational cost of phase estimation, we construct an expectation-maximization (EM) algorithm that assigns a von Mises prior distribution to $\varphi$, thus it is called the vM-EM algorithm. 
-This algorithm regards the noiseless complex signal $\mu_\ell := \alpha+\beta\exp(\ri\psi_\ell)\exp(\ri\varphi)$ as a latent variable depending on the unknown parameter $\varphi$, and works by alternately estimating the latent variables $\mu_\ell$ and the unknown phase $\varphi$. 
-Furthermore, the EM steps are carefully designed to preserve the von Mises distribution property of the updated estimator $\hat{\varphi}|\{P_\ell\}$, satisfying the conjugate prior condition [R5] for computational convenience. 
-To the best of our knowledge, the methodology of leveraging von Mises distributions for phase estimation is novel, and there are no similar results in the literature. 
-Furthermore, in our simulation results, the proposed vM-EM algorithm is compared with two baselines: the DFT method and the ML method, and it is demonstrated by the numerical simulation that the vM-EM method can achieve comparable performance with the ML method. 
-
-{\bf References:}
-
-[R1] G. C. Alexandropoulos and E. Vlachos, ``A hardware architecture for reconfigurable intelligent surfaces with minimal active elements for explicit channel estimation,'' in {\it Proc. IEEE Int. Conf. on Acoust., Speech
-and Signal Process. (ICASSP)}, May 2020. 
-
-[R2] E. Vlachos, G. C. Alexandropoulos, and J. Thompson, ``Wideband MIMO channel estimation for hybrid beamforming millimeter wave systems via random spatial sampling,'' {\it IEEE J. Sel. Topics Signal Process.}, vol. 13, no. 5, pp. 1136-1150, 2019.
-
-[R3] Y. Zhou and M. Y.-W. Chia, ``A Low-Power Ultra-Wideband CMOS True RMS Power Detector,'' {\it IEEE Trans. Micro. Theory Techn.}, vol. 56, no. 5, pp. 1052-1058, May 2008. 
-
-[R4] Q. Ma, G. D. Bai, H. B. Jing, C. Yang, L. Li, and T. J. Cui, ``Smart metasurface with self-adaptively reprogrammable functions,'' {\it Light: science \& applications}, vol. 8, no. 1, pp. 1-12, Oct. 2019.
-
-[R5] P. Diaconis and D. Ylvisaker, ``Conjugate Priors for Exponential Families,'' {\it The Annals of Statistics}, vol. 7, no. 2, pp. 269-281, 1979.
-
-
-}}
 
 \textbf{Reviewer 3:}
 3) All the theorems seem to be on CRLB rather than the achievability. As such, the achievable strategy and CRLB comparison will add credibility to the achievability.
@@ -677,12 +611,12 @@ Many thanks for the reivewer's positive attitude on the correctness of the CRLB.
 
 
 
-{\color{blue}{\textbf{Authors: } 
+\blue{\textbf{Authors: } 
 Many thanks again for your valuable time and efforts to review this paper. 
 
 Sincerely, \\
 {\it The Authors }
-}}
+}
 
 
 \clearpage 
