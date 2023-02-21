@@ -274,12 +274,13 @@ It is proved that for electromagnetic sources confined to a sphere of radius $a$
 The functional DoF of the received field is thus proportional to $W$ and the length of the observation region.  }
 
 % In the analysis approach of spatial functional DoF, a notion named spatial bandwidth is introduced, which extends the bandwidth in classical information theory to spatial domain~\cite{bucci1987spatial}. The bandwidth in classical information theory depicts the band-limited characteristics of the signal in the frequency domain, and can be used to derive the DoF of the signal according to the Nyquist sampling theorem. Similarly, the spatial bandwidth depicts the band-limited characteristics of the EM field in the wavenumber domain, and can be used to derive the DoF of the EM field in the space-wavenumber domain. For a given channel model, the spatial bandwidth can be approximated using the method of steepest descent. More general results considering the four-dimensional spacetime are based on Landau's eigenvalue problem.
-\begin{figure*}[ht]
-	\centering 
-	\includegraphics[width=0.81\linewidth]{figures/CAPMIMO.pdf} 
-	\caption{CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
-	\label{fig:CAPMIMO}
-\end{figure*}
+% \begin{figure*}[ht]
+% 	\centering 
+% 	\includegraphics[width=0.81\linewidth]{figures/CAPMIMO.pdf} 
+% 	\caption{CAP-MIMO transceivers~\cite{zhang2022pdma}.  }
+% 	\label{fig:CAPMIMO}
+% \end{figure*}
+
 
 \vspace{-1em}
 \subsection{Channel DoF}
@@ -296,6 +297,12 @@ Following Slepian's analysis, it is proved that the NLoS channel DoF is proporti
 If the channel is modeled as a stochastic channel with random scatterer positions, von Mises-Fisher distributions~\cite{byers2004spatially} can be used to model the statistical characteristics of the channel. 
 The channel DoF in this stochastic model should be the expected value averaged by probability.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\linewidth]{figures/discrete_receiver.pdf}
+	\caption{Convergence of the discrete MIMO mutual information to the continuous-space EIT mutual information $I({\bm J}; {\bm E})$. The $x$-axis (sampling number) represents the number of antennas placed in the receiver region $V_{\rm R}$. }
+	\label{fig:MIMO_EIT_comparison}
+\end{figure}
 
 \subsection{Mutual Information and Capacity Analysis}
 \red{Besides the DoF which reveals the number of sub-channels available, the channel capacity $I({\bm J}; {\bm E})$ is another important performance indicator showing the maximum information transmission rate of a wireless system. 
@@ -308,7 +315,7 @@ The mutual information and capacity analysis based on random fields is a continu
 Utilizing the Karhunen-Lo\`{e}ve (KL) expansion, the continuous channel can be decomposed into parallel sub-channels. 
 Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
 Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form $\log\det({\bf I}+T_{\bm E}T_{\bm N}^{-1})$~\cite{wan2022mutual}, where $T_{\bm E}$ and $T_{\bm N}$ are self-adjoint autocorrelation operators of the random fields ${\bm E}({\bm r})$, and ${\bm N}({\bm r})$, respectively.  
-This Fredholm determinant form provides a closed-form formula for the EIT mutual information. }
+This Fredholm determinant form provides a closed-form formula for the EIT mutual information. Thus, numerical schemes for evaluating Fredholm determinants can be transplanted onto the computation of this EIT mutual information, as is shown in Fig.~\ref{fig:MIMO_EIT_comparison}. It is numerically verified that the discrete MIMO mutual information converges to the continuous-space EIT mutual information, which justifies the Fredholm definition of the EIT mutual information. }
 
 \section{Applications of EIT}
 In this section, we present several EIT-inspired applications. 
@@ -403,7 +410,7 @@ Unfortunately, these two definitions of power constraints are incompatible and o
 
 
 \subsection{Evaluation of the EM Capacity}
-\red{In classical information theory, the ``capacity'' is defined as the supremum of all the operationally achievable transmission rates. It is favorable that in discrete memoryless systems, the capacity equals the maximum mutual information, but this conclusion is generally not true for all kinds of channels. In the existing works on EIT~\cite{wan2022mutual,zhang2022pdma,marzetta2022fourier}, maximum mutual information values are calculated under the assumptions of linear deterministic EM channels and continuous transceivers. Unfortunately, these mutual information values only serve as an upper bound to the EM operational capacity. 
+\red{In classical information theory, the ``capacity'' is defined as the supremum of all the operationally achievable transmission rates. It is favorable that in discrete memoryless systems, the capacity equals the maximum mutual information, but this conclusion is generally not true for all kinds of channels. In the existing works on EIT~\cite{wan2022mutual,zhang2022pdma,marzetta2022fourier}, maximum EIT mutual information values are calculated under the assumptions of linear deterministic EM channels and continuous transceivers, and the EIT mutual information is further compared to the discrete MIMO mutual information. Unfortunately, these EIT mutual information values only serve as an upper bound to the EM operational capacity. 
 Thus, in the strict sense, the EM capacity is still an open problem. }
 
 

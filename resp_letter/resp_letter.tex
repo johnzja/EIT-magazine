@@ -570,23 +570,74 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 2) It would be more helpful to have some figures to show the results like capacity, characteristics for the channel, etc.
 
 \blue{
-    {\bf Authors: } Thanks for the reviewer's constructive suggestions. In order to further clarify the characteristics for the EM mutual information and the EM channel, we have developed numerical algorithms for the evaluation of the Fredholm determinant [R1], and then plotted the EM mutual information as a function of the sampling number.   
+    {\bf Authors: } Thanks for the reviewer's constructive suggestions. In order to further clarify the characteristics for the EM mutual information and the EM channel, we have developed numerical algorithms for the evaluation of the Fredholm determinant [R1], and then plotted the EM mutual information as a function of the sampling number. 
 
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.7\linewidth]{../figures/discrete_receiver.pdf}
-        \caption{\small Comparison between the continuous-space MIMO mutual information and the discretized MIMO mutual information. }
+        \caption{\small Comparison between the continuous-space MIMO mutual information (EIT) and the discretized MIMO mutual information (traditional IT). }
+        \label{fig:discrete_receiver}
     \end{figure}
 
+    \quad In the above Fig.~\ref{fig:discrete_receiver}, the mutual information of traditional MIMO discrete receivers and EIT continuous-space receivers are compared. On one hand, the continuous-space mutual information is calculated by applying appropriate numerical schemes to the definition of Fredholm determinant $I=\log\det({\bf 1}+T_{\bf E}T_{\bf N}^{-1})$, where the self-adjoint autocorrelation operator $T_{\bf E}$ describes the statistical knowledge about the received electric field, and similarly, $T_{\bf N}$ describes that about the noise field. The received field autocorrelation $T_{\bf E}$ is calculated from the transmitted current ${\bf J}$ and the deterministic Green's function ${\bf G}({\bf r}, {\bf s})$ as the EM channel. On the other hand, the discrete MIMO mutual information is evaluated directly by treating the Green's function ${\bf G}({\bf r}, {\bf s})$ as the MIMO channel coefficient. With equal received SNR, in this figure, the continuous EIT mutual information is plotted as dashed lines, and the discrete MIMO mutual information is plotted as bold lines with triangles of the same color. 
+
+    \quad This figure demonstrates the facts that: 1) The Fredholm determinant-based continuous-space mutual information is mathematically correct as a limiting case of the MIMO model. 2) The sub-$\lambda/2$ sampling (oversampling) does not provide information-theoretic performance gain in line-of-sight (LoS) propagation scenarios. The pink lines are evaluated with the transceiver distance $d=1\,{\rm m}$, the transceiver length set to $2\,{\rm m}$, and the operating wavelength is set to $\lambda=0.04\,{\rm m}$. 
+    It can be clearly observed that $\lambda/2$-sampling is able to harvest almost all the possible mutual information. If we try to further increase the sampling number, the mutual information will enter a saturated plateau. 
+    The more realistic case $d=10\,{\rm m}$ (red line) even exhibits a faster mutual information saturation. 
+
+    \quad In the revised version of this paper, we have integrated this figure into {\bf Section IV-C}, and provided relevant descriptions. We apologize for the conciseness of this description, mainly due to the limited word count requirement of this magazine paper. For you to check, these revisions are shown in the following box. 
+
+    {\bf Reference}
+    
+    [R1] F. Bornemann, ``On the numerical evaluation of Fredholm determinants,'' {\it Mathematics of Computation}, vol. 79, no. 270, pp. 871-915, Sep. 2009. 
 }
+
+\begin{framed}
+    {\bf Section IV-C}
+
+    \red{
+        In parallel with MIMO theory based on matrices, operator theory can be used to describe the autocorrelation ${\bm R}({\bm r}, {\bm r}')=\mathbb{E}[{{\bm E}({\bm r}){\bm E}\H ({\bm r}')}]$ of the random field. 
+        Utilizing the Karhunen-Lo\`{e}ve (KL) expansion, the continuous channel can be decomposed into parallel sub-channels. 
+        Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
+        Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form $\log\det({\bf I}+T_{\bm E}T_{\bm N}^{-1})$~[7], where $T_{\bm E}$ and $T_{\bm N}$ are self-adjoint autocorrelation operators of the random fields ${\bm E}({\bm r})$, and ${\bm N}({\bm r})$, respectively.  
+        This Fredholm determinant form provides a closed-form formula for the EIT mutual information. Thus, numerical schemes for evaluating Fredholm determinants can be transplanted onto the computation of this EIT mutual information, as is shown in Fig.~\ref{fig:discrete_receiver}. It is numerically verified that the discrete MIMO mutual information converges to the continuous-space EIT mutual information, which justifies the Fredholm definition of the EIT mutual information.
+    }
+\end{framed}
+
+
 
 \textbf{Reviewer 3:}
 3) As most of the results are discussed from theoretical analysis, some field results or numerical results are needed to justify the assumption or model. 
 
 \blue{
-    {\bf Authors: }
+    {\bf Authors: } We are thankful to the reviewer for this constructive suggestion. In response to {\bf question 2}, We have provided numerical results to further clarify the behavior of the EIT mutual information, as is shown in Fig.~\ref{fig:discrete_receiver}. Based on the numerical schemes for Fredholm determinants, we have conducted further numerical experiment to quantify the influence of the discretization level on the EIT mutual information. 
     
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.7\linewidth]{../figures/unequal_sampling.pdf}
+        \caption{\blue{The EIT mutual information $I({\bf J}; {\bf Y})$ as a two-variable function of the transmitter sampling number $m$ and the receiver sampling number $n$. }}
+        \label{fig:unequal_sampling}
+    \end{figure}
+
+    \quad In Fig.~\ref{fig:unequal_sampling}, we have changed the discretization level of both the transmitter and the receiver, and plotted the corresponding mutual information in a three-dimensional figure. Numerical results have demonstrated that, unlike other EIT information-theoretic models [R1-2], the Fredholm determinant-based operator channel EIT model exhibits a well-defined convergence behavior, which can be proved by both theoretical analysis and numerical evaluation. 
+
+    \quad We would like to apologize for not integrating this figure into the revised version of this magazine paper, mainly due to the restricted paper length and the limited total number of figures. However, we have improved the mathematical expressions in this paper and added relevant references to guide the interested readers to this additional numerical results. For you to check, these revisions are shown in the following box. 
+
+    {\bf References: }
+
+    [R1] S. Yuan, X. Chen, C. Huang, and W. Sha, ``Effects of mutual coupling on degrees of freedom and antenna efficiency in holographic MIMO communications,'' {\it IEEE Open J. Antennas Propag.}, Early Access, Feb. 2023. 
+
+    [R2] 
 }
+
+\begin{framed}
+    {\bf Section VI-D}
+
+    \red{
+        In classical information theory, the ``capacity'' is defined as the supremum of all the operationally achievable transmission rates. It is favorable that in discrete memoryless systems, the capacity equals the maximum mutual information, but this conclusion is generally not true for all kinds of channels. In the existing works on EIT~[6, 7, 9], maximum EIT mutual information values are calculated under the assumptions of linear deterministic EM channels and continuous transceivers, and the EIT mutual information is further compared to the discrete MIMO mutual information. Unfortunately, these EIT mutual information values only serve as an upper bound to the EM operational capacity. 
+        Thus, in the strict sense, the EM capacity is still an open problem. 
+    }
+\end{framed}
 
 \textbf{Reviewer 3:}
 4) The EIT is based on the Gaussian random fields. The paper may provide more details in this direction, such as motivation, justification, evaluation, etc.
@@ -595,19 +646,6 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
     {\bf Authors: } 
     
 }
-
-
-\textbf{Reviewer 3:}
-3) All the theorems seem to be on CRLB rather than the achievability. As such, the achievable strategy and CRLB comparison will add credibility to the achievability.
-
-{\color{blue}{\textbf{Authors: } 
-Many thanks for the reivewer's positive attitude on the correctness of the CRLB. As is pointed out by the reviewer, the theoretical results in the previous version of this paper are mainly focused on the ``converse'' theorems (the CRLB) instead of the ``achievability'' theorems, which does not provide a firm performance guarantee for our proposed schemes. In order to address this concern, we have tried our best to provide theorems on the achievability of the proposed interference random field (IRF)-based CSI acquisition schemes. 
-
-\quad These newly-added theorems and lemmas are mainly related to detection and estimation theory, which may match the broader scope of this journal. For you to check, we have provided the theoretical contents as follows with some slight modifications, e.g., the number of equations and lemmata may be different from those in the revised paper. The detailed proofs are provided in the {\bf Appendices} of the revised paper.  
-
-\quad We would like to briefly summarize the newly-added theorems and lemmas before going into details as below. These theoretical results are mainly focused on the analysis of the proposed vM-EM phase estimation algorithm. By assuming convergence of the algorithm, we first obtain a fixed-point equation that describes how the estimator $\hat{\varphi}$ varies as a function of the sensor noise ${\bm v}$. In order to quantify how large the deviation of the estimator from the true value can be, we take the derivative of the estimator $\hat{\varphi}$ with respect to ${\bm v}$, and try to upper-bound such a derivative in order to upper-bound the estimation error. After some calculations, we find that the derivative of $\hat{\varphi}$ is jointly determined by ${\bm v}$ and the estimator $\hat{\varphi}$ itself, so we try to model this relation by an ordinary differential equation to capture the increasing rate of the estimation error. Finally, we reach the desired conclusion that the mean squared estimation error (MSE) is of order $\mathcal{O}(\bar{\gamma}^{-1})$, which is the best error decay rate expectable in most of the estimation problems where the signals are corrupted by some Gaussian noise.  
-}}
-
 
 
 
