@@ -257,13 +257,14 @@ where ${\bm C}_{\bm x}=\mathbb{E}\left[{\bm x}{\bm x}\H\right]$ is the covarianc
 \end{enumerate}
 Note that the assumption (2) ensures an unchanged receive SNR $\gamma_{\rm R}=\mathbb{E}[{\bm y}\H{\bm y}]/(N\sigma^2)$ as the number of receive antennas $N\to\infty$ (but the receiving antennas are confined in a finite receive volume $V_{\rm R}$ [R]). However, it can be numerically verified that as $N\to\infty$, the MIMO capacity $C$ will diverge to infinity, even if the channel model is given by the line-of-sight (LoS) Friis transmission formula: 
 \begin{equation}
-    [{\bm H}_{mn}] = \frac{\lambda}{4\pi r_{mn}}e^{-\ri 2\pi r_{mn}/\lambda},
+    [{\bm H}]_{mn}= \frac{\lambda}{4\pi r_{mn}}e^{-\ri 2\pi r_{mn}/\lambda},
 \end{equation}
 where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th transmit antenna to the $n$-th receive antenna, and $\lambda$ is the operating wavelength. This divergence of the system capacity contradicts the common belief that only a finite number of bits can be transmitted per unit time and unit bandwidth by the EM channel that connects a pair of given transmitter and receiver with confined volumes $V_{\rm T}$ and $V_{\rm R}$. 
 
 \quad This contradiction occurs because the real-world EM systems do not follow the two discretization assumptions as are previously listed. (1) In real-world EM systems, the EM noise can be highly correlated, especially when the antenna spacing becomes smaller. This is because the EM couping effect becomes more dominant when the antennas are placed closer to each other. A direct effect of this coupling on the mathematical model of the noise vector $\bm n$ is that the uncorrelated assumption is no longer valid, i.e., the noise exhibits a stronger spatial correlation. Mathematically, if this spatial correlation becomes stronger, the EM channel capacity will become lower. This is because a more correlated noise has a near-singular covariance matrix ${\bm C}_{\bm n}$, which decreases the MIMO capacity $C=\log\det(I+{\bm C}_{\bm y}{\bm C}_{\bm n}^{-1})$. In this way, recent results in [R1] have established a finite-valued capacity for this kind of EM channels, instead of an infinite value predicted by traditional discretized MIMO model as $N\to\infty$. (2) The noise power modeling problem is subordinate to the noise correlation modeling problem in (1), since the diagonal entries of a correlation matrix automatically gives the power of each noise random variable. 
 
-\quad In summary, if we apply discretization to the EM systems in reality and try to reach a linear MIMO model, special attentions should be paid to the modeling of the noise vector ${\bm n}$. The discretization itself is correct, since any continuous function can be weakly approximated by its discrete counterpart (expressed by linear combinations of the $\delta$-functions) in functional analysis [R2], and this discretization does not violate any mathematical or physical principles. However, the discretized noise can exhibit a serious deviation from the uncorrelated standard Gaussian model, especially when the antenna spacing is much smaller than $\lambda/2$. Specifically, direct discretization of the noise will asymptotically overestimate the MIMO capacity. In the study of EIT, it is a constant attempt to reveal how the capacity behaves when the antenna spacing decreases. As a consequence, the widely applied discretization techniques and formulas should be re-investigated. 
+\quad In summary, if we apply discretization to the EM systems in reality and try to reach a linear MIMO model, special attentions should be paid to the modeling of the noise vector ${\bm n}$. The discretization itself is correct, since any continuous function can be weakly approximated by its discrete counterpart (expressed by linear combinations of the $\delta$-functions) in functional analysis [R2], and this discretization does not violate any mathematical or physical principles. However, the discretized noise can exhibit a serious deviation from the uncorrelated standard Gaussian model, especially when the antenna spacing is much smaller than $\lambda/2$. Specifically, direct discretization of the noise will asymptotically overestimate the MIMO capacity. In the study of EIT, it is a key issue to reveal how the capacity behaves when the antenna spacing decreases. As a consequence, the widely applied discretization techniques and formulas should be re-investigated in order to reach a physically consistent conclusion when the transceivers approach the continuous case. 
+
 
 {\bf References}
 
@@ -273,6 +274,17 @@ where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th 
 
 }
 
+\blue{
+    \quad Since the physical inconsistency caused by discretized noise covariance problem has not been widely noticed in the literature, in the revised version of this paper, we avoid the controversial discrete-continuous dilemma, and change the introduction part into a more general expectation on EIT. 
+}
+
+\begin{framed}
+    {\bf Section I}
+    
+    \red{
+    The past decade has witnessed the proliferation of the massive multiple-input multiple-output (MIMO)~[1] from a theoretical concept to a practical technology. Thanks to the ten-fold increase in transceiver antennas, the massive MIMO technology has triggered a significant performance improvement in 5G wireless communications. However, prevailing analysis and design procedures for massive MIMO are usually based on scalar-quantity, far-field, discretized~[2], monochromatic, and other non-physically consistent assumptions, which will lead to mismatches between the system design and the actual propagation environment in the novel architectures beyond massive MIMO. Therefore, a theory that can model and analyze the real-world EM wireless information system with physically interpretable and mathematically reasonable assumptions is of interest, which motivates the research of EM information theory (EIT). }
+\end{framed}
+
 %%%%%%%%%%%%%%%%%%%%
 
 \textbf{Reviewer 2:}
@@ -280,8 +292,6 @@ where $r_{mn}=|{\bm r}_m-{\bm r}_n'|$ is the geometric distance from the $m$-th 
 2.1) There are many notations in Figs. 1, 2, 3, 4. However, they have not been clearly defined. 
 
 2.2) In Fig.~1, there are four subfigures but it is unclear how they are related. For example, the two subfigures to the left are about a two-dimensional sub-space but it is not clear how they are relevant to the subfigures to the right.
-
-
 
 
 \blue{
@@ -512,7 +522,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
     \begin{equation}
         I({\bf x}; {\bf y}) = \log\det({\bf C}_{\bf y}{\bf C}_{{\bf y}|{\bf x}}^{-1}),
     \end{equation} 
-    where ${\bf C}_{\bf y}$ is the covariance matrix of ${\bf y}$, and ${\bf C}_{{\bf y}|{\bf x}}$ is the conditional covariance matrix of ${\bf y}$ given ${\bf x}$. By assuming an additive Gaussian noise channel ${\bf y}={\bf x}+{\bf n}$, the mutual information can be expressed as 
+    where ${\bf C}_{\bf y}$ is the covariance matrix of ${\bf y}$, and ${\bf C}_{{\bf y}|{\bf x}}$ is the conditional covariance matrix of ${\bf y}$ given ${\bf x}$. By assuming an additive channel with Gaussian noise: ${\bf y}={\bf x}+{\bf n}$, the mutual information can be expressed as 
     \begin{equation}
         I({\bf x};{\bf y}) = \log\det({\bf I}_N+{\bf C}_{\bf x}{\bf C}_{\bf n}^{-1}),
     \end{equation}
@@ -520,7 +530,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
     
     \quad Before defining the mutual information $I({\bf J}; {\bf Y})$ between the transmitted source current field ${\bf J}$ and the received noisy electric field ${\bf Y}$, we first need to clarify what the mutual information between two random processes is. An intuitive approach is to project the random processes onto some basis functions, and define the process-process mutual information to be the supremum of the mutual information between the projected coefficients [R1]. Following this idea, the continuous-space mutual information is defined as 
     \begin{equation} 
-        I({\bf J}; {\bf Y}) = \sup_{N, \{\varphi_q\}_{q=1}^{N}, \{\phi_p\}_{p=1}^{N}} I(\{\langle\varphi_q, {\bf Y}\rangle\}_{q=1}^N;\{\langle\phi_p, {\bf E}\rangle\}_{q=1}^{N}),
+        I({\bf J}; {\bf Y}) = \sup_{N\geq 1, \{\varphi_q\}_{q=1}^{N}, \{\phi_p\}_{p=1}^{N}} I(\{\langle\varphi_q, {\bf Y}\rangle\}_{q=1}^N;\{\langle\phi_p, {\bf E}\rangle\}_{q=1}^{N}),
     \end{equation} 
     where $\langle\cdot, \cdot\rangle$ denotes the complex inner product, and $\{\varphi_q\}_{q=1}^{N},\{\phi_p\}_{p=1}^{N}$ denote the basis functions (not necessarily orthogonal) whose domains are the same with ${\bf Y}$ and ${\bf J}$. 
 
@@ -579,7 +589,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
         \label{fig:discrete_receiver}
     \end{figure}
 
-    \quad In the above Fig.~\ref{fig:discrete_receiver}, the mutual information of traditional MIMO discrete receivers and EIT continuous-space receivers are compared. On one hand, the continuous-space mutual information is calculated by applying appropriate numerical schemes to the definition of Fredholm determinant $I=\log\det({\bf 1}+T_{\bf E}T_{\bf N}^{-1})$, where the self-adjoint autocorrelation operator $T_{\bf E}$ describes the statistical knowledge about the received electric field, and similarly, $T_{\bf N}$ describes that about the noise field. The received field autocorrelation $T_{\bf E}$ is calculated from the transmitted current ${\bf J}$ and the deterministic Green's function ${\bf G}({\bf r}, {\bf s})$ as the EM channel. On the other hand, the discrete MIMO mutual information is evaluated directly by treating the Green's function ${\bf G}({\bf r}, {\bf s})$ as the MIMO channel coefficient. With equal received SNR, in this figure, the continuous EIT mutual information is plotted as dashed lines, and the discrete MIMO mutual information is plotted as bold lines with triangles of the same color. 
+    \quad In the above Fig.~\ref{fig:discrete_receiver}, the mutual information of traditional MIMO discrete transceivers and EIT continuous-space transceivers are compared. On one hand, the continuous-space mutual information is calculated by applying appropriate numerical schemes to the definition of Fredholm determinant $I=\log\det({\bf 1}+T_{\bf E}T_{\bf N}^{-1})$, where the self-adjoint autocorrelation operator $T_{\bf E}$ describes the statistical knowledge about the received electric field, and similarly, $T_{\bf N}$ describes that about the noise field. The received field autocorrelation $T_{\bf E}$ is calculated from the transmitted current ${\bf J}$ and the deterministic Green's function ${\bf G}({\bf r}, {\bf s})$ as the EM channel. On the other hand, the discrete MIMO mutual information is evaluated directly by treating the Green's function ${\bf G}({\bf r}, {\bf s})$ as the MIMO channel coefficients. With equal received SNR, in this figure, the continuous EIT mutual information is plotted as dashed lines, and the discrete MIMO mutual information is plotted as bold lines with triangles of the same color. 
 
     \quad This figure demonstrates the facts that: 1) The Fredholm determinant-based continuous-space mutual information is mathematically correct as a limiting case of the MIMO model. 2) The sub-$\lambda/2$ sampling (oversampling) does not provide information-theoretic performance gain in line-of-sight (LoS) propagation scenarios. The pink lines are evaluated with the transceiver distance $d=1\,{\rm m}$, the transceiver length set to $2\,{\rm m}$, and the operating wavelength is set to $\lambda=0.04\,{\rm m}$. 
     It can be clearly observed that $\lambda/2$-sampling is able to harvest almost all the possible mutual information. If we try to further increase the sampling number, the mutual information will enter a saturated plateau. 
@@ -619,7 +629,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
         \label{fig:unequal_sampling}
     \end{figure}
 
-    \quad In Fig.~\ref{fig:unequal_sampling}, we have changed the discretization level of both the transmitter and the receiver, and plotted the corresponding mutual information in a three-dimensional figure. Numerical results have demonstrated that, unlike other EIT information-theoretic models [R1-2], the Fredholm determinant-based operator channel EIT model exhibits a well-defined convergence behavior, which can be proved by both theoretical analysis and numerical evaluation. 
+    \quad In Fig.~\ref{fig:unequal_sampling}, in order to investigate the performance gap between continuous-space EIT transceivers and traditional discretized MIMO transceivers, we have changed the discretization level of both the transmitter and the receiver, and plotted the corresponding mutual information in a three-dimensional figure. Numerical results have demonstrated that, unlike other EIT information-theoretic models [R1-2], the Fredholm determinant-based operator channel EIT model exhibits a well-defined convergence behavior, which can be proved by both theoretical analysis and numerical evaluation. 
 
     \quad We would like to apologize for not integrating this figure into the revised version of this magazine paper, mainly due to the restricted paper length and the limited total number of figures. However, we have improved the mathematical expressions in this paper and added relevant references to guide the interested readers to this additional numerical results. For you to check, these revisions are shown in the following box. 
 
@@ -627,7 +637,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 
     [R1] S. Yuan, X. Chen, C. Huang, and W. Sha, ``Effects of mutual coupling on degrees of freedom and antenna efficiency in holographic MIMO communications,'' {\it IEEE Open J. Antennas Propag.}, Early Access, Feb. 2023. 
 
-    [R2] 
+    [R2] M. A. Jensen and J. W. Wallace, ``Capacity of the continuous-space electromagnetic channel,'' {\it IEEE Trans. Antennas Propag.}, vol. 56, no. 2, pp. 524-531, Feb. 2008. 
 }
 
 \begin{framed}
@@ -680,7 +690,28 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 
 }
 
+\blue{
+    In the revised version of this paper, we have remarked the wide application of 
+    Gaussian random processes in traditional information theory, and possible numerical evaluation and inference schemes of GRFs. For you to check, the revisions are shown in the following box. 
+}
 
+\begin{framed}
+    {\bf Section II-D}
+
+    \red{
+        In order to apply information-theoretic analysis to EM fields, probabilistic measures should be assigned to the functional space containing all possible EM fields that satisfy Maxwell's equations, which leads to the random field modeling for EIT. 
+        Gaussian random processes, usually indexed by the continuous time $t$, are widely applied to model communication signals, from which entropy rates and mutual information formulas can be derived. Gaussian random fields (GRFs) are generized random processes that allow multiple index variables. 
+
+        Mathematically, GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in wireless communications can be modeled by GRFs.  
+        Inheriting favorable mathematical properties from Gaussian distributions, GRF models exhibit good analytical properties that can facilitate both theoretical deduction and numerical inference. 
+
+        In EIT, GRFs can be utilized to model both the EM channels~[6] and the EM signals~[7]. 
+        In real-world communication systems, the EM channel response may vary randomly as a function of spacetime, so it is reasonable to model such spatio-temporal variations by a channel GRF. 
+        This allows the Bayesian inference of channel entries that are not directly measured. 
+        Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~[7], from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. The GRF-based information-theoretic analysis will be explained in detain in Section.~IV-C. 
+    }
+
+\end{framed}
 
 \blue{\textbf{Authors: } 
 Many thanks again for your valuable time and efforts to review this paper. 

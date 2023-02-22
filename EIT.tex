@@ -74,7 +74,7 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 \maketitle
 
 \begin{abstract}
-	Traditional single-input single-output and multiple-input multiple-output information theory adopt spatially discrete modeling, which does not fully capture the continuous nature of the underlying electromagnetic (EM) fields supporting the physical layer of wireless communication systems. % Discrete analysis may fail to reveal the fundamental information transmission limit of a continuous wireless system.    
+	\red{Traditional massive multiple-input multiple-output (MIMO) information theory adopt non-physically consistent assumptions, including scalar-quantity, far-field, discretized, and monochromatic EM fields, which mismatch the nature of the underlying electromagnetic (EM) fields supporting the physical layer of wireless communication systems. }
  	Thus, it is of interest to examine the information-carrying capability of continuous EM fields, which motivates research on EM information theory (EIT). In this article, we systematically investigate the basic ideas and main results of EIT. First, we review the fundamental analytical tools of classical information theory and EM theory. Then, we introduce the modeling and analysis methodologies of EIT, including continuous field modeling, degree of freedom, mutual information, and capacity analyses. After that, several EIT-inspired applications are discussed to illustrate how EIT guides the design of practical wireless systems.  Finally, we point out several open problems of EIT, where further research efforts are required for EIT to construct a unified interdisciplinary theory.
 \end{abstract}
 
@@ -85,10 +85,12 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 \vspace{-1em}
 \section{Introduction}
 %% leading paragraph. 
-Existing wireless information theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) information theory considers a single point as either a transmitter or a receiver, and multiple-input multiple-output (MIMO) information theory~\cite{goldsmith2003capacity} utilizes discrete points in space to represent transceivers. 
-However, this discretization does not fully capture the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
-This mismatch may cause a performance gap between systems designed using discrete models and those designed using continuous EM fields. 
-Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is of interest, which motivates the research of EM information theory (EIT).
+% Existing wireless information theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) information theory considers a single point as either a transmitter or a receiver, and multiple-input multiple-output (MIMO) information theory~\cite{goldsmith2003capacity} utilizes discrete points in space to represent transceivers. 
+% However, this discretization does not fully capture the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
+% This mismatch may cause a performance gap between systems designed using discrete models and those designed using continuous EM fields. 
+% Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is of interest, which motivates the research of EM information theory (EIT).
+\red{The past decade has witnessed the proliferation of the massive multiple-input multiple-output (MIMO)~\cite{marzetta2010noncooperative} from a theoretical concept to a practical technology. Thanks to the ten-fold increase in transceiver antennas, the massive MIMO technology has triggered a significant performance improvement in 5G wireless communications. However, prevailing analysis and design procedures for massive MIMO are usually based on scalar-quantity, far-field~\cite{liu2018novel}, discretized~\cite{goldsmith2003capacity}, monochromatic, and other non-physically consistent assumptions, which will lead to mismatches between the system design and the actual propagation environment in the novel architectures beyond massive MIMO. Therefore, a theory that can model and analyze the real-world EM wireless information system with physically interpretable and mathematically reasonable assumptions is of interest, which motivates the research of EM information theory (EIT). } 
+
 
 EIT is an interdisciplinary subject that integrates deterministic physical theory and statistical mathematical theory to study information transmission mechanism in spatially continuous EM fields. 
 Specifically, EIT unifies the basic laws and methodologies in both classical EM theory and information theory. 
@@ -187,16 +189,16 @@ As a result, pure EM theory cannot capture the random nature that arises in wire
 
 \subsection{Random Fields for EIT}
 \label{Sec_2_Subsec_4}
-In order to apply information-theoretic analysis to EM fields, probabilistic measures should be assigned to the functional space containing all possible EM fields that satisfy Maxwell's equations, which leads to the random field modeling for EIT. 
-Random fields are well-studied mathematical objects, among which the Gaussian random fields (GRFs) are the most widely applied instances. 
+\red{In order to apply information-theoretic analysis to EM fields, probabilistic measures should be assigned to the functional space containing all possible EM fields that satisfy Maxwell's equations, which leads to the random field modeling for EIT. 
+Gaussian random processes, usually indexed by the continuous time $t$, are widely applied to model communication signals, from which entropy rates and mutual information formulas can be derived. Gaussian random fields (GRFs) are generized random processes that allow multiple index variables. 
 
-GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in wireless communications can be modeled by GRFs.  
+Mathematically, GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in wireless communications can be modeled by GRFs.  
 Inheriting favorable mathematical properties from Gaussian distributions, GRF models exhibit good analytical properties that can facilitate both theoretical deduction and numerical inference. 
 
-\red{In EIT, GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. 
+In EIT, GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. 
 In real-world communication systems, the EM channel response may vary randomly as a function of spacetime, so it is reasonable to model such spatio-temporal variations by a channel GRF. 
 This allows the Bayesian inference of channel entries that are not directly measured. 
-Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. The GRF-based information-theoretic analysis will be explained in detain in Sec.~\ref{sec_3_subsec_3}. }
+Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. The GRF-based information-theoretic analysis will be explained in detain in Section.~\ref{sec_3_subsec_3}. }
 
 % Motivated by the possibility of exploiting the three spatial dimensions, the multi-input multi-output (MIMO) architecture have been ubiquitous in contemporary wireless communication systems. To fully exploit the potential of MIMO, numerous spatial multiplexing technologies have been proposed, including SDMA, TRDMA, PDMA, and LDMA. However, there must be a unified underlying theory that governs all the multiplexing technologies, since they are all based on the same physical media of electromagnetic waves. To construct this unified theory, two different approaches have been proposed in the literature to characterize the electromagnetic channel. 
 
