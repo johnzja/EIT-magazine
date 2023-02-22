@@ -643,8 +643,41 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 4) The EIT is based on the Gaussian random fields. The paper may provide more details in this direction, such as motivation, justification, evaluation, etc.
 
 \blue{
-    {\bf Authors: } 
+    {\bf Authors: } Many thanks for the reviewer's kind suggestions. We will answer this question in two parts:
     
+    \quad {\bf 4.1 Motivation}. In the following paragraph, we will clarify the motivation of introducing random processes (fields) into the analysis of EIT from the historic point of view. 
+    The EIT models are based on Gaussian random field theory, mainly due to the great success in applying Gaussian stochastic processes to information theory.  
+    In fact, Gaussian random fields (GRFs) are Gaussian stochastic processes with a multi-dimensional index set. The discovery of the strong link between probabilistic concentration behavior of stochastic processes and the information-theoretic quantities that play an important rule in data transmission and source/channel coding dates back to 1948, when Shannon [R1] started to think about what kind of information measure is both mathematically decent and physically meaningful. After defining the entropy and mutual information of random variables, Shannon started to think of the entropy rate of discrete-time Markov processes, as well as their underlying connection to continuous information transmission problems. Since Gaussian distribution maximizes the entropy functional, it is natural to require the stochastic processes to be Gaussian distributed. The rate of Shannon entropy of a stationary discrete-time Gaussian process was first guessed by Pinsker (1956), and then rigorously analyzed by Kolmogorov (1958) [R2], where the spectral decomposition of the autocorrelation function is applied to the truncated stochastic processes, and analysis is done by performing information-theoretic calculation in the frequency domain. Generally, the formula for evaluating the entropy rate of a stationary Gaussian process $\{x_n\}_{n=-\infty}^{\infty}$ is given by [R2-3]:
+    \begin{equation}
+        \mathcal{H}(x)=\frac{1}{2}\log(2\pi e)+\frac{1}{4\pi}\int_{-\pi}^{\pi}\log f(\omega){\rm d}\omega,
+    \end{equation}
+    where $f(\omega)=\sum_{k=-\infty}^{\infty} R_x(k)e^{-{\rm i}\omega k}$ is the discrete-time Fourier transform (DTFT) of the autocorrelation sequence $R_x(k)=\mathbb{E}[x_n x_{n-k}]$. With noisy observations $y_n = x_n + w_n$ and further assuming $w_n\sim \mathcal{N}(0,\sigma^2)$, the mutual information rate is given by 
+    \begin{equation}
+        \mathcal{I}(x; y) = \frac{1}{4\pi} \int_{-\pi}^{\pi} \log\left(1+\frac{f(\omega)}{\sigma^2}\right){\rm d}\omega. 
+    \end{equation}
+    Note that passing a stationary Gaussian process through a linear time-invariant (LTI) system only alters its spectrum $f(\omega)$, thus it is easy to evaluate the mutual information rate of a frequency-selective Gaussian channel. Similarly, in the study of EIT, the EM channel is treated as a multi-dimensional linear system whose impulse response is given by the Green's function ${\bm G}({\bm r}, {\bm s})$. Thus, it is mathematically natural to extend the Gaussian stochastic processes to GRFs in the study of EIT. 
+
+    \quad {\bf 4.2 Justification and evaluation.} In this paragraph, we will brief on the numerical evaluation techniques involved in GRF-based models. Due to the significant success in applying Gaussian processes to the traditional information transmission problems, a natural thought is to generalize the Gaussian stochastic processes to multi-dimensional Gaussian random fields (GRFs) in EIT. From another perspective, GRFs are natural continuous generalizations of Gaussian random vectors. Mathematically, they inherit favorable properties from multivariate Gaussian distributions, thus enabling efficient interpolation and prediction of unknown field values. For example, the posterior GRF can be easily computed from the observed evidence by applying the well-known Gaussian posterior formula:
+    \begin{equation}
+        \begin{aligned}
+            {\bf \mu}_{A|B} &= {\bf \mu}_A + {\bf \Sigma}_{AB}{\bf \Sigma}_B^{-1}({\bf x}_B-{\bf \mu}_B) \\
+            {\bf \Sigma}_{A|B}&={\bf \Sigma}_A - {\bf \Sigma}_{AB}{\bf \Sigma}_B^{-1}{\bf \Sigma}_{BA}.
+        \end{aligned}
+    \end{equation}
+    Thus, by using the GRF modeling, the EM fields can be efficiently estimated, given the observations and the prior autocorrelation characteristics of the fields. As a non-parametric model\footnote{The priors of the GRFs are controlled by hyperparameters, instead of parameters. }, the GRFs can easily be fit to stochastic signals with complicated non-linear behavior, thus enhancing the expressibility of the EIT signal model. 
+    
+    \quad However, apart from predicting field strengths, we have to take a step further to evaluate the information-theoretic quantities between correlated GRFs. Different from the above discretized finite-dimensional Gaussian posterior formula, the corresponding continuous (but finitely-supported) mutual information is analyzed from an operator perspective [R4], which justifies the operator-based EIT analysis that appears in the following sections of this magazine paper.  
+    
+    {\bf References}:
+
+    [R1] C. E. Shannon, ``A mathematical theory of communication,'' {\it The Bell Syst. Tech. J.}, vol. 27, no. 3, pp. 379-423, Jul. 1948. 
+
+    [R2] A. N. Kolmogorov, ``On the Shannon theory of information transmission in the case of continuous signals,'' {\it IRE Trans. Inf. Theory}, Dec. 1956. 
+
+    [R3] T. M. Cover, {\it Elements of information theory}. John Wiley \& Sons, 1999. 
+
+    [R4] R. Y. Huang, and R. A. Johnson, ``Information transmission with time-continuous random processes, '' {\it IEEE Trans. Inf. Theory}, vol. 9, no. 2, pp. 84-94, Apr. 1963. 
+
 }
 
 

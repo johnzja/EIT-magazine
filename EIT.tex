@@ -193,10 +193,10 @@ Random fields are well-studied mathematical objects, among which the Gaussian ra
 GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in wireless communications can be modeled by GRFs.  
 Inheriting favorable mathematical properties from Gaussian distributions, GRF models exhibit good analytical properties that can facilitate both theoretical deduction and numerical inference. 
 
-In EIT, GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. 
+\red{In EIT, GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. 
 In real-world communication systems, the EM channel response may vary randomly as a function of spacetime, so it is reasonable to model such spatio-temporal variations by a channel GRF. 
 This allows the Bayesian inference of channel entries that are not directly measured. 
-Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. 
+Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. The GRF-based information-theoretic analysis will be explained in detain in Sec.~\ref{sec_3_subsec_3}. }
 
 % Motivated by the possibility of exploiting the three spatial dimensions, the multi-input multi-output (MIMO) architecture have been ubiquitous in contemporary wireless communication systems. To fully exploit the potential of MIMO, numerous spatial multiplexing technologies have been proposed, including SDMA, TRDMA, PDMA, and LDMA. However, there must be a unified underlying theory that governs all the multiplexing technologies, since they are all based on the same physical media of electromagnetic waves. To construct this unified theory, two different approaches have been proposed in the literature to characterize the electromagnetic channel. 
 
@@ -304,7 +304,7 @@ The channel DoF in this stochastic model should be the expected value averaged b
 	\label{fig:MIMO_EIT_comparison}
 \end{figure}
 
-\subsection{Mutual Information and Capacity Analysis}
+\subsection{Mutual Information and Capacity Analysis} \label{sec_3_subsec_3}
 \red{Besides the DoF which reveals the number of sub-channels available, the channel capacity $I({\bm J}; {\bm E})$ is another important performance indicator showing the maximum information transmission rate of a wireless system. 
 Compared to the traditional MIMO information theory using random vectors as transmitted and received signals, EIT treats the EM fields ${\bm J}, {\bm E}$ as random fields. 
 The random field modeling follows the statistical approach of mutual information and capacity analysis by Shannon. 
