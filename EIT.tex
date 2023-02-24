@@ -88,7 +88,7 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 % However, this discretization does not fully capture the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
 % This mismatch may cause a performance gap between systems designed using discrete models and those designed using continuous EM fields. 
 % Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is of interest, which motivates the research of EM information theory (EIT).
-\red{The past decade has witnessed the proliferation of the massive multiple-input multiple-output (MIMO)~\cite{marzetta2010noncooperative} from a theoretical concept to a practical technology. Thanks to the ten-fold increase in transceiver antennas, the massive MIMO technology has triggered a significant performance improvement in 5G wireless communications. However, prevailing analysis and design procedures for massive MIMO are usually based on scalar-quantity, far-field~\cite{liu2018novel}, discretized~\cite{goldsmith2003capacity}, monochromatic, and other non-physically consistent assumptions, which will lead to mismatches between the system design and the actual propagation environment in the novel architectures beyond massive MIMO. Therefore, a theory that can model and analyze the real-world EM wireless information system with physically interpretable and mathematically reasonable assumptions is of interest, which motivates the research of EM information theory (EIT). } 
+\red{The past decade has witnessed the proliferation of the massive multiple-input multiple-output (MIMO)~\cite{marzetta2010noncooperative} from a theoretical concept to a practical technology. Thanks to the increase of transceiver antennas, the massive MIMO technology has triggered a significant performance improvement in 5G wireless communications. However, prevailing analysis and design procedures for massive MIMO are usually based on scalar-quantity, far-field~\cite{liu2018novel}, discretized~\cite{goldsmith2003capacity}, monochromatic, and other non-physically consistent assumptions, which will lead to mismatches between the system design and the actual propagation environment in the novel architectures beyond massive MIMO. Therefore, a theory that can model and analyze the real-world EM wireless information system with physically interpretable and mathematically reasonable assumptions is of interest, which motivates the research of EM information theory (EIT). } 
 
 
 EIT is an interdisciplinary subject that integrates deterministic physical theory and statistical mathematical theory to study information transmission mechanisms in spatially continuous EM fields. 
@@ -165,7 +165,7 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 
 \begin{figure}
 	\centering 
-	\includegraphics[width=0.9\linewidth]{figures/LTI-LSI-new.pdf} 
+	\includegraphics[width=0.9\linewidth]{figures/LTI-LSI-new-v1.pdf} 
 	\caption{\red{In analogy with linear time-invariant systems described by a time-domain impulse response $h(t)$ in classical information theory, the EIT model is based on linear space-invariant systems described by the Green's function ${\bm G}({\bm r}, {\bm s})$.} } 
 	\label{fig:LTI_LSI}
 \end{figure}
@@ -177,7 +177,7 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 % Basics about electromagnetics.
 EM theory is a branch of physics that studies the EM interaction in four-dimensional spacetime from a field-theoretic point of view. The EM forces are carried by EM vector fields, which are usually described by Maxwell's equations. Maxwell's equations are four linear partial differential equations that characterize how the electric fields and magnetic fields are altered by each other and by charges and currents. Combining these four equations, a vector wave equation can be obtained that manifests the existence of EM waves. 
 
-\red{In wireless communications, to describe the EM response at the receiver induced by the transmitted wave at the transmitter, Green's function ${\bm G}({\bm r}, {\bm s})$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, with ${\bm J}({\bm s})$ being the transmitted source current, and ${\bm E}({\bm r})$ being the received electric field, as is shown in Fig.~\ref{fig:LTI_LSI}.
+\red{In wireless communications, to describe the EM response ${\bm E}({\bm r})$ at the receiver induced by the source current ${\bm J}({\bm s})$ at the transmitter, Green's function ${\bm G}({\bm r}, {\bm s})$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:LTI_LSI}.
 Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, to describe the mapping between two vectors, Green's function must take the form of a dyadic-valued function. 
 Note that EM theory is a deterministic theory built on partial differential equations and the knowledge of all surroundings, so Green's function is uniquely determined by the boundary conditions of EM problems.
 As a result, pure EM theory cannot capture the random nature that arises in wireless communications. }
@@ -299,14 +299,14 @@ The channel DoF in this stochastic model should be the expected value averaged b
 
 \vspace{-3mm}
 \subsection{Mutual Information and Capacity Analysis} \label{sec_3_subsec_3}
-\red{Besides the DoF which reveals the number of sub-channels available, the channel capacity $I({\bm J}; {\bm E})$ is another important performance indicator showing the maximum information transmission rate of a wireless system. 
+\red{Besides the DoF which reveals the number of available sub-channels, the channel capacity $I({\bm J}; {\bm E})$ is another important performance indicator showing the maximum information transmission rate of a wireless system. 
 Compared to the traditional MIMO information theory using random vectors as transmitted and received signals, EIT treats the EM fields ${\bm J}, {\bm E}$ as random fields. 
 The random field modeling follows the statistical approach of mutual information and capacity analysis by Shannon. 
 Each realization of the random field represents a possible pattern of the radiating field. The ensemble of the realizations, to which a probability measure is assigned, depicts the statistical characteristics of the system. }
 
 The mutual information and capacity analysis based on random fields is a continuous extension of the analysis based on random vectors. 
 \red{In parallel with MIMO theory based on matrices, operator theory can be used to describe the autocorrelation ${\bm R}({\bm r}, {\bm r}')=\mathbb{E}[{{\bm E}({\bm r}){\bm E}\H ({\bm r}')}]$ of the random field. 
-Utilizing the Karhunen-Lo\`{e}ve (KL) expansion, the continuous channel can be decomposed into parallel sub-channels. 
+According to Mercer's theorem, the continuous channel can be decomposed into parallel sub-channels. 
 Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
 Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form $\log\det({\bf I}+T_{\bm E}T_{\bm N}^{-1})$~\cite{wan2022mutual}, where $T_{\bm E}$ and $T_{\bm N}$ are self-adjoint autocorrelation operators of the random fields ${\bm E}({\bm r})$, and ${\bm N}({\bm r})$, respectively.  
 This Fredholm determinant form provides a closed-form formula for the EIT mutual information. Thus, numerical schemes for evaluating Fredholm determinants can be transplanted onto the computation of this EIT mutual information, as is shown in Fig.~\ref{fig:MIMO_EIT_comparison}. It is numerically verified that the discrete MIMO mutual information converges to the continuous-space EIT mutual information, which justifies the Fredholm definition of the EIT mutual information. }
@@ -404,9 +404,8 @@ The construction of such a kind of noise model that bridges the macro-scale and 
 
 
 \subsection{Evaluation of the EM Capacity}
-\red{In classical information theory, the ``capacity'' is defined as the supremum of all the operationally achievable transmission rates. It is favorable that in discrete memoryless systems, the capacity equals the maximum mutual information, but this conclusion is generally not true for all kinds of channels. In the existing works on EIT~\cite{wan2022mutual,zhang2022pdma,marzetta2022fourier}, maximum EIT mutual information values are calculated under the assumptions of linear deterministic EM channels and continuous transceivers, and the EIT mutual information is further compared to the discrete MIMO mutual information. Unfortunately, these EIT mutual information values only serve as an upper bound to the EM operational capacity. 
+\red{In classical information theory, the ``capacity'' is defined as the supremum of all the operationally achievable transmission rates. It is favorable that in discrete memoryless channels, the capacity equals the maximum mutual information. However, this conclusion has not been proved for continuous waveform channels. In the existing works on EIT~\cite{wan2022mutual,zhang2022pdma,marzetta2022fourier}, maximum EIT mutual information values are calculated under the assumptions of linear deterministic EM channels and continuous transceivers, and the EIT mutual information is further compared to the discrete MIMO mutual information. Unfortunately, these EIT mutual information values only serve as an upper bound to the EM operational capacity. 
 Thus, in the strict sense, the EM capacity is still an open problem. }
-
 
 \section{Conclusions}
 In this paper, we have investigated the fundamental mathematical tools, basic modeling methodologies, and theoretical performance analyses that constitute EIT. 

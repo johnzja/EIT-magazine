@@ -515,7 +515,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
 1) The paper is lack technical details even if it is submitted to a magazine journal. Most of the concept is for a general description without depth discussion. For example, for the discussion of mutual information and capacity analysis (Section IV.C), what kind of mathematical representation are used for the capacity in EIT? 
 
 \blue{
-    {\bf Authors: } Thank you for pointing out the limitations of this paper in Section IV-C. In fact, the most important mathematical formula of the EIT mutual information is the Karhunen-Lo\`{e}ve (KL) expansion and the Fredholm determinant. Both of them play an important rule in rigorously defining the EIT mutual information. 
+    {\bf Authors: } Thank you for pointing out the limitations of this paper in Section IV-C. In fact, the most important mathematical formula of the EIT mutual information is the Karhunen-Lo\`{e}ve (KL) expansion (also referred to as the Mercer's theorem) and the Fredholm determinant. Both of them play an important rule in rigorously defining the EIT mutual information. 
     
     \quad We would like to start from the mutual information between a pair of circularly symmetric complex Gaussian random vectors ${\bf x}, {\bf y}\in\mathbb{C}^N$, which is defined as
     \begin{equation}
@@ -567,7 +567,7 @@ The paper discussed the electromagnetic information theory (EIT). As a magazine 
     {\bf Section IV-C}
 
     \red{In parallel with MIMO theory based on matrices, operator theory can be used to describe the autocorrelation ${\bm R}({\bm r}, {\bm r}')=\mathbb{E}[{{\bm E}({\bm r}){\bm E}\H ({\bm r}')}]$ of the random field. 
-    Utilizing the Karhunen-Lo\`{e}ve (KL) expansion, the continuous channel can be decomposed into parallel sub-channels. 
+    According to Mercer's theorem, the continuous channel can be decomposed into parallel sub-channels. 
     Thus, the information obtained from the received random field is evaluated by summing the information over all sub-channels. 
     Different from the matrix determinant form of MIMO mutual information, the EIT information takes a Fredholm determinant form $\log\det({\bf I}+T_{\bm E}T_{\bm N}^{-1})$~[8], where $T_{\bm E}$ and $T_{\bm N}$ are self-adjoint autocorrelation operators of the random fields ${\bm E}({\bm r})$, and ${\bm N}({\bm r})$, respectively.  
     This Fredholm determinant form provides a closed-form formula for the EIT mutual information. }
