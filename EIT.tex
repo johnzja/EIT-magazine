@@ -82,7 +82,7 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 \end{IEEEkeywords}
 
 \vspace{-1em}
-\section{Introduction}
+\section{Introduction} \label{sec-intro}
 %% leading paragraph. 
 % Existing wireless information theory models transceivers as spatially discrete points. For example, single-input single-output (SISO) information theory considers a single point as either a transmitter or a receiver, and multiple-input multiple-output (MIMO) information theory~\cite{goldsmith2003capacity} utilizes discrete points in space to represent transceivers. 
 % However, this discretization does not fully capture the spatially continuous electromagnetic (EM) fields~\cite{huang2020holographic}, which are the physical carriers~\cite{migliore2018horse} of information in wireless systems. 
@@ -90,8 +90,7 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 % Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is of interest, which motivates the research of EM information theory (EIT).
 The past decade has witnessed the proliferation of the massive multiple-input multiple-output (MIMO)~\cite{marzetta2010noncooperative} from a theoretical concept to a practical technology. Thanks to the increase of transceiver antennas, the massive MIMO technology has triggered a significant performance improvement in 5G wireless communications. 
 However, prevailing analysis and design procedures for massive MIMO are usually based on scalar-quantity, white-noised, far-field~\cite{liu2018novel}, discretized~\cite{goldsmith2003capacity}, monochromatic, and other non-physically consistent assumptions. 
-\red{To be specific, most of the existing information-theoretic models may over-estimate the MIMO channel capacity because they usually assume that 1) noises at different receiver antennas are independent, and 2) the power of noise is independent to the number of antennas. } 
-which will lead to mismatches between the system design and the actual propagation environment in the novel architectures beyond massive MIMO. 
+\red{These assumptions will gradually become invalid when an ultradense MIMO, i.e., a continuous-aperture MIMO (CAP-MIMO), is considered. Specifically, the noise observed at each antenna will exhibit two distinct properties as the number of antennas increase. First, the noise will become correlated due to the strengthened electromagnetic (EM) mutual coupling. Second, the noise power will increase because of the exacerbated thermal fluctuation within small volumes. Both of these two effects will cause the traditional MIMO information-theoretic models to over-estimate the channel capacity, leading to mismatches between the system design and the actual wireless channel in the novel architectures beyond massive MIMO. } 
 Therefore, a theory that can model and analyze the real-world EM wireless information system with physically interpretable and mathematically reasonable assumptions is of interest, which motivates the research of EM information theory (EIT). 
 
 
@@ -116,12 +115,7 @@ Then, we discuss the concept of channel capacity and its relation to DoF.
 After that, we introduce Maxwell's equations to describe the propagation of EM fields. 
 Finally, we employ random fields as the EIT foundation for unifying the probabilistic information theory and deterministic field theory. 
 
-\begin{figure}
-	\centering 
-	\includegraphics[width=\linewidth]{figures/PSWFs.pdf} 
-	\caption{Example of the functional DoF: The bandlimited AWGN channel and its eigenmodes. The transmitted signal $x(t)$ is time-limited by the temporal truncation operator $\mathcal{T}_T$ before undergoing the $W$-bandlimited channel and a second truncation $\mathcal{T}_T$. The output of this channel $y(t)$ is then obtained by imposing an AWGN process $n(t)$. The eigenmodes of this linear system are given by the prolate spheroidal wave functions (PSWFs) $\{\psi_n\}_{n=0}^{\infty}$, with eigenvalues $\{\lambda_n\}_{n=0}^{\infty}$. In this figure, $T=2\,{\rm s}$, $W=2\,{\rm Hz}$, and thus the functional DoF of the recieved signal $y(t)$ is $2WT=8$. }
-	\label{fig:PSWF}
-\end{figure}
+
 
 \vspace{-1em}
 \subsection{Degrees of Freedom}
@@ -130,6 +124,7 @@ Finally, we employ random fields as the EIT foundation for unifying the probabil
 DoF is a mathematical quantity that describes the number of independent parameters in a physical system. 
 In the communication community, the DoF usually refers to the number of orthogonal subchannels that can independently carry information, which is uniquely determined by the channel structure. It is usually calculated by counting the significant singular values of a given channel matrix \cite{goldsmith2003capacity}. 
 Thus, we use the term {{\emph{channel DoF}}} to describe such a number associated with a channel.
+
 
 % introduce the functional DoF. The formulas 2WT+o(2WT) is indispensable here. 
 By contrast, in the information theory community, the DoF has a mathematically rigorous definition that is firmly rooted in the spectral theory in functional analysis. 
@@ -141,7 +136,12 @@ This means that the $W$-bandlimited channel can essentially transmit $2WT$ real 
 In this case, the optimal basis waveforms $\psi_n(t)$ are prolate spheroidal wave functions (PSWFs), which are shown in Fig.~\ref{fig:PSWF}. Note that the functional DoF of the received signal $y(t)$ is determined by evaluating the largest $n$ before the eigenvalues $\lambda_n$ exhibit a cut-off transition behavior. 
 
 
-
+\begin{figure}
+	\centering 
+	\includegraphics[width=\linewidth]{figures/PSWFs.pdf} 
+	\caption{Example of the functional DoF: The bandlimited AWGN channel and its eigenmodes. The transmitted signal $x(t)$ is time-limited by the temporal truncation operator $\mathcal{T}_T$ before undergoing the $W$-bandlimited channel and a second truncation $\mathcal{T}_T$. The output of this channel $y(t)$ is then obtained by imposing an AWGN process $n(t)$. The eigenmodes of this linear system are given by the prolate spheroidal wave functions (PSWFs) $\{\psi_n\}_{n=0}^{\infty}$, with eigenvalues $\{\lambda_n\}_{n=0}^{\infty}$. In this figure, $T=2\,{\rm s}$, $W=2\,{\rm Hz}$, and thus the functional DoF of the recieved signal $y(t)$ is $2WT=8$. }
+	\label{fig:PSWF}
+\end{figure}
 % From a rigorous point of view, the (asymptotic) DoF is defined as the minimum dimension of a finite-dimensional functional subspace that can approximate any function in a larger space with an arbitrarily small error~\cite{poon2005degrees}. For example, the DoF of $W$-bandlimited signals with observation duration $T$ can be derived by finding the finite-dimensional subspace, which contains all the $W$-bandlimited functions that are most concentrated in the time domain. The problem of finding these most concentrated functions is named Slepian's concentration problem~\cite{slepian1976bandwidth}, and it has explicit solutions called prolate spheroidal wave functions, as shown in Fig.~\ref{fig:PSWF}.
 % More interestingly, it is proved that to approximately represent any $W$-bandlimited function, it suffices to pick out asymptotically $2WT$ prolate spheroidal wave functions as bases. Thus, the functional DoF of the $W$-bandlimited signals is asymptotically $2WT$~\cite{slepian1976bandwidth}. 
 % Since this kind of DoF numerically characterizes the possibility to approximate an {\emph{infinite-dimensional}} functional space by a {\emph{finite-dimensional}} subspace, we refer to it as the {{\emph{functional DoF}}}. 
@@ -169,7 +169,7 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 \begin{figure}
 	\centering 
 	\includegraphics[width=0.9\linewidth]{figures/LTI-LSI-new-v1.pdf} 
-	\caption{In analogy with linear time-invariant systems described by a time-domain impulse response $h(t)$ in classical information theory, the EIT model is based on linear space-invariant systems described by the Green's function ${\bm G}({\bm r}, {\bm s})$.} 
+	\caption{In analogy with linear time-invariant systems described by a time-domain impulse response $h(t)$ in classical information theory, the EIT model is based on linear space-invariant systems described by the Green's function ${\bm G}({\bm r}, {\bm s})\in\mathbb{C}^{3\times 3}$ from the transmitter region $V_{\rm T}$ to the receiver region $V_{\rm R}$, where spatial coordinates ${\bm s}\in V_{\rm T}$ and ${\bm r}\in V_{\rm R}$ represent the source position and the receiver position, respectively. } 
 	\label{fig:LTI_LSI}
 \end{figure}
 % Original figure: figures/LTI_LSI.pdf 
@@ -180,15 +180,15 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 % Basics about electromagnetics.
 EM theory is a branch of physics that studies the EM interaction in four-dimensional spacetime from a field-theoretic point of view. The EM forces are carried by EM vector fields, which are usually described by Maxwell's equations. Maxwell's equations are four linear partial differential equations that characterize how the electric fields and magnetic fields are altered by each other and by charges and currents. Combining these four equations, a vector wave equation can be obtained that manifests the existence of EM waves. 
 
-\red{In wireless communications, to describe the EM response ${\bm E}({\bm r})$ at the receiver induced by the source current ${\bm J}({\bm s})$ at the transmitter, Green's function ${\bm G}({\bm r}, {\bm s})$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic},} as is shown in Fig.~\ref{fig:LTI_LSI}.
-Since the electric and magnetic field vectors are all three-dimensional time-varying vectors, to describe the mapping between two vectors, Green's function must take the form of a dyadic-valued function. 
+\red{In wireless communications, to describe the EM response ${\bm E}({\bm r})\in\mathbb{C}^3$ at the receiver induced by the source current ${\bm J}({\bm s})\in\mathbb{C}^3$ at the transmitter, the 3D Green's function ${\bm G}({\bm r}, {\bm s})\in\mathbb{C}^{3\times 3}$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:LTI_LSI}. 
+}
 Note that EM theory is a deterministic theory built on partial differential equations and the knowledge of all surroundings, so Green's function is uniquely determined by the boundary conditions of EM problems.
 As a result, pure EM theory cannot capture the random nature that arises in wireless communications. 
 
 \subsection{Random Fields for EIT}
 \label{Sec_2_Subsec_4}
 In order to apply information-theoretic analysis to EM fields, probabilistic measures should be assigned to the functional space containing all possible EM fields that satisfy Maxwell's equations, which leads to the random field modeling for EIT. 
-\red{Gaussian random processes, usually indexed by the continuous time $t$, are widely applied to model communication signals, from which entropy rates and mutual information formulas can be derived.} Gaussian random fields (GRFs) are generalized random processes that allow multiple index variables. 
+Gaussian random processes, usually indexed by the continuous time $t$, are widely applied to model communication signals, from which entropy rates and mutual information formulas can be derived. Gaussian random fields (GRFs) are generalized random processes that allow multiple index variables. 
 
 Mathematically, GRFs are random multivariate functions whose finite-dimensional marginal distributions are Gaussian. Justified by the central limit theorem, many complicated spatially dependent random values that arise in wireless communications can be modeled by GRFs.  
 Inheriting favorable mathematical properties from Gaussian distributions, GRF models exhibit good analytical properties that can facilitate both theoretical deduction and numerical inference. 
@@ -196,7 +196,7 @@ Inheriting favorable mathematical properties from Gaussian distributions, GRF mo
 In EIT, GRFs can be utilized to model both the EM channels~\cite{marzetta2022fourier} and the EM signals~\cite{wan2022mutual}. 
 In real-world communication systems, the EM channel response may vary randomly as a function of spacetime, so it is reasonable to model such spatio-temporal variations by a channel GRF. 
 This allows the Bayesian inference of channel entries that are not directly measured. 
-Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, \red{from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels.} The GRF-based information-theoretic analysis will be explained in detain in Section.~\ref{sec_3_subsec_3}. 
+Similarly, in order to capture the randomness of the transmitted and received signals, the current distributions at the transmitter and the electric fields at the receiver can also be modeled by GRFs~\cite{wan2022mutual}, from which the information-theoretic mutual information can be defined to characterize the information transmission capability of such EM channels. The GRF-based information-theoretic analysis will be explained in detain in Section.~\ref{sec_3_subsec_3}. 
 
 % Motivated by the possibility of exploiting the three spatial dimensions, the multi-input multi-output (MIMO) architecture have been ubiquitous in contemporary wireless communication systems. To fully exploit the potential of MIMO, numerous spatial multiplexing technologies have been proposed, including SDMA, TRDMA, PDMA, and LDMA. However, there must be a unified underlying theory that governs all the multiplexing technologies, since they are all based on the same physical media of electromagnetic waves. To construct this unified theory, two different approaches have been proposed in the literature to characterize the electromagnetic channel. 
 
@@ -434,7 +434,7 @@ The recent progress on EIT has demonstrated its potential to become a unified an
 \\
 
 
-{\bf Linglong Dai} is an Associate Professor from Tsinghua University. His current research interests include massive MIMO, RIS, Wireless AI, and EIT. He has received the IEEE ComSoc Leonard G. Abraham Prize in 2020, the IEEE ComSoc Stephen O. Rice Prize in 2022, and the IEEE ICC 2022 Outstanding Demo Award. He was listed as a Highly Cited Researcher by Clarivate in 2020 and 2021. He was elevated as an IEEE Fellow in 2022.
+{\bf Linglong Dai} is a Professor from Tsinghua University. His current research interests include massive MIMO, RIS, Wireless AI, and EIT. He has received the IEEE ComSoc Leonard G. Abraham Prize in 2020, the IEEE ComSoc Stephen O. Rice Prize in 2022, and the IEEE ICC 2022 Outstanding Demo Award. He was listed as a Highly Cited Researcher by Clarivate in 2020 and 2021. He was elevated as an IEEE Fellow in 2022.
 \\
 
 {\bf M\'{e}rouane Debbah} is chief research officer at the Technology Innovation Institute in Abu Dhabi. From 2014 to 2021, he was vice-president of the Huawei France Research Center, where he was jointly the director of the Mathematical and Algorithmic Sciences Lab as well as the director of the Lagrange Mathematical and Computing Research Center. 

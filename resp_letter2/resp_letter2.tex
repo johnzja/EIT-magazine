@@ -121,12 +121,35 @@ In this revision, the reply from the authors is clear and reasonable. However, t
 1. In my previous review, a major concern is that the introduction does not clearly specify the potential deficiencies of existing information-theoretical models. To this end, the authors shall add more details to the paper to justify the new model, e.g., ``most of the existing models may over-estimate the MIMO channel capacity because they usually assume that 1) noises at different receiver antennas are independent, and 2) the power of noise is independent to the number of antennas''.
 
 \blue{
-    {\textbf{Authors: }} We appreciate the reviewer's overall supportive attitude to our reply. The paper has been updated according to your suggestions. 
+    {\textbf{Authors: }} We appreciate the reviewer's overall supportive attitude to our reply. The paper has been updated according to your suggestions. In the revised version, we have clearly stated the potential deficiencies of existing information-theoretic models: 1) Ignoring the covariance of noise when the antennas become denser, and 2) Ignoring the dependence of noise power on the antenna density. The first statement is justified by the fact that, since the antennas are placed closer to each other, the EM mutual coupling effect will gradually contribute to the correlation of the measured noise signals. The second statement is justified by considering a spectrally white Brownian motion as the model for the noise process. When viewed in a large scale, the Brownian motion is cancelled out, and the average fluctuation is small, i.e., the noise for large-sized antennas are small. But when viewed in a very small scale, the thermal fluctuation becomes dominant, and thus the noise power increases [R1-2]. 
+    
+    
+    {\bf References:}
 
-}
+    [R1] C. A. Balanis, {\it Antenna theory: analysis and design}, John Wiley \& Sons, 2016. 
+
+    [R2] L. E. Reichl, {\it A modern course in statistical physics}, Americal Association of Physics Teachers, 1999. 
+
+
+    \quad For you to check, the revisions are presented in the following box. 
+    }
+
+\begin{framed}
+    {\bf Section I}
+
+    \red{
+        These assumptions will gradually become invalid when an ultradense MIMO, i.e., a continuous-aperture MIMO (CAP-MIMO), is considered. Specifically, the noise observed at each antenna will exhibit two distinct properties as the number of antennas increase. First, the noise will become correlated due to the strengthened electromagnetic (EM) mutual coupling. Second, the noise power will increase because of the exacerbated thermal fluctuation within small volumes. Both of these two effects will cause the traditional MIMO information-theoretic models to over-estimate the channel capacity, leading to mismatches between the system design and the actual wireless channel in the novel architectures beyond massive MIMO.
+    }
+\end{framed}
 
 \textbf{Reviewer 2:}
 2. For Fig. 2, variables $r$, $s$, $V_T$ must be defined. Since this article is a magazine paper, some more details shall be given, e.g., $J(s)$ and $E(r)$ are 3x1 vectors for 3D space, $G(r,s)$ is a 3x3 matrix, $E(r)$ can be obtained when $J(s)$ and $G(r,s)$ are given, etc.
+
+\blue{
+    {\bf Authors:}
+
+    Thank you for pointing out the symbol problems. In the revised 
+}
 
 
 \textbf{Reviewer 2:}
