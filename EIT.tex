@@ -91,7 +91,7 @@ H. Vincent Poor is with the Department of Electrical and Computer Engineering, P
 % Therefore, a theory that can model and analyze the real wireless information system with continuous EM fields is of interest, which motivates the research of EM information theory (EIT).
 The past decade has witnessed the proliferation of the massive multiple-input multiple-output (MIMO)~\cite{marzetta2010noncooperative} from a theoretical concept to a practical technology. Thanks to the increase of transceiver antennas, the massive MIMO technology has triggered a significant performance improvement in 5G wireless communications. 
 However, prevailing analysis and design procedures for massive MIMO are usually based on white-noised, scalar-quantity, far-field~\cite{liu2018novel}, discretized~\cite{goldsmith2003capacity}, monochromatic, and other non-physically consistent assumptions. 
-\red{These assumptions will gradually become invalid when an ultradense MIMO, i.e., a continuous-aperture MIMO (CAP-MIMO), is considered. For example, the noise observed at each antenna will exhibit two distinct properties as the number of antennas grows. First, the noise will become correlated due to the strengthened electromagnetic (EM) mutual coupling. Second, the noise power will increase because of the exacerbated thermal fluctuation within small volumes. Both of these two effects will cause the traditional MIMO information-theoretic models to over-estimate the channel capacity, leading to mismatches between the system design and the actual wireless channel properties in the novel architectures beyond massive MIMO.} 
+These assumptions will gradually become invalid when an ultradense MIMO, i.e., a continuous-aperture MIMO (CAP-MIMO), is considered. \red{For example, the noise observed at each antenna will exhibit two distinct properties as the number of antennas grows. First, the noise will become correlated due to the strengthened electromagnetic (EM) mutual coupling. Second, the noise power will increase because of the exacerbated thermal fluctuation within small volumes.} Both of these two effects will cause the traditional MIMO information-theoretic models to over-estimate the channel capacity, leading to mismatches between the system design and the actual wireless channel properties in the novel architectures beyond massive MIMO. 
 In response to these theoretical defects, the designing procedure of traditional wireless physical layer should be extended by re-considering the EM propagation laws, which leads to the novel concept of EM physical layer. 
 Correspondingly, a theory that can model and analyze the real-world EM wireless information system with physically interpretable and mathematically reasonable assumptions is of interest, which motivates the research of EM information theory (EIT). 
 
@@ -171,7 +171,7 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 \begin{figure}
 	\centering 
 	\includegraphics[width=0.9\linewidth]{figures/LTI-LSI-new-v1.pdf} 
-	\caption{In analogy with linear time-invariant systems described by a time-domain impulse response $h(t)$ in classical information theory, \red{the EIT model is based on linear space-invariant systems described by the Green's function ${\bm G}({\bm r}, {\bm s})\in\mathbb{C}^{3\times 3}$ from the transmitter region $V_{\rm T}$ to the receiver region $V_{\rm R}$, where spatial coordinates ${\bm s}\in V_{\rm T}$ and ${\bm r}\in V_{\rm R}$ represent the source position and the receiver position, respectively.} } 
+	\caption{In analogy with linear time-invariant systems described by a time-domain impulse response $h(t)$ in classical information theory, the EIT model is based on linear space-invariant systems described by the Green's function ${\bm G}({\bm r}, {\bm s})\in\mathbb{C}^{3\times 3}$ from the transmitter region $V_{\rm T}$ to the receiver region $V_{\rm R}$, where spatial coordinates ${\bm s}\in V_{\rm T}$ and ${\bm r}\in V_{\rm R}$ represent the source and the receiver coordinates, respectively.} 
 	\label{fig:LTI_LSI}
 \end{figure}
 % Original figure: figures/LTI_LSI.pdf 
@@ -182,8 +182,8 @@ The {\it converse} theorem states that, for an arbitrary data rate higher than c
 % Basics about electromagnetics.
 EM theory is a branch of physics that studies the EM interaction in four-dimensional spacetime from a field-theoretic point of view. The EM forces are carried by EM vector fields, which are usually described by Maxwell's equations. Maxwell's equations are four linear partial differential equations that characterize how the electric fields and magnetic fields are altered by each other and by charges and currents. Combining these four equations, a vector wave equation can be obtained that manifests the existence of EM waves. 
 
-\red{In wireless communications, to describe the electric field ${\bm E}({\bm r})\in\mathbb{C}^3$ at the receiver induced by the source current ${\bm J}({\bm s})\in\mathbb{C}^3$ at the transmitter, the 3D Green's function ${\bm G}({\bm r}, {\bm s})\in\mathbb{C}^{3\times 3}$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic}, as is shown in Fig.~\ref{fig:LTI_LSI}. 
-}
+\red{In wireless communications, to describe the electric field ${\bm E}({\bm r})\in\mathbb{C}^3$ at the receiver induced by the source current ${\bm J}({\bm s})\in\mathbb{C}^3$ at the transmitter, the 3D Green's function ${\bm G}({\bm r}, {\bm s})\in\mathbb{C}^{3\times 3}$ is usually introduced as the spatial impulse response of EM systems~\cite{stratton2007electromagnetic},} as is shown in Fig.~\ref{fig:LTI_LSI}. 
+
 Note that EM theory is a deterministic theory built on partial differential equations. Therefore, the full EM response is uniquely determined by the boundary conditions of the EM problem.
 As a result, pure EM theory cannot capture the random nature that arises in wireless communications. 
 
@@ -429,7 +429,7 @@ The recent progress on EIT has demonstrated its potential to become a unified an
 \\
 
 
-{\bf Linglong Dai} is a Professor from Tsinghua University. His current research interests include massive MIMO, RIS, Wireless AI, and EIT. He has received the IEEE ComSoc Leonard G. Abraham Prize in 2020, the IEEE ComSoc Stephen O. Rice Prize in 2022, and the IEEE ICC 2022 Outstanding Demo Award. He was listed as a Highly Cited Researcher by Clarivate in 2020 and 2021. He was elevated as an IEEE Fellow in 2022.
+{\bf Linglong Dai} is a Professor from Tsinghua University. His current research interests include massive MIMO, RIS, Wireless AI, and EIT. He has received the IEEE ComSoc Leonard G. Abraham Prize in 2020, the IEEE ComSoc Stephen O. Rice Prize in 2022, and the IEEE ICC 2022 Outstanding Demo Award. He was listed as a Highly Cited Researcher by Clarivate from 2020 to 2022. He was elevated as an IEEE Fellow in 2022.
 \\
 
 {\bf M\'{e}rouane Debbah} is chief research officer at the Technology Innovation Institute in Abu Dhabi. From 2014 to 2021, he was vice-president of the Huawei France Research Center, where he was jointly the director of the Mathematical and Algorithmic Sciences Lab as well as the director of the Lagrange Mathematical and Computing Research Center. 
